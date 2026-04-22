@@ -19,14 +19,14 @@ export default function Home() {
       <div className="relative flex items-center justify-center h-screen overflow-hidden">
         {!videoStarted && (
           <img
-            src="/images/logo-estatico.png"
+            src="/images/logo-branco-redondo.png"
             alt="Arnecke Logo"
             className="absolute w-[300px] h-[300px] object-contain"
           />
         )}
         <video
           ref={videoRef}
-          onPlay={() => setVideoStarted(true)} // Se o usuário clicar ou o autoplay funcionar, esconde a imagem
+          onPlay={() => setVideoStarted(true)}
           className={`w-[300px] h-[300px] pointer-events-none mix-blend-screen transition-opacity duration-500 ${
             videoStarted ? "opacity-100" : "opacity-0"
           }`}
