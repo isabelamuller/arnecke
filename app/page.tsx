@@ -8,9 +8,12 @@ export default function Home() {
           loop
           muted
           playsInline
+          disablePictureInPicture
+          preload="auto"
         >
+          <source src="/images/arnecke-logo-moving.mov" type="video/mp4" />
           <source
-            src="/images/arnecke-logo-moving.mov"
+            src="/images/arnecke-logo-moving-iphone.mov"
             type="video/quicktime"
           />
         </video>
