@@ -1,13 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0200F7;
-  --text-color: #fefef4;
+  --blue: #0200F7;
+  --white: #fefef4;
+  --black: #282828;
 }
 
 body {
-  background: var(--background);
   font-family: var(--font-helvetica), sans-serif;
+  color: var(--white);
 }
 
 .font-systemia {
@@ -23,16 +24,41 @@ body {
 }
 
 .bg-color-arnecke-blue {
-  background-color: var(--background);
+  background-color: var(--blue);
+}
+
+.bg-color-arnecke-white {
+  background-color: var(--white);
 }
 
 .text-color-arnecke-white {
-  color: var(--text-color);
+  color: var(--white);
+}
+
+.text-color-arnecke-black {
+  color: var(--black);
+}
+
+.text-color-arnecke-blue {
+  color: var(--blue);
 }
 
 .border-color-arnecke-white {
-  border-color: var(--text-color);
+  border-color: var(--white);
 }
+
+.border-color-arnecke-black {
+  border-color: var(--black);
+}
+
+.border-color-arnecke-blue {
+  border-color: var(--blue);
+}
+
+.bg-color-arnecke-black {
+  background-color: var(--black);
+}
+
 @keyframes spin {
   from {
     transform: rotate(0deg);
@@ -62,3 +88,6 @@ body {
 .animate-spin-reverse {
   animation: spin-reverse 50s linear infinite;
 }
+
+
+
