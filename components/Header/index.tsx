@@ -20,10 +20,17 @@ export const Header = () => {
         </Link>
       </div>
       <div className="absolute left-1/2 -translate-x-1/2 lg:flex hidden items-center h-full">
-        <Link href="https://arnecke.lojavirtualnuvem.com.br/">SHOP</Link>
+        <Link
+          className="hover:opacity-90 transition-opacity"
+          href="https://arnecke.lojavirtualnuvem.com.br/"
+        >
+          SHOP
+        </Link>
       </div>
       <div className="absolute right-4 flex items-center h-full lg:flex hidden">
-        COMMUNITY
+        <Link className="hover:opacity-90 transition-opacity" href="/">
+          COMMUNITY
+        </Link>
       </div>
     </header>
   );
