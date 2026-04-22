@@ -21,13 +21,13 @@ export default function Home() {
           <img
             src="/images/logo-branco-redondo.png"
             alt="Arnecke Logo"
-            className="absolute w-[300px] h-[300px] object-contain"
+            className="absolute w-[400px] h-[400px] object-contain"
           />
         )}
         <video
           ref={videoRef}
           onPlay={() => setVideoStarted(true)}
-          className={`w-[300px] h-[300px] pointer-events-none mix-blend-screen transition-opacity duration-500 ${
+          className={`w-[400px] h-[400px] pointer-events-none mix-blend-screen transition-opacity duration-500 ${
             videoStarted ? "opacity-100" : "opacity-0"
           }`}
           style={{
