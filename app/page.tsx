@@ -1,19 +1,43 @@
+"use client";
+import { useState, useRef, useEffect } from "react";
+
 export default function Home() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoStarted, setVideoStarted] = useState(false);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current
+        .play()
+        .then(() => setVideoStarted(true))
+        .catch(() => setVideoStarted(false));
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#0200F7]">
       <div className="relative flex items-center justify-center h-screen overflow-hidden">
+        {!videoStarted && (
+          <img
+            src="/images/logo-estatico.png"
+            alt="Arnecke Logo"
+            className="absolute w-[300px] h-[300px] object-contain"
+          />
+        )}
         <video
-          className="w-[400px] h-[400px] pointer-events-none mix-blend-screen"
+          ref={videoRef}
+          onPlay={() => setVideoStarted(true)} // Se o usuário clicar ou o autoplay funcionar, esconde a imagem
+          className={`w-[300px] h-[300px] pointer-events-none mix-blend-screen transition-opacity duration-500 ${
+            videoStarted ? "opacity-100" : "opacity-0"
+          }`}
           style={{
             filter: "brightness(0.95) contrast(1.1)",
             backgroundColor: "transparent",
           }}
-          autoPlay
           loop
           muted
           playsInline
           disablePictureInPicture
-          poster="/images/logo-branco-redondo.png"
           preload="auto"
         >
           <source src="/images/arnecke-logo-moving.webm" type="video/webm" />
