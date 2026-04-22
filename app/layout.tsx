@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     description: "Arnecke portfolio page.",
     images: [
       {
-        url: "/images/logo-azul.png",
+        url: "/images/logo-sozinho.png",
         width: 1200,
         height: 630,
         alt: "Arnecke Preview",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Arnecke",
     description: "Arnecke portfolio page",
-    images: ["/images/logo-azul.png"],
+    images: ["/images/logo-sozinho.png"],
   },
   robots: {
     index: true,
