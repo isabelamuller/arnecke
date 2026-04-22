@@ -5,8 +5,51 @@ import { Footer } from "@/components/Footer";
 import { denton, helvetica, systemia } from "./fonts";
 
 export const metadata: Metadata = {
-  title: "Arnecke",
-  description: "Arnecke portfolio page",
+  title: {
+    default: "Arnecke",
+    template: "%s | Arnecke",
+  },
+  description: "Arnecke portfolio page.",
+  keywords: ["Arnecke", "Moda", "Portfolio", "Design", "Fashion"],
+  authors: [{ name: "Isabela Müller" }],
+  creator: "Jose Arnecke",
+  publisher: "Jose Arnecke",
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    url: "https://www.arnecke.vercel.app",
+    siteName: "Arnecke",
+    title: "Arnecke",
+    description: "Arnecke portfolio page.",
+    images: [
+      {
+        url: "/images/logo-azul.png",
+        width: 1200,
+        height: 630,
+        alt: "Arnecke Preview",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Arnecke",
+    description: "Arnecke portfolio page",
+    images: ["/images/logo-azul.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
