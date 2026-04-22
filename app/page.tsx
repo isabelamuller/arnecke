@@ -3,14 +3,16 @@ export default function Home() {
     <div className="min-h-screen">
       <div className="relative flex items-center justify-center h-screen overflow-hidden">
         <video
-          className="w-[400px] h-[400px]"
+          className="w-[400px] h-[400px] pointer-events-none"
           autoPlay
           loop
           muted
           playsInline
-          webkit-playsinline="true"
         >
-          <source src="/images/arnecke-logo-moving.mov" type="video/mp4" />
+          <source
+            src="/images/arnecke-logo-moving.mov"
+            type="video/quicktime"
+          />
         </video>
       </div>
     </div>
