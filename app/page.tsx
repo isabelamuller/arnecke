@@ -12,6 +12,9 @@ export default function Home() {
           loop
           muted
           playsInline
+          disablePictureInPicture
+          poster="/images/logo-branco-redondo.png"
+          preload="auto"
         >
           <source src="/images/arnecke-logo-moving.webm" type="video/webm" />
           <source
