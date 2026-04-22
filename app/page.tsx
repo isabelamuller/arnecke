@@ -8,7 +8,7 @@ export default function Home() {
           loop
           muted
           playsInline
-          preload="auto"
+          webkit-playsinline="true"
         >
           <source src="/images/arnecke-logo-moving.mov" type="video/mp4" />
         </video>
