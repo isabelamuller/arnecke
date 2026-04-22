@@ -11,9 +11,9 @@ export default function Home() {
           disablePictureInPicture
           preload="auto"
         >
-          <source src="/images/arnecke-logo-moving.mov" type="video/mp4" />
+          <source src="/images/arnecke-logo-moving-1.mov" type="video/mp4" />
           <source
-            src="/images/arnecke-logo-moving-iphone.mov"
+            src="/images/arnecke-logo-moving-1.mov"
             type="video/quicktime"
           />
         </video>
