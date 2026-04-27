@@ -31,6 +31,10 @@ body {
   background-color: var(--white);
 }
 
+.bg-color-arnecke-black {
+  background-color: var(--black);
+}
+
 .text-color-arnecke-white {
   color: var(--white);
 }
@@ -55,9 +59,10 @@ body {
   border-color: var(--blue);
 }
 
-.bg-color-arnecke-black {
-  background-color: var(--black);
+.fill-color-arnecke-blue {
+  fill: var(--blue);
 }
+
 
 @keyframes spin {
   from {

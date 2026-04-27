@@ -4,8 +4,8 @@ import Link from "next/link";
 
 export const Header = () => {
   return (
-    <header className="bg-color-arnecke-blue font-systemia border-b w-full h-16 flex items-center fixed top-0 left-0 z-50 px-4">
-      <div className="absolute left-5 w-[50px] border-r flex items-center h-full">
+    <header className="bg-color-arnecke-blue font-systemia w-full h-16 flex items-center fixed top-0 left-0 z-50 px-4">
+      <div className="absolute left-5 w-[50px] flex items-center h-full">
         <HamburguerMenu />
       </div>
       <div className="absolute lg:left-[98px] lg:translate-x-0 left-1/2 -translate-x-1/2  flex items-center h-full">
@@ -28,7 +28,7 @@ export const Header = () => {
         </Link>
       </div>
       <div className="absolute right-4 flex items-center h-full lg:flex hidden">
-        <Link className="hover:opacity-90 transition-opacity" href="/">
+        <Link className="hover:opacity-90 transition-opacity" href="/community">
           COMMUNITY
         </Link>
       </div>
