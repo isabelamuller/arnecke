@@ -3,7 +3,7 @@ import { CommunityView } from "@/views/Community";
 
 export const metadata: Metadata = {
   title: {
-    default: "Community | Arnecke",
+    default: "Community",
     template: "%s | Arnecke",
   },
   description: "Arnecke portfolio page.",

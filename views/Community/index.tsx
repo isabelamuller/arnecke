@@ -1,15 +1,16 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { COMMUNITY_IMAGES } from "./dats";
+import { COMMUNITY_IMAGES, IComunnityImages } from "./data";
 
 export const CommunityView = () => {
-  const randomized = useMemo(() => {
-    const shuffled = [...COMMUNITY_IMAGES].sort(() => Math.random() - 0.5);
+  const [images, setImages] = useState<IComunnityImages[]>([]);
 
-    return shuffled;
+  useEffect(() => {
+    const shuffled = [...COMMUNITY_IMAGES].sort(() => Math.random() - 0.5);
+    setImages(shuffled);
   }, []);
 
   return (
@@ -20,13 +21,12 @@ export const CommunityView = () => {
         </h1>
         <p className="text-[16px] italic">textinho embaixo do titulo</p>
       </div>
-      {randomized.map((image, index) => (
-        <div className="lg:col-span-2 col-span-5">
+      {images.map((image, index) => (
+        <div className="lg:col-span-2 col-span-5" key={index}>
           <Link
-            key={index}
             href={image.link}
             target="_blank"
-            className={`block hover:scale-105 transition-transform duration-300`}
+            className="block hover:scale-105 hover:opacity-90 transition-transform transition-opacity duration-300"
           >
             <Image
               src={image.src}
@@ -38,24 +38,6 @@ export const CommunityView = () => {
           </Link>
         </div>
       ))}
-      {/* <div className="col-span-12 grid grid-cols-12 gap-6">
-        {randomized.map((image, index) => (
-          <Link
-            key={index}
-            href={image.link}
-            target="_blank"
-            className={`block hover:scale-105 transition-transform duration-300 ${image.pattern}`}
-          >
-            <Image
-              src={image.src}
-              alt={image.alt}
-              width={500}
-              height={image.height}
-              className="object-cover"
-            />
-          </Link>
-        ))}
-      </div> */}
     </div>
   );
 };

@@ -20,16 +20,21 @@ export const Header = () => {
         </Link>
       </div>
       <div className="absolute left-1/2 -translate-x-1/2 lg:flex hidden items-center h-full">
+        <Link href="/">
+          <Image
+            src="/images/logo-branco-redondo.png"
+            alt="Shop"
+            width={40}
+            height={40}
+          />
+        </Link>
+      </div>
+      <div className="absolute text-[33px] leading-none tracking-tighter right-4 flex items-center h-full lg:flex hidden">
         <Link
           className="hover:opacity-90 transition-opacity"
           href="https://arnecke.lojavirtualnuvem.com.br/"
         >
           SHOP
-        </Link>
-      </div>
-      <div className="absolute right-4 flex items-center h-full lg:flex hidden">
-        <Link className="hover:opacity-90 transition-opacity" href="/community">
-          COMMUNITY
         </Link>
       </div>
     </header>

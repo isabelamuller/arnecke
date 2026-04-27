@@ -4,7 +4,7 @@ export interface IComunnityImages {
   alt: string;
 }
 
-export const COMMUNITY_IMAGES = [
+export const COMMUNITY_IMAGES: IComunnityImages[] = [
   {
     src: "/images/community/arnecke-1.jpg",
     link: "https://www.instagram.com/p/Cqj8n9sLh2X/",

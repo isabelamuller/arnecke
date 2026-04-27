@@ -18,8 +18,6 @@ export const HamburguerMenu = () => {
     setIsArchiveOpen(true);
   }
 
-  console.log(isArchiveOpen);
-
   return (
     <>
       <button
@@ -69,7 +67,7 @@ export const HamburguerMenu = () => {
               className="cursor-pointer hover:opacity-50 transition-opacity"
               onClick={closeMenu}
             >
-              <a href="/">Arnecke</a>
+              <a href="/contact">Contato</a>
             </li>
           </ul>
         </div>
