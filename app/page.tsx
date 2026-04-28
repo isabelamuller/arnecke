@@ -1,52 +1,54 @@
-"use client";
-import { useState, useRef, useEffect } from "react";
+import { HomepageView } from "@/views/Homepage";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: {
+    default: "Arnecke",
+    template: "%s | Arnecke",
+  },
+  description: "Arnecke portfolio page.",
+  keywords: ["Arnecke", "Moda", "Portfolio", "Design", "Fashion"],
+  authors: [{ name: "Isabela Müller" }],
+  creator: "Jose Arnecke",
+  publisher: "Jose Arnecke",
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    url: "https://www.arnecke.vercel.app",
+    siteName: "Arnecke",
+    title: "Arnecke",
+    description: "Arnecke portfolio page.",
+    images: [
+      {
+        url: "/images/logo-sozinho.png",
+        width: 1200,
+        height: 630,
+        alt: "Arnecke Preview",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Arnecke",
+    description: "Arnecke portfolio page",
+    images: ["/images/logo-sozinho.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
 
 export default function Home() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [videoStarted, setVideoStarted] = useState(false);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current
-        .play()
-        .then(() => setVideoStarted(true))
-        .catch(() => setVideoStarted(false));
-    }
-  }, []);
-
-  return (
-    <div className="min-h-screen bg-[#0200F7]">
-      <div className="relative flex items-center justify-center h-screen overflow-hidden">
-        {!videoStarted && (
-          <img
-            src="/images/logo-branco-redondo.png"
-            alt="Arnecke Logo"
-            className="absolute w-[400px] h-[400px] object-contain"
-          />
-        )}
-        <video
-          ref={videoRef}
-          onPlay={() => setVideoStarted(true)}
-          className={`w-[400px] h-[400px] pointer-events-none mix-blend-screen transition-opacity duration-500 ${
-            videoStarted ? "opacity-100" : "opacity-0"
-          }`}
-          style={{
-            filter: "brightness(0.95) contrast(1.1)",
-            backgroundColor: "transparent",
-          }}
-          loop
-          muted
-          playsInline
-          disablePictureInPicture
-          preload="auto"
-        >
-          <source src="/images/arnecke-logo-moving.webm" type="video/webm" />
-          <source
-            src="/images/arnecke-logo-moving-1.mov"
-            type='video/quicktime; codecs="hvc1"'
-          />
-        </video>
-      </div>
-    </div>
-  );
+  return <HomepageView />;
 }

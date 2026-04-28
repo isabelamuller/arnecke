@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    default: "Croquis | Arnecke",
+    default: "Croquis |  Arnecke",
     template: "%s | Arnecke",
   },
   description: "Arnecke portfolio page.",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
 
 export default function Article() {
   return (
-    <div className="px-5 mt-20 text-lg text-justify max-w-[1295px] mx-auto">
+    <div className="px-5 mt-15 text-lg text-justify max-w-[1295px] mx-auto">
       <h1 className="uppercase md:text-[7vw] text-[14vw] font-bold leading-[1.3] tracking-wide">
         Croquis
       </h1>

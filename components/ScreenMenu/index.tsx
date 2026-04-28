@@ -1,3 +1,4 @@
+import { useTickSound } from "@/utils/useSound";
 import { IoCloseOutline } from "react-icons/io5";
 
 export interface IScreenMenuProps {
@@ -5,6 +6,7 @@ export interface IScreenMenuProps {
 }
 
 export const ScreenMenu = ({ onClose }: IScreenMenuProps) => {
+  const playTick = useTickSound();
   return (
     <div className="font-systemia uppercase fixed inset-0 z-[999] bg-color-arnecke-white pointer-events-auto">
       <button
@@ -18,6 +20,8 @@ export const ScreenMenu = ({ onClose }: IScreenMenuProps) => {
           <a
             className="md:leading-[0.75] leading-[0.8] transition-colors md:leading-[0.75] leading-[0.8] duration-200 ease-in-out text-color-arnecke-black hover:!text-[#0200F7] cursor-pointer"
             href="/community"
+            onClick={playTick}
+            onMouseEnter={playTick}
           >
             Community
           </a>
@@ -26,6 +30,8 @@ export const ScreenMenu = ({ onClose }: IScreenMenuProps) => {
           <a
             className="md:leading-[0.75] leading-[0.8] transition-colors duration-200 ease-in-out text-color-arnecke-black hover:!text-[#0200F7] h-fit cursor-pointer"
             href="/archive"
+            onClick={playTick}
+            onMouseEnter={playTick}
           >
             Explore
           </a>
@@ -34,6 +40,8 @@ export const ScreenMenu = ({ onClose }: IScreenMenuProps) => {
           <a
             className="md:leading-[0.75] leading-[0.8] transition-colors duration-200 ease-in-out text-color-arnecke-black hover:!text-[#0200F7] h-fit cursor-pointer"
             href="/archive"
+            onClick={playTick}
+            onMouseEnter={playTick}
           >
             Research
           </a>
@@ -42,6 +50,8 @@ export const ScreenMenu = ({ onClose }: IScreenMenuProps) => {
           <a
             className="md:leading-[0.75] leading-[0.8] transition-colors duration-200 ease-in-out text-color-arnecke-black hover:!text-[#0200F7] h-fit cursor-pointer"
             href="/archive"
+            onClick={playTick}
+            onMouseEnter={playTick}
           >
             Design
           </a>
@@ -50,6 +60,8 @@ export const ScreenMenu = ({ onClose }: IScreenMenuProps) => {
           <a
             className="transition-colors duration-200 ease-in-out text-color-arnecke-black hover:!text-[#0200F7] h-fit cursor-pointer"
             href="/archive"
+            onClick={playTick}
+            onMouseEnter={playTick}
           >
             Football Photography
           </a>
@@ -58,6 +70,8 @@ export const ScreenMenu = ({ onClose }: IScreenMenuProps) => {
           <a
             className="md:leading-[0.75] leading-[0.8] transition-colors duration-200 ease-in-out text-color-arnecke-black hover:!text-[#0200F7] h-fit cursor-pointer"
             href="/archive"
+            onClick={playTick}
+            onMouseEnter={playTick}
           >
             Football
           </a>
@@ -66,6 +80,8 @@ export const ScreenMenu = ({ onClose }: IScreenMenuProps) => {
           <a
             className="md:leading-[0.75] leading-[0.8] transition-colors duration-200 ease-in-out text-color-arnecke-black hover:!text-[#0200F7] h-fit cursor-pointer"
             href="/archive"
+            onClick={playTick}
+            onMouseEnter={playTick}
           >
             Circle G
           </a>
@@ -74,6 +90,8 @@ export const ScreenMenu = ({ onClose }: IScreenMenuProps) => {
           <a
             className="md:leading-[0.75] leading-[0.8] transition-colors duration-200 ease-in-out text-color-arnecke-black hover:!text-[#0200F7] h-fit cursor-pointer"
             href="/croquis"
+            onClick={playTick}
+            onMouseEnter={playTick}
           >
             Croquis
           </a>
