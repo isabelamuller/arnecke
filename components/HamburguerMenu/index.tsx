@@ -90,7 +90,7 @@ export const HamburguerMenu = () => {
       >
         <div className="relative h-full w-full px-5 pt-[70px] pb-6 font-helvetica overflow-hidden">
           <span className="absolute top-4 right-5 text-[10px] uppercase tracking-[0.35em] text-white/50">
-            Menu
+            Explore
           </span>
 
           <span className="absolute bottom-7 right-5 text-[10px] uppercase tracking-[0.35em] text-white/40 rotate-90 origin-bottom-right">
