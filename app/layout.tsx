@@ -20,10 +20,15 @@ export default function RootLayout({
       className={`${helvetica.variable} ${systemia.variable} ${denton.variable}`}
     >
       <body
-        className={`${helvetica.className} bg-color-arnecke-blue text-color-arnecke-white min-h-[calc(100vh-49px)] antialiased`}
+        className={`${helvetica.className} bg-color-arnecke-blue text-color-arnecke-white min-h-[calc(100vh-49px)] antialiased overflow-x-hidden`}
       >
         <Header />
-        {children}
+        <main
+          id="page-content"
+          className="transition-transform duration-500 ease-[cubic-bezier(0.77,0,0.18,1)] will-change-transform"
+        >
+          {children}
+        </main>
         {!isContact && <Footer />}
       </body>
     </html>
