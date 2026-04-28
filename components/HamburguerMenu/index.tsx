@@ -18,11 +18,39 @@ export const HamburguerMenu = () => {
 
     if (!page) return;
 
-    page.classList.toggle("translate-x-1/3", isMenuOpen);
-    page.classList.toggle("pointer-events-none", isMenuOpen);
+    page.classList.remove(
+      "translate-x-1/3",
+      "translate-x-full",
+      "lg:translate-x-1/3",
+    );
+
+    const updatePagePosition = () => {
+      if (!isMenuOpen) {
+        page.style.transform = "translateX(0)";
+        page.style.pointerEvents = "auto";
+        return;
+      }
+
+      const isDesktop = window.innerWidth >= 1024;
+
+      page.style.transform = isDesktop
+        ? "translateX(33.333vw)"
+        : "translateX(100vw)";
+
+      page.style.pointerEvents = "none";
+    };
+
+    updatePagePosition();
+
+    window.addEventListener("resize", updatePagePosition);
 
     return () => {
-      page.classList.remove("translate-x-1/3", "pointer-events-none");
+      window.removeEventListener("resize", updatePagePosition);
+
+      if (!isMenuOpen) {
+        page.style.transform = "translateX(0)";
+        page.style.pointerEvents = "auto";
+      }
     };
   }, [isMenuOpen]);
 
@@ -56,7 +84,7 @@ export const HamburguerMenu = () => {
         )}
       </button>
       <div
-        className={`fixed top-0 left-0 h-screen w-1/3 z-40 bg-color-arnecke-blue text-white transform transition-transform duration-500 ease-[cubic-bezier(0.77,0,0.18,1)] ${
+        className={`fixed top-0 left-0 h-screen lg:w-1/3 w-full z-40 bg-color-arnecke-blue text-white transform transition-transform duration-500 ease-[cubic-bezier(0.77,0,0.18,1)] ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -68,8 +96,8 @@ export const HamburguerMenu = () => {
           <span className="absolute bottom-7 right-5 text-[10px] uppercase tracking-[0.35em] text-white/40 rotate-90 origin-bottom-right">
             Scoring goals
           </span>
-          <div className="absolute left-5 top-[70px] h-[calc(100%-100px)] w-[1px] bg-white/20" />
-          <ul className="ml-5 flex flex-col">
+          <div className="absolute left-5 top-[70px] h-[calc(100%-100px)] w-[1px] bg-white/20 lg:block hidden" />
+          <ul className="lg:ml-5 flex flex-col">
             <li className="border-t border-white/25">
               <a
                 href="https://arnecke.lojavirtualnuvem.com.br/"
@@ -151,7 +179,7 @@ export const HamburguerMenu = () => {
               </a>
             </div>
           </div>
-          <div className="absolute right-0 top-[70px] h-[calc(100%-100px)] w-[1px] bg-white/20" />
+          <div className="absolute right-0 top-[70px] h-[calc(100%-100px)] w-[1px] bg-white/20 lg:block hidden" />
           <div className="absolute bottom-5 left-10 text-[10px] uppercase tracking-[0.25em] text-white/40">
             Since 2024 © Expanding experiences
           </div>
