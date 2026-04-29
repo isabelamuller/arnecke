@@ -1,53 +1,8 @@
+import { getMetadata } from "@/utils/getMetada";
 import { ResearchView } from "@/views/Research";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: {
-    default: "Research |  Arnecke",
-    template: "%s | Arnecke",
-  },
-  description: "Arnecke portfolio page.",
-  keywords: ["Arnecke", "Moda", "Portfolio", "Design", "Fashion"],
-  authors: [{ name: "Isabela Müller" }],
-  creator: "Jose Arnecke",
-  publisher: "Jose Arnecke",
-  openGraph: {
-    type: "website",
-    locale: "pt_BR",
-    url: "https://www.arnecke.vercel.app",
-    siteName: "Arnecke",
-    title: "Research | Arnecke",
-    description: "Arnecke portfolio page.",
-    images: [
-      {
-        url: "/images/logo-sozinho.png",
-        width: 1200,
-        height: 630,
-        alt: "Arnecke Preview",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Arnecke",
-    description: "Arnecke portfolio page",
-    images: ["/images/logo-sozinho.png"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  icons: {
-    icon: "/favicon.ico",
-  },
-};
+export const metadata: Metadata = getMetadata("Research");
 
 export default function Research() {
   return <ResearchView />;
