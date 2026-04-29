@@ -42,7 +42,7 @@ export const loadHeaderStyles = () => ({
   ),
   shopLink: classnames(
     display("hidden", "md:block"),
-    fontSize("text-sm"),
+    fontSize("text-xs"),
     textTransform("uppercase"),
     display("flex"),
     alignItems("items-center"),
