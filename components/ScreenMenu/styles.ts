@@ -1,0 +1,52 @@
+import classnames, {
+  cursor,
+  inset,
+  listStyleType,
+  margin,
+  padding,
+  pointerEvents,
+  position,
+  textTransform,
+  transitionDuration,
+  transitionProperty,
+  transitionTimingFunction,
+  width,
+} from "tailwindcss-classnames";
+
+export const loadScreenMenuStyles = () => ({
+  wrapper: classnames(
+    textTransform("uppercase"),
+    position("fixed"),
+    inset("inset-0"),
+    pointerEvents("pointer-events-auto"),
+    "font-systemia" as any,
+    "z-[999]" as any,
+    "bg-color-arnecke-white" as any,
+  ),
+  closeButton: classnames(
+    position("absolute"),
+    inset("top-0", "right-0"),
+    cursor("cursor-pointer"),
+    transitionProperty("transition-opacity"),
+    "hover:opacity-50" as any,
+  ),
+  menuList: classnames(
+    margin("mt-1"),
+    padding("p-0"),
+    listStyleType("list-none"),
+  ),
+  listItem: classnames(
+    padding("p-0"),
+    width("w-fit"),
+    cursor("cursor-pointer"),
+    transitionProperty("transition-colors"),
+    transitionDuration("duration-200"),
+    transitionTimingFunction("ease-in-out"),
+    "md:text-[7.8vw]" as any,
+    "text-[50px]" as any,
+    "md:leading-[0.75]" as any,
+    "leading-[0.8]" as any,
+    "text-color-arnecke-black" as any,
+    "hover:!text-[#0200F7]" as any,
+  ),
+});

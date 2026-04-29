@@ -5,41 +5,64 @@ import { IoLogoInstagram, IoLogoWhatsapp } from "react-icons/io";
 
 export const ContactView = () => {
   return (
-    <div className="relative px-5 h-screen font-helvetica">
-      <h1 className="absolute mt-[-70px] inset-0 flex items-center justify-center text-center uppercase text-[24px] font-bold tracking-wide px-5">
-        "Água mole em pedra dura, tanto bate até que fura"
-      </h1>
-      <div className="absolute bottom-5 left-0 w-full flex flex-col items-center gap-3">
-        <div className="flex gap-3">
+    <div className="min-h-screen px-5 pt-20 pb-6 font-helvetica text-color-arnecke-white flex flex-col">
+      <div className="flex flex-1 items-center justify-center">
+        <h1 className="max-w-[720px] text-center uppercase text-[26px] md:text-[44px] font-bold tracking-[-0.04em] leading-[1.1]">
+          “Água mole em pedra dura, tanto bate até que fura”
+        </h1>
+      </div>
+
+      <section className="flex flex-col items-center gap-3 text-center">
+        <div className="flex items-center justify-center gap-3 text-[12px] uppercase tracking-[0.18em]">
           <a
             href="https://www.instagram.com/_arnecke/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:opacity-80 transition-opacity"
+            className="hover:opacity-60 transition-opacity"
+            aria-label="Instagram"
           >
-            <IoLogoInstagram size={24} color="white" />
+            <IoLogoInstagram size={22} />
           </a>
+          <span className="text-white/30">|</span>
           <a
             href="https://wa.me/5511999999999"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:opacity-80 transition-opacity"
+            className="hover:opacity-60 transition-opacity"
+            aria-label="WhatsApp"
           >
-            <IoLogoWhatsapp size={24} color="white" />
+            <IoLogoWhatsapp size={22} />
           </a>
-          <span>email@email.com</span>
+          <span className="text-white/30">|</span>
+          <a
+            href="mailto:email@email.com"
+            className="hover:opacity-60 transition-opacity lowercase tracking-normal text-[13px]"
+          >
+            email@email.com
+          </a>
         </div>
         <Image
           src="/images/logo-contact.png"
           alt="Arnecke Logo"
-          width={200}
-          height={100}
+          width={220}
+          height={85}
+          className="object-contain"
         />
-        <p className="text-sm">
-          &copy; {new Date().getFullYear()} Arnecke. Todos os direitos
-          reservados.
+        <p className="text-[11px] text-white/45">
+          © {new Date().getFullYear()} Arnecke. Todos os direitos reservados.
         </p>
-      </div>
+        <p className="text-[10px] text-white/35">
+          Website made by{" "}
+          <a
+            href="https://www.linkedin.com/in/isabela-m%C3%BCllerrr/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white/60 hover:text-white transition-colors"
+          >
+            Isa.
+          </a>
+        </p>
+      </section>
     </div>
   );
 };

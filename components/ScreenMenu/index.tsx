@@ -1,101 +1,26 @@
 import { useTickSound } from "@/utils/useSound";
 import { IoCloseOutline } from "react-icons/io5";
-
-export interface IScreenMenuProps {
-  onClose: () => void;
-}
+import { IScreenMenuProps } from "./types";
+import { loadScreenMenuStyles } from "./styles";
+import { SCREEN_MENU_ITEMS } from "./data";
 
 export const ScreenMenu = ({ onClose }: IScreenMenuProps) => {
+  const styles = loadScreenMenuStyles();
   const playTick = useTickSound();
+
   return (
-    <div className="font-systemia uppercase fixed inset-0 z-[999] bg-color-arnecke-white pointer-events-auto">
-      <button
-        className="absolute top-0 right-0 cursor-pointer hover:opacity-50 transition-opacity"
-        onClick={onClose}
-      >
+    <div className={styles.wrapper}>
+      <button className={styles.closeButton} onClick={onClose}>
         <IoCloseOutline size={30} color="black" />
       </button>
-      <ul className="mt-1 p-0 list-none">
-        <li className="p-0 md:text-[7.8vw] text-[50px] md:leading-[0.75] leading-[0.8] w-fit">
-          <a
-            className="md:leading-[0.75] leading-[0.8] transition-colors md:leading-[0.75] leading-[0.8] duration-200 ease-in-out text-color-arnecke-black hover:!text-[#0200F7] cursor-pointer"
-            href="/community"
-            onClick={playTick}
-            onMouseEnter={playTick}
-          >
-            Community
-          </a>
-        </li>
-        <li className="md:text-[7.8vw] text-[50px] md:leading-[0.75] leading-[0.8] md:leading-[0.75] leading-[0.8] w-fit cursor-pointer">
-          <a
-            className="md:leading-[0.75] leading-[0.8] transition-colors duration-200 ease-in-out text-color-arnecke-black hover:!text-[#0200F7] h-fit cursor-pointer"
-            href="/archive"
-            onClick={playTick}
-            onMouseEnter={playTick}
-          >
-            Explore
-          </a>
-        </li>
-        <li className="md:text-[7.8vw] text-[50px] md:leading-[0.75] leading-[0.8] w-fit cursor-pointer">
-          <a
-            className="md:leading-[0.75] leading-[0.8] transition-colors duration-200 ease-in-out text-color-arnecke-black hover:!text-[#0200F7] h-fit cursor-pointer"
-            href="/archive"
-            onClick={playTick}
-            onMouseEnter={playTick}
-          >
-            Research
-          </a>
-        </li>
-        <li className="md:text-[7.8vw] text-[50px] md:leading-[0.75] leading-[0.8] w-fit cursor-pointer">
-          <a
-            className="md:leading-[0.75] leading-[0.8] transition-colors duration-200 ease-in-out text-color-arnecke-black hover:!text-[#0200F7] h-fit cursor-pointer"
-            href="/archive"
-            onClick={playTick}
-            onMouseEnter={playTick}
-          >
-            Design
-          </a>
-        </li>
-        <li className="md:text-[7.8vw] text-[50px] md:leading-[0.75] leading-[0.8] w-fit cursor-pointer">
-          <a
-            className="transition-colors duration-200 ease-in-out text-color-arnecke-black hover:!text-[#0200F7] h-fit cursor-pointer"
-            href="/archive"
-            onClick={playTick}
-            onMouseEnter={playTick}
-          >
-            Football Photography
-          </a>
-        </li>
-        <li className="md:text-[7.8vw] text-[50px] md:leading-[0.75] leading-[0.8] w-fit cursor-pointer">
-          <a
-            className="md:leading-[0.75] leading-[0.8] transition-colors duration-200 ease-in-out text-color-arnecke-black hover:!text-[#0200F7] h-fit cursor-pointer"
-            href="/archive"
-            onClick={playTick}
-            onMouseEnter={playTick}
-          >
-            Football
-          </a>
-        </li>
-        <li className="md:text-[7.8vw] text-[50px] md:leading-[0.75] leading-[0.8] w-fit cursor-pointer">
-          <a
-            className="md:leading-[0.75] leading-[0.8] transition-colors duration-200 ease-in-out text-color-arnecke-black hover:!text-[#0200F7] h-fit cursor-pointer"
-            href="/archive"
-            onClick={playTick}
-            onMouseEnter={playTick}
-          >
-            Circle G
-          </a>
-        </li>
-        <li className="md:text-[7.8vw] text-[50px] md:leading-[0.75] leading-[0.8] w-fit cursor-pointer">
-          <a
-            className="md:leading-[0.75] leading-[0.8] transition-colors duration-200 ease-in-out text-color-arnecke-black hover:!text-[#0200F7] h-fit cursor-pointer"
-            href="/croquis"
-            onClick={playTick}
-            onMouseEnter={playTick}
-          >
-            Croquis
-          </a>
-        </li>
+      <ul className={styles.menuList}>
+        {SCREEN_MENU_ITEMS.map((item, index) => (
+          <li className={styles.listItem} key={index}>
+            <a href={item.href} onClick={playTick} onMouseEnter={playTick}>
+              {item.label}
+            </a>
+          </li>
+        ))}
       </ul>
     </div>
   );

@@ -23,11 +23,9 @@ export const CommunityView = () => {
         </span>
       </div>
       <div className="relative z-10 mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-5 border-b border-white/10 pb-5">
-        <div>
-          <h1 className="uppercase text-[34px] md:text-[56px] font-bold tracking-[-0.04em] leading-none">
-            Community
-          </h1>
-        </div>
+        <h1 className="uppercase text-[34px] md:text-[56px] font-bold tracking-[-0.04em] leading-none">
+          Community
+        </h1>
         <p className="max-w-[360px] text-[15px] md:text-[16px] italic leading-relaxed text-white/70 md:text-right">
           We just collect the evidence.
         </p>

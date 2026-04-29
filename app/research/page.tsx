@@ -1,9 +1,9 @@
-import { CroquisView } from "@/components/Article";
+import { ResearchView } from "@/views/Research";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    default: "Croquis |  Arnecke",
+    default: "Research |  Arnecke",
     template: "%s | Arnecke",
   },
   description: "Arnecke portfolio page.",
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     url: "https://www.arnecke.vercel.app",
     siteName: "Arnecke",
-    title: "Croquis | Arnecke",
+    title: "Research | Arnecke",
     description: "Arnecke portfolio page.",
     images: [
       {
@@ -49,6 +49,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Croquis() {
-  return <CroquisView />;
+export default function Research() {
+  return <ResearchView />;
 }
