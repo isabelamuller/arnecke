@@ -34,15 +34,13 @@ export const loadFooterStyles = () => ({
       alignItems("items-center"),
       textAlign("text-center"),
       gap("gap-2"),
-      fontFamily("font-helvetica"),
-      backgroundColor(
-        theme === "blue" ? "bg-color-arnecke-blue" : "bg-color-arnecke-white",
-      ),
-      textColor(
-        theme === "blue"
-          ? "text-color-arnecke-white"
-          : "text-color-arnecke-blue",
-      ),
+      "font-helvetica" as any,
+      theme === "blue"
+        ? ("bg-color-arnecke-blue" as any)
+        : "bg-color-arnecke-white",
+      theme === "blue"
+        ? ("text-color-arnecke-white" as any)
+        : "text-color-arnecke-blue",
       "max-w-[700px]" as any,
     ),
   logo: classnames("invert" as any),
