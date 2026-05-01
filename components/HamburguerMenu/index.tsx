@@ -7,9 +7,10 @@ import { ScreenMenu } from "../ScreenMenu";
 import { useTickSound } from "@/utils/useSound";
 import { loadHamburguerMenuStyles } from "./styles";
 import { menuItems, socialItems } from "./data";
+import { IThemeProps } from "../Header";
 
-export const HamburguerMenu = () => {
-  const styles = loadHamburguerMenuStyles();
+export const HamburguerMenu = ({ theme }: IThemeProps) => {
+  const styles = loadHamburguerMenuStyles(theme);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isArchiveOpen, setIsArchiveOpen] = useState(false);
   const playTick = useTickSound();

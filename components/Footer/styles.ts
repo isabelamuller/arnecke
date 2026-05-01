@@ -1,17 +1,21 @@
 import classnames, {
   alignItems,
+  backgroundColor,
   cursor,
   display,
   flexDirection,
+  fontFamily,
   fontSize,
   gap,
   height,
   inset,
+  justifyContent,
   margin,
   opacity,
   padding,
   position,
   textAlign,
+  textColor,
   textTransform,
   transitionDuration,
   transitionProperty,
@@ -20,20 +24,27 @@ import classnames, {
 } from "tailwindcss-classnames";
 
 export const loadFooterStyles = () => ({
-  wrapper: classnames(
-    width("w-full"),
-    padding("px-5", "py-10"),
-    margin("mx-auto"),
-    display("flex"),
-    flexDirection("flex-col"),
-    alignItems("items-center"),
-    textAlign("text-center"),
-    gap("gap-6"),
-    "bg-color-arnecke-blue" as any,
-    "text-color-arnecke-white" as any,
-    "font-helvetica" as any,
-    "max-w-[700px]" as any,
-  ),
+  wrapper: (theme: "blue" | "white") =>
+    classnames(
+      width("w-full"),
+      padding("px-5", "py-10"),
+      margin("mx-auto"),
+      display("flex"),
+      flexDirection("flex-col"),
+      alignItems("items-center"),
+      textAlign("text-center"),
+      gap("gap-2"),
+      fontFamily("font-helvetica"),
+      backgroundColor(
+        theme === "blue" ? "bg-color-arnecke-blue" : "bg-color-arnecke-white",
+      ),
+      textColor(
+        theme === "blue"
+          ? "text-color-arnecke-white"
+          : "text-color-arnecke-blue",
+      ),
+      "max-w-[700px]" as any,
+    ),
   logo: classnames("invert" as any),
   nav: classnames(
     display("flex"),
@@ -59,21 +70,16 @@ export const loadFooterStyles = () => ({
     transitionProperty("transition-opacity"),
     opacity("hover:opacity-60"),
   ),
-  divider: classnames(width("w-full"), height("h-px"), "bg-white/10" as any),
+  divider: classnames(width("w-full"), height("h-px"), "bg-blue-500/10" as any),
   credits: classnames(
     display("flex"),
     flexDirection("flex-col"),
     alignItems("items-center"),
     gap("gap-1"),
+    opacity("opacity-50"),
     "text-[11px]" as any,
-    "text-white/50" as any,
   ),
-  creditLink: classnames(
-    transitionProperty("transition-colors"),
-    "text-white/80" as any,
-    "hover:text-white" as any,
-  ),
-
+  creditLink: classnames(transitionProperty("transition-colors")),
   archiveOverlay: (isArchiveOpen: boolean) =>
     classnames(
       position("fixed"),

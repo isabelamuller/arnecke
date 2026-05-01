@@ -7,8 +7,9 @@ import { IoLogoInstagram } from "react-icons/io";
 import { ScreenMenu } from "../ScreenMenu";
 import { useTickSound } from "@/utils/useSound";
 import { loadFooterStyles } from "./styles";
+import { IThemeProps } from "../Header";
 
-export const Footer = () => {
+export const Footer = ({ theme }: IThemeProps) => {
   const styles = loadFooterStyles();
   const [isArchiveOpen, setIsArchiveOpen] = useState(false);
   const playTick = useTickSound();
@@ -25,14 +26,7 @@ export const Footer = () => {
 
   return (
     <>
-      <footer className={styles.wrapper}>
-        <Image
-          src="/images/signature.png"
-          alt="Arnecke logo"
-          width={120}
-          height={48}
-          className={styles.logo}
-        />
+      <footer className={styles.wrapper(theme)}>
         <div className={styles.nav}>
           <button
             type="button"
@@ -59,6 +53,21 @@ export const Footer = () => {
             Shop ↗
           </Link>
         </div>
+        {theme === "blue" ? (
+          <Image
+            src="/images/logo-contact.png"
+            alt="Arnecke logo"
+            width={200}
+            height={48}
+          />
+        ) : (
+          <Image
+            src="/images/signature.png"
+            alt="Arnecke logo"
+            width={120}
+            height={48}
+          />
+        )}
         <div className={styles.divider} />
         <div className={styles.credits}>
           <p>© {new Date().getFullYear()} Arnecke. All rights reserved.</p>

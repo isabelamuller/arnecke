@@ -3,26 +3,37 @@ import Link from "next/link";
 import { HamburguerMenu } from "../HamburguerMenu";
 import { loadHeaderStyles } from "./styles";
 
-export const Header = () => {
+export interface IThemeProps {
+  theme: "blue" | "white";
+}
+
+export const Header = ({ theme }: IThemeProps) => {
   const styles = loadHeaderStyles();
 
   return (
-    <header className={styles.wrapper}>
+    <header className={styles.wrapper(theme)}>
       <div className={styles.content}>
-        <HamburguerMenu />
+        <HamburguerMenu theme={theme} />
         <Link
           href="/"
           aria-label="Go to homepage"
           className={styles.logoWrapper}
         >
-          <Image
-            src="/images/logo-branco.png"
-            alt="Arnecke logo"
-            width={86}
-            height={40}
-            priority
-            className="object-contain"
-          />
+          {theme === "blue" ? (
+            <Image
+              src="/images/logo-branco.png"
+              alt="Arnecke logo"
+              width={86}
+              height={40}
+            />
+          ) : (
+            <Image
+              src="/images/logo-azul.png"
+              alt="Arnecke logo"
+              width={86}
+              height={40}
+            />
+          )}
         </Link>
         <Link
           href="https://arnecke.lojavirtualnuvem.com.br/"

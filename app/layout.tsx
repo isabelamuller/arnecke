@@ -1,6 +1,5 @@
 "use client";
 
-import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -13,23 +12,34 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  const isContact = pathname === "/contact";
+
+  const isBlueTheme = pathname === "/" || pathname === "/contact-us";
+  const isContact = pathname === "/contact-us";
+
+  const theme = isBlueTheme ? "blue" : "white";
+
   return (
     <html
       lang="pt-BR"
       className={`${helvetica.variable} ${systemia.variable} ${denton.variable}`}
     >
       <body
-        className={`${helvetica.className} bg-color-arnecke-blue text-color-arnecke-white min-h-[calc(100vh-49px)] antialiased overflow-x-hidden`}
+        className={`${helvetica.className} ${
+          isBlueTheme
+            ? "bg-color-arnecke-blue text-color-arnecke-white"
+            : "bg-color-arnecke-white text-color-arnecke-blue"
+        } 
+        ${isBlueTheme ? "text-color-arnecke-white" : "text-color-arnecke-blue"} 
+        min-h-[calc(100vh-49px)] antialiased overflow-x-hidden`}
       >
-        <Header />
+        <Header theme={theme} />
         <main
           id="page-content"
           className="transition-transform duration-500 ease-[cubic-bezier(0.77,0,0.18,1)] will-change-transform"
         >
           {children}
         </main>
-        {!isContact && <Footer />}
+        {!isContact && <Footer theme={theme} />}
       </body>
     </html>
   );

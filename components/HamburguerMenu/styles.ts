@@ -1,5 +1,8 @@
+import { textColor } from "./../../node_modules/.pnpm/tailwindcss-classnames@3.2.0_@types+node@20.19.39/node_modules/tailwindcss-classnames/dist/bundle.d";
 import classnames, {
   alignItems,
+  backgroundColor,
+  borderOpacity,
   borderWidth,
   cursor,
   display,
@@ -27,7 +30,7 @@ import classnames, {
   zIndex,
 } from "tailwindcss-classnames";
 
-export const loadHamburguerMenuStyles = () => ({
+export const loadHamburguerMenuStyles = (theme: "blue" | "white") => ({
   buttonWrapper: classnames(
     cursor("cursor-pointer"),
     position("relative"),
@@ -46,8 +49,12 @@ export const loadHamburguerMenuStyles = () => ({
       width("w-full", "lg:w-1/3"),
       transitionProperty("transition-transform"),
       isMenuOpen ? translate("translate-x-0") : ("translate-x-[-100%]" as any),
-      "bg-color-arnecke-blue" as any,
-      "text-color-arnecke-white" as any,
+      theme === "blue"
+        ? ("bg-color-arnecke-blue" as any)
+        : "bg-color-arnecke-white",
+      theme === "blue"
+        ? ("text-color-arnecke-white" as any)
+        : "text-color-arnecke-blue",
       "ease-[cubic-bezier(0.77,0,0.18,1)]" as any,
     ),
   content: classnames(
@@ -64,17 +71,19 @@ export const loadHamburguerMenuStyles = () => ({
     textTransform("uppercase"),
     "text-[10px]" as any,
     "tracking-[0.35em]" as any,
-    "text-white/50" as any,
+    "text-color-arnecke-blue" as any,
+    "opacity-50" as any,
   ),
   verticalText: classnames(
     position("absolute"),
-    inset("bottom-7", "right-5"),
+    inset("bottom-10", "right-10"),
     textTransform("uppercase"),
     rotate("rotate-90"),
     transformOrigin("origin-bottom-right"),
     "text-[10px]" as any,
     "tracking-[0.35em]" as any,
-    "text-white/40" as any,
+    "text-color-arnecke-blue" as any,
+    "opacity-40" as any,
   ),
   horizontalText: classnames(
     position("absolute"),
@@ -83,30 +92,34 @@ export const loadHamburguerMenuStyles = () => ({
     "font-helvetica" as any,
     "text-[10px]" as any,
     "tracking-[0.25em]" as any,
-    "text-white/40" as any,
+    "text-color-arnecke-blue" as any,
+    "opacity-40" as any,
   ),
   verticalLineRight: classnames(
     position("absolute"),
     inset("left-5"),
     width("w-px"),
     display("lg:block", "hidden"),
-    "bg-white/20" as any,
+    "bg-color-arnecke-blue" as any,
+    "opacity-20" as any,
     "top-[70px]" as any,
-    "h-[calc(100%-100px)]" as any,
+    "h-[calc(100%-110px)]" as any,
   ),
   verticalLineLeft: classnames(
     position("absolute"),
-    inset("right-0"),
+    inset("right-5"),
     width("w-px"),
     display("lg:block", "hidden"),
-    "bg-white/20" as any,
+    "bg-color-arnecke-blue" as any,
+    "opacity-20" as any,
     "top-[70px]" as any,
-    "h-[calc(100%-100px)]" as any,
+    "h-[calc(100%-110px)]" as any,
   ),
   listItem: classnames(
     borderWidth("border-t", "last:border-b"),
-    margin("lg:ml-5"),
-    "border-white/25" as any,
+    borderOpacity("border-opacity-10"),
+    margin("lg:mx-5"),
+    "border-blue-600/25" as any,
   ),
   listLink: classnames(
     group("group"),
@@ -121,6 +134,7 @@ export const loadHamburguerMenuStyles = () => ({
     lineHeight("leading-none"),
     fontWeight("font-bold"),
     "tracking-[-0.05em]" as any,
+    opacity("!opacity-100"),
   ),
   numberWrapper: classnames(
     opacity("group-hover:opacity-100"),
