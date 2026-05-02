@@ -35,7 +35,7 @@ export const Modal = ({ children, isClosing, onClose }: IModalProps) => {
       />
       <div className="pointer-events-none relative z-10 flex h-full items-center justify-center px-5 py-20 font-helvetica text-color-arnecke-blue">
         <div
-          className={`justify-items-center pointer-events-auto relative grid w-full max-w-[800px] grid-cols-12 lg:gap-2 bg-color-arnecke-white p-6 md:p-10 ${
+          className={`justify-items-center pointer-events-auto relative grid w-full max-w-[800px] grid-cols-12 lg:gap-2 bg-color-arnecke-white p-6 ${
             isClosing
               ? "animate-[scaleOut_0.3s_ease]"
               : "animate-[scaleIn_0.3s_ease]"

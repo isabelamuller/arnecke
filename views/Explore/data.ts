@@ -1,34 +1,24 @@
 import { IResearchItem } from "@/views/Research/types";
 
-export const EXPLORE_ITEMS: IResearchItem[] = [
+export interface IExploreItem {
+  title: string;
+  images: {
+    src: string;
+  }[];
+  description: string;
+}
+
+export const EXPLORE_ITEMS: IExploreItem[] = [
   {
     title: "Pesquisa da coleção 1",
-    image: "/images/shirt-1-test.png",
+    images: [
+      {
+        src: "/images/jacket-front.png",
+      },
+      {
+        src: "/images/jacket-back.png",
+      },
+    ],
     description: "Texto do research 001. Descricao.",
-  },
-  {
-    title: "Pesquisa da coleção 2",
-    image: "/images/shirt-1-test.png",
-    description: "Texto do research 002. Descricao.",
-  },
-  {
-    title: "Pesquisa da coleção 2",
-    image: "/images/shirt-1-test.png",
-    description: "Texto do research 002. Descricao.",
-  },
-  {
-    title: "Pesquisa da coleção 2",
-    image: "/images/shirt-1-test.png",
-    description: "Texto do research 002. Descricao.",
-  },
-  {
-    title: "Pesquisa da coleção 2",
-    image: "/images/shirt-1-test.png",
-    description: "Texto do research 002. Descricao.",
-  },
-  {
-    title: "Pesquisa da coleção 2",
-    image: "/images/shirt-1-test.png",
-    description: "Texto do research 002. Descricao.",
   },
 ];
