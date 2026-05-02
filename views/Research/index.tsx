@@ -1,114 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { createPortal } from "react-dom";
-
-import { Layout } from "@/components/Layout";
-import { useTickSound } from "@/utils/useSound";
-
 import { RESEARCH_ITEMS } from "./data";
-import { IResearchItem } from "./types";
-import { loadResearchStyles } from "./styles";
-import { Modal } from "@/components/Modal";
+import { PageView } from "../Page";
 
 export const ResearchView = () => {
-  const styles = loadResearchStyles();
-  const [selectedItem, setSelectedItem] = useState<IResearchItem>();
-  const [isClosing, setIsClosing] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  const playTick = useTickSound();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  function openModal(item: IResearchItem) {
-    setSelectedItem(item);
-    playTick();
-  }
-
-  function closeModal() {
-    setIsClosing(true);
-
-    setTimeout(() => {
-      setSelectedItem(undefined);
-      setIsClosing(false);
-    }, 300);
-  }
-
   return (
-    <>
-      <Layout widthSize="narrow">
-        <div className={styles.wrapper}>
-          <div className={styles.content}>
-            <h1 className={styles.title}>Research</h1>
-            <p className={styles.description}>Escrever algo aqui.</p>
-          </div>
-          {RESEARCH_ITEMS.map((item, index) => (
-            <div className={styles.item} key={index}>
-              <button
-                onMouseEnter={playTick}
-                onClick={() => openModal(item)}
-                className={styles.button}
-              >
-                <div className={styles.imageWrapper}>
-                  <img
-                    src={item.image}
-                    alt={item.title || ""}
-                    className="h-full w-full object-cover grayscale-[18%] transition duration-500 ease-out active:scale-[0.97] md:group-hover:scale-[1.04] md:group-hover:grayscale-0"
-                  />
-                  <div className="absolute inset-0 bg-black/5 transition duration-300 md:group-hover:bg-black/25" />
-                  <div className="absolute left-2 top-2">
-                    <span className="text-[9px] uppercase tracking-[0.25em] text-white/60">
-                      {String(index + 1).padStart(3, "0")}
-                    </span>
-                  </div>
-                  <div className="absolute inset-x-0 bottom-0 hidden items-center justify-between p-3 opacity-0 transition duration-300 group-hover:opacity-100 md:flex">
-                    <span className="text-[8px] font-medium uppercase tracking-[0.22em] text-white">
-                      Open research
-                    </span>
-                  </div>
-                  <div className="absolute bottom-2 right-2 opacity-75 md:hidden">
-                    <span className="flex h-6 w-6 items-center justify-center rounded-full bg-black/40 text-[12px] text-white backdrop-blur-sm">
-                      +
-                    </span>
-                  </div>
-                </div>
-              </button>
-            </div>
-          ))}
-        </div>
-      </Layout>
-
-      {mounted &&
-        selectedItem &&
-        createPortal(
-          <Modal isClosing={isClosing} onClose={closeModal}>
-            <div className="col-span-12 md:col-span-6">
-              <img
-                src={selectedItem.image}
-                alt={selectedItem.title || ""}
-                className="h-auto w-full max-w-[340px] object-contain grayscale-[10%]"
-              />
-            </div>
-
-            <div className="col-span-12 md:col-span-6">
-              <p className="mb-2 text-[10px] uppercase tracking-[0.35em] text-white/45">
-                Research
-              </p>
-
-              <h2 className="mb-3 text-[24px] font-bold uppercase leading-none tracking-[-0.06em]">
-                {selectedItem.title}
-              </h2>
-
-              <p className="text-[16px] leading-relaxed text-white/75">
-                {selectedItem.description}
-              </p>
-            </div>
-          </Modal>,
-          document.body,
-        )}
-    </>
+    <PageView
+      title="Research"
+      description="Research page"
+      items={RESEARCH_ITEMS}
+      isModal={false}
+      hoverLabel="Open Research"
+    />
   );
 };

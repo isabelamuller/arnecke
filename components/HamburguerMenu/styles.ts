@@ -82,7 +82,9 @@ export const loadHamburguerMenuStyles = (theme: "blue" | "white") => ({
     transformOrigin("origin-bottom-right"),
     "text-[10px]" as any,
     "tracking-[0.35em]" as any,
-    "text-color-arnecke-blue" as any,
+    theme === "blue"
+      ? ("text-color-arnecke-white" as any)
+      : "text-color-arnecke-blue",
     "opacity-40" as any,
   ),
   horizontalText: classnames(
@@ -92,7 +94,9 @@ export const loadHamburguerMenuStyles = (theme: "blue" | "white") => ({
     "font-helvetica" as any,
     "text-[10px]" as any,
     "tracking-[0.25em]" as any,
-    "text-color-arnecke-blue" as any,
+    theme === "blue"
+      ? ("text-color-arnecke-white" as any)
+      : "text-color-arnecke-blue",
     "opacity-40" as any,
   ),
   verticalLineRight: classnames(
@@ -100,7 +104,9 @@ export const loadHamburguerMenuStyles = (theme: "blue" | "white") => ({
     inset("left-5"),
     width("w-px"),
     display("lg:block", "hidden"),
-    "bg-color-arnecke-blue" as any,
+    theme === "blue"
+      ? ("bg-color-arnecke-white" as any)
+      : "bg-color-arnecke-blue",
     "opacity-20" as any,
     "top-[70px]" as any,
     "h-[calc(100%-110px)]" as any,
@@ -110,16 +116,19 @@ export const loadHamburguerMenuStyles = (theme: "blue" | "white") => ({
     inset("right-5"),
     width("w-px"),
     display("lg:block", "hidden"),
-    "bg-color-arnecke-blue" as any,
+    theme === "blue"
+      ? ("bg-color-arnecke-white" as any)
+      : "bg-color-arnecke-blue",
     "opacity-20" as any,
     "top-[70px]" as any,
     "h-[calc(100%-110px)]" as any,
   ),
   listItem: classnames(
     borderWidth("border-t", "last:border-b"),
-    borderOpacity("border-opacity-10"),
     margin("lg:mx-5"),
-    "border-blue-600/25" as any,
+    theme === "blue"
+      ? ("border-white/20" as any)
+      : ("border-[#0200F7]/20" as any),
   ),
   listLink: classnames(
     group("group"),

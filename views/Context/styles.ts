@@ -27,7 +27,7 @@ import classnames, {
   zIndex,
 } from "tailwindcss-classnames";
 
-export const loadResearchStyles = () => ({
+export const loadContextStyles = () => ({
   wrapper: classnames(
     zIndex("z-10"),
     display("grid"),
@@ -58,19 +58,13 @@ export const loadResearchStyles = () => ({
     opacity("opacity-50"),
   ),
   item: classnames(gridColumn("col-span-2", "lg:col-span-1"), height("h-full")),
-  button: classnames(
-    group("group"),
-    display("block"),
-    width("w-full"),
-    cursor("cursor-pointer"),
-    textAlign("text-left"),
-  ),
   imageWrapper: classnames(
+    cursor("cursor-pointer"),
     position("relative"),
     overflow("overflow-hidden"),
-    backgroundColor("bg-black"),
-    transitionProperty("transition"),
-    transitionDuration("duration-300"),
-    "aspect-[4/5]" as any,
+    "aspect-square" as any,
+    "border-1" as any,
+    "border-transparent" as any,
+    "hover:border-[#0200F7]" as any,
   ),
 });

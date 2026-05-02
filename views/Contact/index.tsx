@@ -11,7 +11,6 @@ export const ContactView = () => {
           “Água mole em pedra dura, tanto bate até que fura”
         </h1>
       </div>
-
       <section className="flex flex-col items-center gap-3 text-center">
         <div className="flex items-center justify-center gap-3 text-[12px] uppercase tracking-[0.18em]">
           <a
