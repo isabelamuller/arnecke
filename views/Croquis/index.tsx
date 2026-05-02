@@ -7,7 +7,7 @@ export const CroquisView = () => {
       title="Croquis"
       description="Croquis description"
       items={CROQUIS_ITEMS}
-      widthSize="full"
+      widthSize="entire"
       squaredImages={false}
       hasHoverImage
     />

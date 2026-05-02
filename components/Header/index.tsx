@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { HamburguerMenu } from "../HamburguerMenu";
 import { loadHeaderStyles } from "./styles";
+import { LanguageDropdown } from "../LanguageDropdown";
 
 export interface IThemeProps {
   theme: "blue" | "white";
@@ -35,14 +36,17 @@ export const Header = ({ theme }: IThemeProps) => {
             />
           )}
         </Link>
-        <Link
-          href="https://arnecke.lojavirtualnuvem.com.br/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.shopLink}
-        >
-          SHOP
-        </Link>
+        <div className="flex items-center gap-3">
+          <Link
+            href="https://arnecke.lojavirtualnuvem.com.br/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.shopLink}
+          >
+            SHOP
+          </Link>
+          <LanguageDropdown />
+        </div>
       </div>
     </header>
   );

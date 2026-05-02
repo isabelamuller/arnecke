@@ -1,6 +1,6 @@
 import { IPageItem } from "../Page/types";
 
-export const CONTEXT_ITEMS: IPageItem[] = [
+export const FOOTBALL_ITEMS: IPageItem[] = [
   {
     title: "teste 1",
     description: "teste2",
