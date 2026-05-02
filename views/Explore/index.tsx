@@ -8,6 +8,7 @@ export const ExploreView = () => {
       description="Explore description"
       items={EXPLORE_ITEMS}
       borderedItems
+      squaredImages
     />
   );
 };

@@ -2,30 +2,30 @@ import classnames, {
   fontFamily,
   margin,
   maxWidth,
+  minHeight,
   overflow,
   padding,
   position,
-  textColor,
 } from "tailwindcss-classnames";
 
 export const loadLayoutStyles = () => ({
-  wrapper: (widthSize: "full" | "medium" | "narrow", theme: "blue" | "white") =>
+  wrapper: (widthSize: "full" | "medium" | "entire", theme: "blue" | "white") =>
     classnames(
       position("relative"),
       overflow("overflow-hidden"),
+      minHeight("min-h-screen"),
+      padding("pb-20", "pt-24"),
+      margin("mx-auto"),
       theme === "blue"
         ? ("text-color-arnecke-white" as any)
         : "text-color-arnecke-blue",
-      "font-helvetica" as any,
-      padding("px-5", "pb-20"),
-      "pt-24" as any,
-      margin("mx-auto"),
       maxWidth(
         widthSize === "full"
           ? "max-w-7xl"
           : widthSize === "medium"
             ? "max-w-5xl"
-            : "max-w-3xl",
+            : ("max-w-[1440px]" as any),
+        "font-helvetica" as any,
       ),
     ),
 });

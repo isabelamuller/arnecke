@@ -64,7 +64,7 @@ export const Footer = ({ theme }: IThemeProps) => {
           <Image
             src="/images/footer-logo.png"
             alt="Arnecke logo"
-            width={300}
+            width={250}
             height={48}
           />
         )}

@@ -21,4 +21,6 @@ export interface IPageProps {
   isModal?: boolean;
   squaredImages?: boolean;
   hoverLabel?: string;
+  widthSize?: "full" | "medium" | "entire";
+  hasHoverImage?: boolean;
 }

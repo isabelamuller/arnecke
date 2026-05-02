@@ -3,6 +3,6 @@ import { WidthSize } from ".";
 
 export interface ILayoutProps {
   children: ReactNode;
-  widthSize?: "full" | "medium" | "narrow";
+  widthSize?: "full" | "medium" | "entire";
   theme?: "blue" | "white";
 }

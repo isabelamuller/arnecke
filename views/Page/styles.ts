@@ -1,6 +1,5 @@
 import classnames, {
   alignItems,
-  backgroundColor,
   cursor,
   display,
   flexDirection,
@@ -9,6 +8,7 @@ import classnames, {
   gap,
   gridColumn,
   gridTemplateColumns,
+  group,
   height,
   inset,
   justifyContent,
@@ -36,7 +36,7 @@ export const loadPageStyles = () => ({
   ),
   titleContent: classnames(
     gridColumn("col-span-3", "lg:col-span-5"),
-    margin("lg:mb-20", "mb-5"),
+    margin("lg:mb-10", "mb-5"),
     display("flex"),
     flexDirection("flex-col"),
     alignItems("items-center"),
@@ -57,7 +57,7 @@ export const loadPageStyles = () => ({
   ),
   imageWrapper: (borderedItems: boolean, squaredImages: boolean) =>
     classnames(
-      "group" as any,
+      group("group"),
       cursor("cursor-pointer"),
       position("relative"),
       overflow("overflow-hidden"),
@@ -86,9 +86,24 @@ export const loadPageStyles = () => ({
     "[&>span]:mt-auto" as any,
     "[&>span]:p-2" as any,
   ),
-  image: classnames(
-    height("h-full"),
+  image: (hasHoverImage: boolean) =>
+    classnames(
+      width("w-full"),
+      height("h-full"),
+      objectFit("object-cover"),
+      transitionProperty("transition-opacity"),
+      transitionDuration("duration-300"),
+      hasHoverImage ? ("group-hover:opacity-0" as any) : undefined,
+    ),
+  hoverImage: classnames(
+    position("absolute"),
+    inset("inset-0"),
     width("w-full"),
+    height("h-full"),
     objectFit("object-cover"),
+    opacity("opacity-0"),
+    transitionProperty("transition-opacity"),
+    transitionDuration("duration-300"),
+    "group-hover:opacity-100" as any,
   ),
 });

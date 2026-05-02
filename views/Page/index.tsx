@@ -18,6 +18,8 @@ export const PageView = ({
   isModal = true,
   squaredImages = true,
   hoverLabel,
+  widthSize = "entire",
+  hasHoverImage = false,
 }: IPageProps) => {
   const styles = loadPageStyles();
   const router = useRouter();
@@ -62,7 +64,7 @@ export const PageView = ({
 
   return (
     <>
-      <Layout widthSize="narrow">
+      <Layout widthSize={widthSize}>
         <div className={styles.wrapper}>
           <div className={styles.titleContent}>
             <h1 className={styles.title}>{title}</h1>
@@ -70,6 +72,8 @@ export const PageView = ({
           </div>
           {items?.map((item, index) => {
             const hasNavigation = !!item.link || !!item.slug;
+            const shouldShowHoverImage =
+              hasHoverImage && !!item.images?.[1]?.src;
             return (
               <div
                 key={item.slug || item.link || index}
@@ -80,11 +84,21 @@ export const PageView = ({
                   className={styles.imageWrapper(borderedItems, squaredImages)}
                 >
                   {!!item.images?.[0]?.src && (
-                    <img
-                      src={item.images[0].src}
-                      alt={item.title || ""}
-                      className={styles.image}
-                    />
+                    <>
+                      <img
+                        src={item.images[0].src}
+                        alt={item.title || ""}
+                        className={styles.image(shouldShowHoverImage)}
+                      />
+
+                      {shouldShowHoverImage && (
+                        <img
+                          src={item.images[1].src}
+                          alt={item.title || ""}
+                          className={styles.hoverImage}
+                        />
+                      )}
+                    </>
                   )}
                   {hasNavigation && !!hoverLabel && (
                     <div className={styles.imageHoverOverlay}>
