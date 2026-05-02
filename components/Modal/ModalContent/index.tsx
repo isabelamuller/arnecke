@@ -8,12 +8,28 @@ import { loadModalContentStyles } from "./styles";
 export const ModalContent = ({ selectedItem }: IModalContentProps) => {
   const styles = loadModalContentStyles();
   const playTick = useTickSound();
+
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
+  const [zoomOrigin, setZoomOrigin] = useState("50% 50%");
+  const [isZooming, setIsZooming] = useState(false);
+
   const images = selectedItem.images ?? [];
   const hasMultipleImages = images.length > 1;
   const selectedImage = images[selectedImageIndex];
 
   if (!selectedImage) return null;
+
+  function handleZoomMouseMove(event: React.MouseEvent<HTMLDivElement>) {
+    if (!isZooming) return;
+
+    const bounds = event.currentTarget.getBoundingClientRect();
+
+    const x = ((event.clientX - bounds.left) / bounds.width) * 100;
+    const y = ((event.clientY - bounds.top) / bounds.height) * 100;
+
+    setZoomOrigin(`${x}% ${y}%`);
+  }
 
   function goToPreviousImage() {
     setSelectedImageIndex((currentIndex) =>
@@ -31,17 +47,38 @@ export const ModalContent = ({ selectedItem }: IModalContentProps) => {
     playTick();
   }
 
+  function openImageModal() {
+    setIsImageModalOpen(true);
+    playTick();
+  }
+
+  function closeImageModal() {
+    setIsImageModalOpen(false);
+    setIsZooming(false);
+    setZoomOrigin("50% 50%");
+    playTick();
+  }
+
   return (
     <>
       <div className={styles.rightWrapper}>
         <div className={styles.rightContent}>
           <div className={styles.images}>
-            <img
-              key={selectedImage.src}
-              src={selectedImage.src}
-              alt=""
-              className={styles.image}
-            />
+            <button
+              type="button"
+              onClick={openImageModal}
+              className={styles.imageButton}
+            >
+              <span className="absolute inset-0 opacity-50 text-[10px]">
+                clique para dar zoom
+              </span>
+              <img
+                key={selectedImage.src}
+                src={selectedImage.src}
+                alt=""
+                className={styles.image}
+              />
+            </button>
             {hasMultipleImages && (
               <div className={styles.buttons}>
                 <button
@@ -51,6 +88,7 @@ export const ModalContent = ({ selectedItem }: IModalContentProps) => {
                 >
                   <GoTriangleLeft />
                 </button>
+
                 <button
                   type="button"
                   onClick={goToNextImage}
@@ -67,6 +105,7 @@ export const ModalContent = ({ selectedItem }: IModalContentProps) => {
                 {String(selectedImageIndex + 1).padStart(2, "0")} /{" "}
                 {String(images.length).padStart(2, "0")}
               </span>
+
               <div className={styles.tinyImagesBottom}>
                 {images.map((image, index) => (
                   <button
@@ -89,16 +128,19 @@ export const ModalContent = ({ selectedItem }: IModalContentProps) => {
           )}
         </div>
       </div>
+
       <div className={styles.leftWrapper}>
         <div className={styles.leftContent}>
           <h2 className="mb-2 font-denton text-md font-bold uppercase leading-[0.9]">
             {selectedItem.title}
           </h2>
+
           <div className="max-h-[24vh] overflow-y-auto pr-1 text-justify md:max-h-[42vh]">
             <p className="text-xs leading-[1.7] md:text-sm md:leading-[1.8]">
               {selectedItem.description}
             </p>
           </div>
+
           {(!!selectedItem.collection || !!selectedItem.year) && (
             <div className={styles.bottomLeftContent}>
               {!!selectedItem.collection && (
@@ -119,6 +161,40 @@ export const ModalContent = ({ selectedItem }: IModalContentProps) => {
           )}
         </div>
       </div>
+      {isImageModalOpen && (
+        <div className={styles.zoomModalOverlay} onClick={closeImageModal}>
+          <div
+            className={styles.zoomModal}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={closeImageModal}
+              className={styles.zoomModalClose}
+            >
+              fechar
+            </button>
+            <div
+              className={styles.zoomModalImageWrapper(isZooming)}
+              onMouseMove={handleZoomMouseMove}
+              onClick={() => {
+                setIsZooming((currentValue) => !currentValue);
+                playTick();
+              }}
+            >
+              <img
+                src={selectedImage.src}
+                alt=""
+                className={styles.zoomModalImage}
+                style={{
+                  transformOrigin: zoomOrigin,
+                  transform: isZooming ? "scale(3)" : "scale(1)",
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };

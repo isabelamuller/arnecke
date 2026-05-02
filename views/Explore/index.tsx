@@ -1,5 +1,3 @@
-"use client";
-
 import { EXPLORE_ITEMS } from "./data";
 import { PageView } from "../Page";
 
@@ -9,6 +7,7 @@ export const ExploreView = () => {
       title="Explore"
       description="Explore description"
       items={EXPLORE_ITEMS}
+      borderedItems
     />
   );
 };

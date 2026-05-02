@@ -1,5 +1,3 @@
-"use client";
-
 import { RESEARCH_ITEMS } from "./data";
 import { PageView } from "../Page";
 

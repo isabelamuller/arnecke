@@ -33,7 +33,7 @@ export const Modal = ({ children, isClosing, onClose }: IModalProps) => {
       />
       <div className="pointer-events-none relative z-10 flex h-full items-stretch justify-center font-helvetica text-color-arnecke-blue md:items-center md:px-5 md:py-20">
         <div
-          className={`pointer-events-auto relative grid h-screen w-screen grid-cols-12 content-start gap-5 overflow-hidden bg-color-arnecke-white p-5 pt-12 md:h-auto md:max-h-[86vh] md:w-full md:max-w-[800px] md:rounded md:p-6 lg:gap-2 ${
+          className={`pointer-events-auto relative grid h-screen w-screen grid-cols-12 content-start gap-5 overflow-hidden bg-color-arnecke-white p-5 pt-12 md:h-auto md:max-h-[86vh] md:w-full md:max-w-[900px] md:rounded md:p-6 lg:gap-2 ${
             isClosing
               ? "animate-[scaleOut_0.3s_ease]"
               : "animate-[scaleIn_0.3s_ease]"

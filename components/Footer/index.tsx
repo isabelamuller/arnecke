@@ -33,7 +33,7 @@ export const Footer = ({ theme }: IThemeProps) => {
             onClick={openArchive}
             className={styles.archiveButton}
           >
-            Archive
+            Núcleo
           </button>
           <a
             href="https://www.instagram.com/_arnecke/"
@@ -62,9 +62,9 @@ export const Footer = ({ theme }: IThemeProps) => {
           />
         ) : (
           <Image
-            src="/images/signature.png"
+            src="/images/footer-logo.png"
             alt="Arnecke logo"
-            width={120}
+            width={300}
             height={48}
           />
         )}

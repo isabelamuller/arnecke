@@ -16,7 +16,7 @@ export const menuItems = [
     href: "/contact",
   },
   {
-    label: "Archive",
+    label: "Núcleo",
     italic: true,
   },
 ];

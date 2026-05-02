@@ -92,9 +92,7 @@ export const HamburguerMenu = ({ theme }: IThemeProps) => {
                   className={styles.listLink}
                   href={menuItem.href}
                   onClick={
-                    menuItem.label === "Archive"
-                      ? toggleArchiveClick
-                      : closeMenu
+                    menuItem.label === "Núcleo" ? toggleArchiveClick : closeMenu
                   }
                 >
                   {menuItem.label}
