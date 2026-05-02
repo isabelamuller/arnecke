@@ -19,6 +19,7 @@ import classnames, {
   objectFit,
   opacity,
   overflow,
+  padding,
   position,
   textTransform,
   transitionDuration,
@@ -31,6 +32,7 @@ export const loadPageStyles = () => ({
   wrapper: classnames(
     zIndex("z-10"),
     display("grid"),
+    padding("px-2"),
     gridTemplateColumns("grid-cols-3", "lg:grid-cols-5"),
     gap("gap-2"),
   ),
