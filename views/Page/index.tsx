@@ -4,13 +4,21 @@ import { Layout } from "@/components/Layout";
 import { IPageItem, IPageProps } from "./types";
 import { loadPageStyles } from "./styles";
 import { useTickSound } from "@/utils/useSound";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { Modal } from "@/components/Modal";
 import { ModalContent } from "@/components/Modal/ModalContent";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-export const PageView = ({
+export const PageView = (props: IPageProps) => {
+  return (
+    <Suspense fallback={null}>
+      <PageViewContent {...props} />
+    </Suspense>
+  );
+};
+
+const PageViewContent = ({
   title,
   description,
   items,
@@ -154,6 +162,7 @@ export const PageView = ({
                       )}
                     </>
                   )}
+
                   {hasNavigation && !!hoverLabel && (
                     <div className={styles.imageHoverOverlay}>
                       <span>{hoverLabel}</span>
@@ -165,6 +174,7 @@ export const PageView = ({
           })}
         </div>
       </Layout>
+
       {isModal &&
         mounted &&
         selectedItem &&
