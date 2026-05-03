@@ -83,7 +83,7 @@ export const loadPageStyles = () => ({
     "pointer-events-none" as any,
     "[&>span]:font-systemia" as any,
     "[&>span]:uppercase" as any,
-    "[&>span]:text-[8px]" as any,
+    "[&>span]:text-[10px]" as any,
     "[&>span]:tracking-[0.24em]" as any,
     "[&>span]:mt-auto" as any,
     "[&>span]:p-2" as any,

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { GoTriangleLeft, GoTriangleRight } from "react-icons/go";
 import { IModalContentProps } from "./types";
 import { loadModalContentStyles } from "./styles";
+import { Parser } from "html-to-react";
 
 export const ModalContent = ({ selectedItem }: IModalContentProps) => {
   const styles = loadModalContentStyles();
@@ -128,19 +129,16 @@ export const ModalContent = ({ selectedItem }: IModalContentProps) => {
           )}
         </div>
       </div>
-
       <div className={styles.leftWrapper}>
         <div className={styles.leftContent}>
           <h2 className="mb-2 font-denton text-md font-bold uppercase leading-[0.9]">
             {selectedItem.title}
           </h2>
-
           <div className="max-h-[24vh] overflow-y-auto pr-1 text-justify md:max-h-[42vh]">
             <p className="text-xs leading-[1.7] md:text-sm md:leading-[1.8]">
-              {selectedItem.description}
+              {Parser().parse(selectedItem.description)}
             </p>
           </div>
-
           {(!!selectedItem.collection || !!selectedItem.year) && (
             <div className={styles.bottomLeftContent}>
               {!!selectedItem.collection && (

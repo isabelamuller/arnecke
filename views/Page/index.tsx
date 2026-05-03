@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { Modal } from "@/components/Modal";
 import { ModalContent } from "@/components/Modal/ModalContent";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export const PageView = ({
   title,
@@ -22,7 +22,11 @@ export const PageView = ({
   hasHoverImage = false,
 }: IPageProps) => {
   const styles = loadPageStyles();
+
   const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
   const [selectedItem, setSelectedItem] = useState<IPageItem>();
   const [isClosing, setIsClosing] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -30,16 +34,61 @@ export const PageView = ({
   const playTick = useTickSound();
 
   useEffect(() => {
-    isModal && setMounted(true);
-  }, []);
+    if (isModal) {
+      setMounted(true);
+    }
+  }, [isModal]);
+
+  useEffect(() => {
+    if (!isModal || !mounted) return;
+
+    const itemSlug = searchParams.get("item");
+
+    if (!itemSlug) {
+      setSelectedItem(undefined);
+      return;
+    }
+
+    const item = items?.find((item) => item.slug === itemSlug);
+
+    if (!item) return;
+
+    setSelectedItem(item);
+  }, [isModal, mounted, searchParams, items]);
+
+  function updateUrlWithItem(item: IPageItem) {
+    if (!item.slug) return;
+
+    const params = new URLSearchParams(searchParams.toString());
+
+    params.set("item", item.slug);
+
+    router.push(`${pathname}?${params.toString()}`, {
+      scroll: false,
+    });
+  }
+
+  function removeItemFromUrl() {
+    const params = new URLSearchParams(searchParams.toString());
+
+    params.delete("item");
+
+    const queryString = params.toString();
+
+    router.push(queryString ? `${pathname}?${queryString}` : pathname, {
+      scroll: false,
+    });
+  }
 
   function openModal(item: IPageItem) {
     setSelectedItem(item);
+    updateUrlWithItem(item);
     playTick();
   }
 
   function closeModal() {
     setIsClosing(true);
+    removeItemFromUrl();
 
     setTimeout(() => {
       setSelectedItem(undefined);
@@ -49,14 +98,17 @@ export const PageView = ({
 
   function handleItemClick(item: IPageItem) {
     playTick();
+
     if (isModal) {
       openModal(item);
       return;
     }
+
     if (item.link) {
       window.open(item.link, "_blank", "noopener,noreferrer");
       return;
     }
+
     if (item.slug) {
       router.push(item.slug);
     }
@@ -70,10 +122,12 @@ export const PageView = ({
             <h1 className={styles.title}>{title}</h1>
             <span>{description}</span>
           </div>
+
           {items?.map((item, index) => {
             const hasNavigation = !!item.link || !!item.slug;
             const shouldShowHoverImage =
               hasHoverImage && !!item.images?.[1]?.src;
+
             return (
               <div
                 key={item.slug || item.link || index}

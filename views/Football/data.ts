@@ -2,6 +2,7 @@ import { IPageItem } from "../Page/types";
 
 export const FOOTBALL_ITEMS: IPageItem[] = [
   {
+    slug: "futebol-ao-sol-e-a-sombra",
     title: "teste 1",
     description: "teste2",
     images: [
