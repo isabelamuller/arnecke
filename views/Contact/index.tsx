@@ -1,12 +1,13 @@
 "use client";
 
+import { ContactCard3D } from "@/components/ContactCard3d";
 import Image from "next/image";
 import { IoLogoInstagram, IoLogoWhatsapp } from "react-icons/io";
 
 export const ContactView = () => {
   return (
-    <div className="min-h-screen px-5 pt-20 pb-6 font-helvetica text-color-arnecke-white flex flex-col">
-      <div className="flex flex-1 items-center justify-center">
+    <div className="min-h-screen px-5 pt-20 pb-6 font-helvetica text-color-arnecke-white bg-color-arnecke-blue flex flex-col">
+      {/* <div className="flex flex-1 items-center justify-center">
         <h1 className="max-w-[720px] text-center uppercase text-[26px] md:text-[44px] font-bold tracking-[-0.04em] leading-[1.1]">
           “Água mole em pedra dura, tanto bate até que fura”
         </h1>
@@ -61,7 +62,8 @@ export const ContactView = () => {
             Isa.
           </a>
         </p>
-      </section>
+      </section> */}
+      <ContactCard3D />
     </div>
   );
 };

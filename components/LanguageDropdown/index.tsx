@@ -88,7 +88,7 @@ export const LanguageDropdown = () => {
             w-16
             flex-col
             border
-            border-current
+            border-color-arnecke-white
             bg-color-arnecke-white
             text-color-arnecke-blue
           "
