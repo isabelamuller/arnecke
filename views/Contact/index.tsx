@@ -63,7 +63,7 @@ export const ContactView = () => {
           </a>
         </p>
       </section> */}
-      <ContactCard3D />
+      {/* <ContactCard3D /> */}
     </div>
   );
 };

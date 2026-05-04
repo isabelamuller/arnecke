@@ -50,7 +50,6 @@ export const loadPageStyles = () => ({
     "[&>span]:opacity-50" as any,
   ),
   title: classnames(
-    fontWeight("font-bold"),
     textTransform("uppercase"),
     lineHeight("leading-none"),
     fontSize("text-4xl"),

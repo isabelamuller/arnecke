@@ -1,50 +1,26 @@
-import { IPageItem } from "../Page/types";
+import { IResearchArticle } from "./types";
 
-export const RESEARCH_ITEMS: IPageItem[] = [
+export const RESEARCH_ARTICLES: IResearchArticle[] = [
   {
-    title: "Pesquisa da coleção 1",
-    images: [
-      {
-        src: "/images/sketch-home.jpg",
-      },
-    ],
-    description: "Texto do research 001. Descricao.",
-    slug: "/research/teste-1",
+    slug: "colecao-001",
+    title: "Coleção 1",
+    description: "Coleção 1 descrição textinho de overview.",
+    year: "2026",
+    image: "/images/research/pesquisa-1/foto-museu.png",
   },
   {
-    title: "Pesquisa da coleção 2",
-    images: [
-      {
-        src: "/images/sketch-home.jpg",
-      },
-    ],
-    description: "Texto do research 002. Descricao.",
+    slug: "football-references",
+    title: "Coleção 2",
+    description:
+      "Coleção 1 descrição textinho de overview. Coleção 1 descrição textinho de overview Coleção 1 descrição textinho de overview",
+    year: "2026",
+    image: "/images/research/pesquisa-1/placeholder.png",
   },
   {
-    title: "Pesquisa da coleção 3",
-    images: [
-      {
-        src: "/images/sketch-home.jpg",
-      },
-    ],
-    description: "Texto do research 003. Descricao.",
-  },
-  {
-    title: "Pesquisa da coleção 4",
-    images: [
-      {
-        src: "/images/sketch-home.jpg",
-      },
-    ],
-    description: "Texto do research 004. Descricao.",
-  },
-  {
-    title: "Pesquisa da coleção 5",
-    images: [
-      {
-        src: "/images/sketch-home.jpg",
-      },
-    ],
-    description: "Texto do research 005. Descricao.",
+    slug: "colecao-001",
+    title: "Coleção 3",
+    description: "Coleção 1 descrição textinho de overview.",
+    year: "2026",
+    image: "/images/research/pesquisa-1/placeholder-2.jpeg",
   },
 ];
