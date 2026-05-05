@@ -4,6 +4,6 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = getMetadata("Football");
 
-export default function Context() {
+export default function Football() {
   return <FootballView />;
 }

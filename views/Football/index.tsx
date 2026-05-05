@@ -7,6 +7,7 @@ export const FootballView = () => {
       title="Football"
       description="Football description"
       items={FOOTBALL_ITEMS}
+      squaredImages={false}
     />
   );
 };

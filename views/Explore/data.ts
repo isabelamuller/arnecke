@@ -2,6 +2,7 @@ import { IPageItem } from "../Page/types";
 
 export const EXPLORE_ITEMS: IPageItem[] = [
   {
+    slug: "jaqueta-8-circle-numbers",
     year: "2025",
     collection: {
       title: "colecao",
