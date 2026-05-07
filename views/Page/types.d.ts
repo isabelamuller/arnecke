@@ -1,3 +1,8 @@
+export type TPageImageLayout =
+  | "square-grid"
+  | "masonry-grid"
+  | "horizontal-row";
+
 export interface IPageItem {
   title?: string;
   images?: {
@@ -15,12 +20,11 @@ export interface IPageItem {
 
 export interface IPageProps {
   title: string;
-  description?: string;
   items?: IPageItem[];
   borderedItems?: boolean;
   isModal?: boolean;
-  squaredImages?: boolean;
   hoverLabel?: string;
   widthSize?: "full" | "medium" | "entire";
   hasHoverImage?: boolean;
+  imageLayout: TPageImageLayout;
 }

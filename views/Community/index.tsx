@@ -16,9 +16,8 @@ export const CommunityView = () => {
   return (
     <PageView
       title="Community"
-      description="Community view"
       items={images}
-      squaredImages={false}
+      imageLayout="masonry-grid"
       isModal={false}
       hoverLabel="View on Instagram"
     />

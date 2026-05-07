@@ -5,10 +5,9 @@ export const ExploreView = () => {
   return (
     <PageView
       title="Explore"
-      description="Explore description"
       items={EXPLORE_ITEMS}
       borderedItems
-      squaredImages
+      imageLayout="square-grid"
     />
   );
 };

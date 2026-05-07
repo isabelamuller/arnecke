@@ -9,7 +9,7 @@ export const menuItems = [
   },
   {
     label: "Circle Numbers",
-    href: "/circle-numbers",
+    href: "/research/circle-numbers",
   },
   {
     label: "Contato",

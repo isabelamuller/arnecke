@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { denton, helvetica, systemia } from "./fonts";
 import { usePathname } from "next/navigation";
+import { PageTitleProvider } from "@/components/PageTitleProvider";
 
 export default function RootLayout({
   children,
@@ -32,14 +33,16 @@ export default function RootLayout({
         ${isBlueTheme ? "text-color-arnecke-white" : "text-color-arnecke-blue"} 
         min-h-[calc(100vh-49px)] antialiased overflow-x-hidden`}
       >
-        <Header theme={theme} />
-        <main
-          id="page-content"
-          className="transition-transform duration-500 ease-[cubic-bezier(0.77,0,0.18,1)] will-change-transform"
-        >
-          {children}
-        </main>
-        {!isContact && <Footer theme={theme} />}
+        <PageTitleProvider>
+          <Header theme={theme} />
+          <main
+            id="page-content"
+            className="transition-transform duration-500 ease-[cubic-bezier(0.77,0,0.18,1)] will-change-transform"
+          >
+            {children}
+          </main>
+          {!isContact && <Footer theme={theme} />}
+        </PageTitleProvider>
       </body>
     </html>
   );

@@ -9,6 +9,7 @@ import { createPortal } from "react-dom";
 import { Modal } from "@/components/Modal";
 import { ModalContent } from "@/components/Modal/ModalContent";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { PageTitleSetter } from "@/components/PageTitleProvider";
 
 export const PageView = (props: IPageProps) => {
   return (
@@ -20,16 +21,15 @@ export const PageView = (props: IPageProps) => {
 
 const PageViewContent = ({
   title,
-  description,
   items,
   borderedItems = false,
   isModal = true,
-  squaredImages = true,
+  imageLayout,
   hoverLabel,
   widthSize = "entire",
   hasHoverImage = false,
 }: IPageProps) => {
-  const styles = loadPageStyles();
+  const styles = loadPageStyles(imageLayout);
 
   const router = useRouter();
   const pathname = usePathname();
@@ -124,27 +124,20 @@ const PageViewContent = ({
 
   return (
     <>
+      <PageTitleSetter title={title} />
       <Layout widthSize={widthSize}>
         <div className={styles.wrapper}>
-          <div className={styles.titleContent}>
-            <h1 className={styles.title}>{title}</h1>
-            <span>{description}</span>
-          </div>
-
           {items?.map((item, index) => {
             const hasNavigation = !!item.link || !!item.slug;
             const shouldShowHoverImage =
               hasHoverImage && !!item.images?.[1]?.src;
-
             return (
               <div
                 key={item.slug || item.link || index}
                 onMouseEnter={playTick}
                 onClick={() => handleItemClick(item)}
               >
-                <div
-                  className={styles.imageWrapper(borderedItems, squaredImages)}
-                >
+                <div className={styles.imageWrapper(borderedItems)}>
                   {!!item.images?.[0]?.src && (
                     <>
                       <img
@@ -162,7 +155,6 @@ const PageViewContent = ({
                       )}
                     </>
                   )}
-
                   {hasNavigation && !!hoverLabel && (
                     <div className={styles.imageHoverOverlay}>
                       <span>{hoverLabel}</span>
@@ -174,7 +166,6 @@ const PageViewContent = ({
           })}
         </div>
       </Layout>
-
       {isModal &&
         mounted &&
         selectedItem &&

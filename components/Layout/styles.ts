@@ -16,7 +16,7 @@ export const loadLayoutStyles = () => ({
       position("relative"),
       overflow("overflow-hidden"),
       minHeight("min-h-screen"),
-      padding("pb-20", "pt-24", "px-5"),
+      padding("py-20", "px-5"),
       margin("mx-auto"),
       theme === "blue"
         ? ("text-color-arnecke-white" as any)

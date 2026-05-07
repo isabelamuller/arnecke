@@ -5,10 +5,9 @@ export const CroquisView = () => {
   return (
     <PageView
       title="Croquis"
-      description="Croquis description"
       items={CROQUIS_ITEMS}
+      imageLayout="masonry-grid"
       widthSize="entire"
-      squaredImages={false}
       hasHoverImage
     />
   );

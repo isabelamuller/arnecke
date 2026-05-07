@@ -5,6 +5,7 @@ import { loadResearchSubpageStyles } from "./styles";
 import { ResearchSlugPageProps } from "./types";
 import { getMetadata } from "@/utils/getMetada";
 import { Metadata } from "next";
+import { PageTitleSetter } from "@/components/PageTitleProvider";
 
 export async function generateMetadata({
   params,
@@ -35,14 +36,17 @@ export default async function ResearchSlugPage({
   const Article = await page.component();
 
   return (
-    <Layout widthSize="article">
-      <div className={styles.titleContent}>
-        <h1 className={styles.title}>{page.title}</h1>
-        <span>{page.description}</span>
-      </div>
-      <article className={styles.article}>
-        <Article.default />
-      </article>
-    </Layout>
+    <>
+      <PageTitleSetter title={page.title} />
+      <Layout widthSize="article">
+        <div className={styles.titleContent}>
+          <h1 className={styles.title}>{page.title}</h1>
+          <span>{page.description}</span>
+        </div>
+        <article className={styles.article}>
+          <Article.default />
+        </article>
+      </Layout>
+    </>
   );
 }

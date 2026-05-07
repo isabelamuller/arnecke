@@ -1,8 +1,5 @@
-import { textColor } from "./../../node_modules/.pnpm/tailwindcss-classnames@3.2.0_@types+node@20.19.39/node_modules/tailwindcss-classnames/dist/bundle.d";
 import classnames, {
   alignItems,
-  backgroundColor,
-  borderOpacity,
   borderWidth,
   cursor,
   display,
@@ -14,6 +11,7 @@ import classnames, {
   height,
   inset,
   justifyContent,
+  letterSpacing,
   lineHeight,
   margin,
   opacity,
@@ -31,31 +29,51 @@ import classnames, {
 } from "tailwindcss-classnames";
 
 export const loadHamburguerMenuStyles = (theme: "blue" | "white") => ({
-  buttonWrapper: classnames(
-    cursor("cursor-pointer"),
+  headerTriggerWrapper: classnames(
     position("relative"),
     display("flex"),
     alignItems("items-center"),
-    justifyContent("justify-start"),
-    "z-[99]" as any,
+    gap("gap-2"),
+    zIndex("z-50"),
   ),
+  buttonWrapper: classnames(
+    cursor("cursor-pointer"),
+    display("flex"),
+    alignItems("items-center"),
+    justifyContent("justify-center"),
+    zIndex("z-50"),
+    "text-current" as any,
+  ),
+  pageTitle: (isMenuOpen: boolean) =>
+    classnames(
+      position("fixed"),
+      zIndex("z-50"),
+      fontSize("text-xs"),
+      fontWeight("font-bold"),
+      textTransform("uppercase"),
+      transitionDuration("duration-500"),
+      letterSpacing("tracking-[0.20em]" as any),
+      transitionProperty("transition-all"),
+      inset("left-11"),
+    ),
   wrapper: (isMenuOpen: boolean) =>
     classnames(
+      "ease-in-out" as any,
       position("fixed"),
       inset("inset-0"),
       zIndex("z-40"),
       transitionDuration("duration-500"),
       height("h-screen"),
-      width("w-full", "lg:w-1/3"),
+      width("w-full"),
+      "lg:max-w-1/4" as any,
       transitionProperty("transition-transform"),
-      isMenuOpen ? translate("translate-x-0") : ("translate-x-[-100%]" as any),
+      isMenuOpen ? translate("translate-x-0") : ("-translate-x-full" as any),
       theme === "blue"
         ? ("bg-color-arnecke-blue" as any)
         : "bg-color-arnecke-white",
       theme === "blue"
         ? ("text-color-arnecke-white" as any)
         : "text-color-arnecke-blue",
-      "ease-[cubic-bezier(0.77,0,0.18,1)]" as any,
     ),
   content: classnames(
     position("relative"),
@@ -139,7 +157,7 @@ export const loadHamburguerMenuStyles = (theme: "blue" | "white") => ({
     textTransform("uppercase"),
     cursor("cursor-pointer"),
     gap("gap-3"),
-    fontSize("text-xl"),
+    fontSize("text-lg"),
     lineHeight("leading-none"),
     fontWeight("font-bold"),
     "tracking-[-0.05em]" as any,
@@ -151,7 +169,7 @@ export const loadHamburguerMenuStyles = (theme: "blue" | "white") => ({
     transitionProperty("transition-opacity"),
     fontWeight("font-normal"),
     "tracking-[0.3em]" as any,
-    "text-[11px]" as any,
+    "text-[10px]" as any,
   ),
   socialWrapper: classnames(
     position("absolute"),

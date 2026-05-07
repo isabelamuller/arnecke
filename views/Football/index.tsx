@@ -5,9 +5,8 @@ export const FootballView = () => {
   return (
     <PageView
       title="Football"
-      description="Football description"
       items={FOOTBALL_ITEMS}
-      squaredImages={false}
+      imageLayout="horizontal-row"
     />
   );
 };
