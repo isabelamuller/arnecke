@@ -2,8 +2,6 @@ import classnames, {
   alignItems,
   cursor,
   display,
-  flexDirection,
-  fontSize,
   gap,
   gridColumn,
   gridTemplateColumns,
@@ -11,15 +9,10 @@ import classnames, {
   height,
   inset,
   justifyContent,
-  justifySelf,
-  lineHeight,
-  margin,
-  maxWidth,
   objectFit,
   opacity,
   overflow,
   position,
-  textTransform,
   transitionDuration,
   transitionProperty,
   width,
@@ -28,71 +21,51 @@ import classnames, {
 
 import { TPageImageLayout } from "./types";
 
-export const loadPageStyles = (imageLayout: TPageImageLayout) => ({
+export const loadPageStyles = (
+  imageLayout: TPageImageLayout,
+  isScaleUpImage: boolean,
+) => ({
   wrapper: classnames(
     zIndex("z-10"),
     gap("gap-2"),
     width("w-full"),
-
     imageLayout === "horizontal-row"
-      ? classnames(
-          display("flex"),
-          alignItems("items-start"),
-          overflow("overflow-x-auto"),
-        )
+      ? classnames(display("flex"), "flex-wrap" as any)
       : classnames(
           display("grid"),
           gridTemplateColumns("grid-cols-3", "lg:grid-cols-5"),
         ),
   ),
-
   item: classnames(
-    imageLayout === "horizontal-row" ? ("shrink-0" as any) : undefined,
-    imageLayout !== "horizontal-row" ? gridColumn("col-span-1") : undefined,
+    zIndex("z-0"),
+    "hover:z-[999]" as any,
+    imageLayout === "horizontal-row"
+      ? ("basis-[calc((100%-16px)/3)] md:basis-auto shrink-0" as any)
+      : gridColumn("col-span-1"),
   ),
-
-  titleContent: classnames(
-    gridColumn("col-span-3", "lg:col-span-5"),
-    margin("lg:mb-10", "mb-5"),
-    display("flex"),
-    flexDirection("flex-col"),
-    alignItems("items-center"),
-    width("w-full"),
-    maxWidth("md:max-w-sm", "max-w-full"),
-    justifySelf("justify-self-center"),
-    "[&>span]:text-sm" as any,
-    "[&>span]:italic" as any,
-    "[&>span]:opacity-50" as any,
-  ),
-
-  title: classnames(
-    textTransform("uppercase"),
-    lineHeight("leading-none"),
-    fontSize("text-4xl"),
-    "tracking-[-0.04em]" as any,
-    "font-denton" as any,
-  ),
-
   imageWrapper: (borderedItems: boolean) =>
     classnames(
       group("group"),
       cursor("cursor-pointer"),
       position("relative"),
-      overflow("overflow-hidden"),
-
+      overflow("overflow-visible"),
       imageLayout === "square-grid" ? ("aspect-square" as any) : undefined,
-      imageLayout === "horizontal-row" ? ("h-[360px]" as any) : undefined,
-
+      imageLayout === "horizontal-row"
+        ? height("h-[160px]" as any, "md:h-[320px]" as any)
+        : undefined,
       borderedItems ? ("border-1" as any) : undefined,
       borderedItems ? ("border-transparent" as any) : undefined,
       borderedItems ? ("hover:border-[#0200F7]" as any) : undefined,
     ),
-
   image: (hasHoverImage: boolean) =>
     classnames(
-      transitionProperty("transition-opacity"),
-      transitionDuration("duration-300"),
-
+      transitionProperty("transition-all"),
+      isScaleUpImage
+        ? transitionDuration("duration-200")
+        : transitionDuration("duration-300"),
+      isScaleUpImage && ("lg:origin-center" as any),
+      isScaleUpImage && ("lg:group-hover:scale-[1.]" as any),
+      hasHoverImage && ("group-hover:opacity-0" as any),
       imageLayout === "square-grid"
         ? classnames(
             width("w-full"),
@@ -100,22 +73,17 @@ export const loadPageStyles = (imageLayout: TPageImageLayout) => ({
             objectFit("object-cover"),
           )
         : undefined,
-
       imageLayout === "masonry-grid"
         ? classnames(width("w-full"), height("h-auto"))
         : undefined,
-
       imageLayout === "horizontal-row"
         ? classnames(
             height("h-full"),
-            width("w-auto"),
+            width("w-full"),
             objectFit("object-contain"),
           )
         : undefined,
-
-      hasHoverImage ? ("group-hover:opacity-0" as any) : undefined,
     ),
-
   hoverImage: classnames(
     position("absolute"),
     inset("inset-0"),
@@ -123,15 +91,12 @@ export const loadPageStyles = (imageLayout: TPageImageLayout) => ({
     transitionProperty("transition-opacity"),
     transitionDuration("duration-300"),
     "group-hover:opacity-100" as any,
-
     imageLayout === "square-grid"
       ? classnames(width("w-full"), height("h-full"), objectFit("object-cover"))
       : undefined,
-
     imageLayout === "masonry-grid"
       ? classnames(width("w-full"), height("h-full"), objectFit("object-cover"))
       : undefined,
-
     imageLayout === "horizontal-row"
       ? classnames(
           height("h-full"),
@@ -140,7 +105,6 @@ export const loadPageStyles = (imageLayout: TPageImageLayout) => ({
         )
       : undefined,
   ),
-
   imageHoverOverlay: classnames(
     position("absolute"),
     inset("inset-0"),

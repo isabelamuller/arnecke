@@ -28,8 +28,9 @@ const PageViewContent = ({
   hoverLabel,
   widthSize = "entire",
   hasHoverImage = false,
+  isScaleUpImage = false,
 }: IPageProps) => {
-  const styles = loadPageStyles(imageLayout);
+  const styles = loadPageStyles(imageLayout, isScaleUpImage);
 
   const router = useRouter();
   const pathname = usePathname();
@@ -134,6 +135,7 @@ const PageViewContent = ({
             return (
               <div
                 key={item.slug || item.link || index}
+                className={styles.item}
                 onMouseEnter={playTick}
                 onClick={() => handleItemClick(item)}
               >
@@ -145,7 +147,6 @@ const PageViewContent = ({
                         alt={item.title || ""}
                         className={styles.image(shouldShowHoverImage)}
                       />
-
                       {shouldShowHoverImage && (
                         <img
                           src={item.images[1].src}

@@ -73,12 +73,14 @@ export const ModalContent = ({ selectedItem }: IModalContentProps) => {
               <span className="absolute inset-0 opacity-50 text-[10px]">
                 clique para dar zoom
               </span>
-              <img
-                key={selectedImage.src}
-                src={selectedImage.src}
-                alt=""
-                className={styles.image}
-              />
+              <div className={styles.imageFrame}>
+                <img
+                  key={selectedImage.src}
+                  src={selectedImage.src}
+                  alt=""
+                  className={styles.image}
+                />
+              </div>
             </button>
             {hasMultipleImages && (
               <div className={styles.buttons}>
@@ -89,7 +91,6 @@ export const ModalContent = ({ selectedItem }: IModalContentProps) => {
                 >
                   <GoTriangleLeft />
                 </button>
-
                 <button
                   type="button"
                   onClick={goToNextImage}

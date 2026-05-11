@@ -44,18 +44,18 @@ export const loadHamburguerMenuStyles = (theme: "blue" | "white") => ({
     zIndex("z-50"),
     "text-current" as any,
   ),
-  pageTitle: (isMenuOpen: boolean) =>
-    classnames(
-      position("fixed"),
-      zIndex("z-50"),
-      fontSize("text-xs"),
-      fontWeight("font-bold"),
-      textTransform("uppercase"),
-      transitionDuration("duration-500"),
-      letterSpacing("tracking-[0.20em]" as any),
-      transitionProperty("transition-all"),
-      inset("left-11"),
-    ),
+  pageTitle: classnames(
+    position("fixed"),
+    display("md:block", "hidden"),
+    zIndex("z-50"),
+    fontSize("text-xs"),
+    fontWeight("font-bold"),
+    textTransform("uppercase"),
+    transitionDuration("duration-500"),
+    letterSpacing("tracking-[0.20em]" as any),
+    transitionProperty("transition-all"),
+    inset("left-11"),
+  ),
   wrapper: (isMenuOpen: boolean) =>
     classnames(
       "ease-in-out" as any,

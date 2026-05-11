@@ -48,7 +48,7 @@ export const HamburguerMenu = ({ theme }: IThemeProps) => {
             <GoTriangleRight size={20} />
           )}
         </button>
-        <span className={styles.pageTitle(isMenuOpen)}>{pageTitle}</span>
+        <span className={styles.pageTitle}>{pageTitle}</span>
       </div>
       <div className={styles.wrapper(isMenuOpen)}>
         <div className={styles.content}>

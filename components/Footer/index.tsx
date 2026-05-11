@@ -10,7 +10,7 @@ import { loadFooterStyles } from "./styles";
 import { IThemeProps } from "../Header";
 
 export const Footer = ({ theme }: IThemeProps) => {
-  const styles = loadFooterStyles();
+  const styles = loadFooterStyles(theme);
   const [isArchiveOpen, setIsArchiveOpen] = useState(false);
   const playTick = useTickSound();
 
@@ -26,62 +26,63 @@ export const Footer = ({ theme }: IThemeProps) => {
 
   return (
     <>
-      <footer className={styles.wrapper(theme)}>
-        <div className={styles.nav}>
-          <button
-            type="button"
-            onClick={openArchive}
-            className={styles.archiveButton}
-          >
-            Núcleo
-          </button>
-          <a
-            href="https://www.instagram.com/_arnecke/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.socialLink}
-          >
-            <IoLogoInstagram size={16} />
-            Instagram
-          </a>
-          <Link
-            href="https://arnecke.lojavirtualnuvem.com.br/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.shopLink}
-          >
-            Shop ↗
-          </Link>
-        </div>
-        {theme === "blue" ? (
-          <Image
-            src="/images/logo-contact.png"
-            alt="Arnecke logo"
-            width={200}
-            height={48}
-          />
-        ) : (
-          <Image
-            src="/images/footer-logo.png"
-            alt="Arnecke logo"
-            width={250}
-            height={48}
-          />
-        )}
-        <div className={styles.divider} />
-        <div className={styles.credits}>
-          <p>© {new Date().getFullYear()} Arnecke. All rights reserved.</p>
-          <p>
-            Created by{" "}
+      <footer className={styles.wrapper}>
+        <div className={styles.inner}>
+          <div className={styles.topBar}>
+            <button
+              type="button"
+              onClick={openArchive}
+              className={styles.navLink}
+            >
+              Núcleo
+            </button>
+
             <a
-              href="https://www.linkedin.com/in/isabela-m%C3%BCllerrr/"
+              href="https://www.instagram.com/_arnecke/"
               target="_blank"
               rel="noopener noreferrer"
-              className={styles.creditLink}
+              className={styles.socialLink}
             >
-              Isa.
+              <IoLogoInstagram size={14} />
+              Instagram
             </a>
-          </p>
+
+            <Link
+              href="https://arnecke.lojavirtualnuvem.com.br/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.navLink}
+            >
+              Shop
+            </Link>
+          </div>
+          <div className={styles.logoWrapper}>
+            <Image
+              src={
+                theme === "blue"
+                  ? "/images/logo-contact.png"
+                  : "/images/footer-logo.png"
+              }
+              alt="Arnecke logo"
+              width={192}
+              height={20}
+            />
+          </div>
+          <div className={styles.divider} />
+          <div className={styles.credits}>
+            <p>© {new Date().getFullYear()} Arnecke. All rights reserved.</p>
+            <p>
+              Created by{" "}
+              <a
+                href="https://www.linkedin.com/in/isabela-m%C3%BCllerrr/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.creditLink}
+              >
+                Isa.
+              </a>
+            </p>
+          </div>
         </div>
       </footer>
       <div className={styles.archiveOverlay(isArchiveOpen)}>

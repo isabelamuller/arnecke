@@ -44,7 +44,7 @@ export const PageTitleSetter = ({ title }: { title: string }) => {
     setPageTitle(title);
 
     return () => {
-      setPageTitle("Arnecke");
+      setPageTitle("");
     };
   }, [title, setPageTitle]);
 

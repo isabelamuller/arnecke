@@ -26,5 +26,6 @@ export interface IPageProps {
   hoverLabel?: string;
   widthSize?: "full" | "medium" | "entire";
   hasHoverImage?: boolean;
+  isScaleUpImage?: boolean;
   imageLayout: TPageImageLayout;
 }

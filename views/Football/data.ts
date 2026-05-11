@@ -28,16 +28,6 @@ export const FOOTBALL_ITEMS: IPageItem[] = [
     ],
   },
   {
-    slug: "antony-barnett",
-    title: "Antony Barnett",
-    description: "Antony Barnett descricao",
-    images: [
-      {
-        src: "/images/research/pesquisa-1/tipografia.jpeg",
-      },
-    ],
-  },
-  {
     slug: "premier-league-numbers",
     title: "Premier League",
     description: "Premier League descricao",
@@ -47,6 +37,16 @@ export const FOOTBALL_ITEMS: IPageItem[] = [
       },
       {
         src: "/images/research/pesquisa-1/real-madrid-numbers.png",
+      },
+    ],
+  },
+  {
+    slug: "antony-barnett",
+    title: "Antony Barnett",
+    description: "Antony Barnett descricao",
+    images: [
+      {
+        src: "/images/research/pesquisa-1/tipografia.jpeg",
       },
     ],
   },

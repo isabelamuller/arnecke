@@ -15,21 +15,20 @@ import classnames, {
 
 export const loadResearchSubpageStyles = () => ({
   titleContent: classnames(
-    margin("lg:mb-10", "mb-5"),
+    margin("mb-5"),
     display("flex"),
     flexDirection("flex-col"),
     alignItems("items-center"),
     width("w-full"),
-    maxWidth("md:max-w-sm", "max-w-full"),
     justifySelf("justify-self-center"),
-    "[&>span]:text-sm" as any,
+    "[&>span]:text-lg" as any,
     "[&>span]:italic" as any,
     "[&>span]:opacity-50" as any,
   ),
   title: classnames(
     textTransform("uppercase"),
     lineHeight("leading-none"),
-    fontSize("text-4xl"),
+    fontSize("md:text-[66px]" as any, "text-4xl"),
     "tracking-[-0.04em]" as any,
     "font-denton" as any,
   ),

@@ -7,6 +7,7 @@ export const ContextView = () => {
       title="Context"
       items={CONTEXT_ITEMS}
       imageLayout="masonry-grid"
+      isScaleUpImage
     />
   );
 };

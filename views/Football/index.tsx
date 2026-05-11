@@ -7,6 +7,7 @@ export const FootballView = () => {
       title="Football"
       items={FOOTBALL_ITEMS}
       imageLayout="horizontal-row"
+      isScaleUpImage
     />
   );
 };
