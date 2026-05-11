@@ -18,7 +18,7 @@ const PageTitleContext = createContext<IPageTitleContext | undefined>(
 );
 
 export const PageTitleProvider = ({ children }: { children: ReactNode }) => {
-  const [pageTitle, setPageTitle] = useState("Arnecke");
+  const [pageTitle, setPageTitle] = useState("");
 
   return (
     <PageTitleContext.Provider value={{ pageTitle, setPageTitle }}>

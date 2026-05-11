@@ -63,8 +63,8 @@ export const loadPageStyles = (
       isScaleUpImage
         ? transitionDuration("duration-200")
         : transitionDuration("duration-300"),
-      isScaleUpImage && ("lg:origin-center" as any),
-      isScaleUpImage && ("lg:group-hover:scale-[1.]" as any),
+      isScaleUpImage && ("md:origin-center" as any),
+      isScaleUpImage && ("md:group-hover:scale-[1.1]" as any),
       hasHoverImage && ("group-hover:opacity-0" as any),
       imageLayout === "square-grid"
         ? classnames(
