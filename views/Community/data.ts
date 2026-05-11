@@ -89,4 +89,12 @@ export const COMMUNITY_IMAGES: IPageItem[] = [
     ],
     link: "https://www.instagram.com/p/DNS5aJVggwC",
   },
+  {
+    images: [
+      {
+        src: "/images/community/arnecke-12.jpg",
+      },
+    ],
+    link: "https://www.instagram.com/p/DYFf3w3EYj-/?img_index=3",
+  },
 ];
