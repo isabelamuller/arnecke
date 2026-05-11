@@ -8,7 +8,7 @@ export const CROQUIS_ITEMS: IPageItem[] = [
         src: "/images/croquis/croqui-1-sem-cor.png",
       },
       {
-        src: "/images/croquis/croqui-1-colorido.png",
+        src: "/images/croquis/croqui-1-colorido-teste.png",
       },
     ],
     description:
@@ -21,7 +21,7 @@ export const CROQUIS_ITEMS: IPageItem[] = [
         src: "/images/croquis/croqui-1-sem-cor.png",
       },
       {
-        src: "/images/croquis/croqui-1-colorido.png",
+        src: "/images/croquis/croqui-1-colorido-teste.png",
       },
     ],
     description:
@@ -34,7 +34,7 @@ export const CROQUIS_ITEMS: IPageItem[] = [
         src: "/images/croquis/croqui-1-sem-cor.png",
       },
       {
-        src: "/images/croquis/croqui-1-colorido.png",
+        src: "/images/croquis/croqui-1-colorido-teste.png",
       },
     ],
     description:
@@ -47,7 +47,7 @@ export const CROQUIS_ITEMS: IPageItem[] = [
         src: "/images/croquis/croqui-1-sem-cor.png",
       },
       {
-        src: "/images/croquis/croqui-1-colorido.png",
+        src: "/images/croquis/croqui-1-colorido-teste.png",
       },
     ],
     description:
@@ -60,7 +60,7 @@ export const CROQUIS_ITEMS: IPageItem[] = [
         src: "/images/croquis/croqui-1-sem-cor.png",
       },
       {
-        src: "/images/croquis/croqui-1-colorido.png",
+        src: "/images/croquis/croqui-1-colorido-teste.png",
       },
     ],
     description:
@@ -73,7 +73,7 @@ export const CROQUIS_ITEMS: IPageItem[] = [
         src: "/images/croquis/croqui-1-sem-cor.png",
       },
       {
-        src: "/images/croquis/croqui-1-colorido.png",
+        src: "/images/croquis/croqui-1-colorido-teste.png",
       },
     ],
     description:
