@@ -46,7 +46,6 @@ export const MasonryPanel = memo(function MasonryPanel({
 
   return (
     <div
-      className="bg-color-arnecke-white text-color-arnecke-blue"
       style={{
         width: TILE_WIDTH,
         boxSizing: "border-box",

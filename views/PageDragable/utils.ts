@@ -7,20 +7,17 @@ export function modulo(value: number, max: number) {
 }
 
 export function getImages(items: IPageItem[]): TImage[] {
-  const images = items
-    .map((item) => {
-      const image = item.images?.[0];
-
-      if (!image?.src) return null;
-
-      return {
-        src: image.src,
-        title: item.title,
-        slug: item.slug,
-        item,
-      };
-    })
-    .filter(Boolean) as TImage[];
+  const images = items.flatMap(
+    (item) =>
+      item.images
+        ?.filter((image) => !!image.src)
+        .map((image) => ({
+          src: image.src,
+          title: item.title,
+          slug: item.slug,
+          item,
+        })) ?? [],
+  );
 
   if (!images.length) return [];
 

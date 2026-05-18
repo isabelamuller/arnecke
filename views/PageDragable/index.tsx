@@ -29,7 +29,7 @@ export const PageDraggable = ({ items }: IPageDraggableProps) => {
 };
 
 const PageDraggableContent = ({ items }: IPageDraggableProps) => {
-  const sourceImages = useMemo(() => getImages(items), []);
+  const sourceImages = useMemo(() => getImages(items), [items]);
   const measuredImages = useMeasuredImages(sourceImages);
 
   const router = useRouter();
