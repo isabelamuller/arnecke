@@ -1,13 +1,6 @@
-import { PageView } from "../Page";
+import { PageDraggable } from "../PageDragable";
 import { FOOTBALL_ITEMS } from "./data";
 
 export const FootballView = () => {
-  return (
-    <PageView
-      title="Football"
-      items={FOOTBALL_ITEMS}
-      imageLayout="horizontal-row"
-      isScaleUpImage
-    />
-  );
+  return <PageDraggable items={FOOTBALL_ITEMS} />;
 };

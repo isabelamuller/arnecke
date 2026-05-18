@@ -132,28 +132,38 @@ export const ModalContent = ({ selectedItem }: IModalContentProps) => {
       </div>
       <div className={styles.leftWrapper}>
         <div className={styles.leftContent}>
-          <h2 className="mb-2 font-denton text-md font-bold uppercase leading-[0.9]">
-            {selectedItem.title}
-          </h2>
-          <div className="max-h-[24vh] overflow-y-auto pr-1 text-justify md:max-h-[42vh]">
-            <p className="text-xs leading-[1.7] md:text-sm md:leading-[1.8]">
+          <div className="mb-5 border-b border-[#0200F7]/20 pb-3">
+            <span className="mb-2 block font-helvetica text-[10px] uppercase tracking-[0.28em] opacity-60">
+              {selectedItem?.eyebrow}
+            </span>
+            <h2 className="font-denton text-2xl font-bold uppercase leading-[0.85] tracking-[-0.04em] md:text-4xl">
+              {selectedItem.title}
+            </h2>
+          </div>
+          <div className="max-h-[24vh] overflow-y-auto pb-5 pr-1 text-justify md:max-h-[42vh]">
+            <div className="font-helvetica text-xs leading-[1.85] tracking-[-0.01em] md:text-sm md:leading-[1.9]">
               {Parser().parse(selectedItem.description)}
-            </p>
+            </div>
           </div>
           {(!!selectedItem.collection || !!selectedItem.year) && (
-            <div className={styles.bottomLeftContent}>
+            <div className="grid grid-cols-2 gap-2 text-[10px] uppercase tracking-[0.18em] pt-4 mt-auto border-t border-[#0200F7]/20">
               {!!selectedItem.collection && (
-                <div className={styles.bottomLeftItem}>
-                  <span>Coleção</span>
-                  <Link href={selectedItem.collection.link}>
+                <div className="border-r border-current">
+                  <span className="mb-1 block opacity-50">Coleção</span>
+                  <Link
+                    href={selectedItem.collection.link}
+                    className="block normal-case tracking-normal underline-offset-4 hover:underline"
+                  >
                     {selectedItem.collection.title}
                   </Link>
                 </div>
               )}
               {!!selectedItem.year && (
-                <div className={styles.bottomLeftItem}>
-                  <span>Ano</span>
-                  <p>{selectedItem.year}</p>
+                <div>
+                  <span className="mb-1 block opacity-50">Ano</span>
+                  <p className="normal-case tracking-normal">
+                    {selectedItem.year}
+                  </p>
                 </div>
               )}
             </div>

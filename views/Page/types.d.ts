@@ -4,6 +4,7 @@ export type TPageImageLayout =
   | "horizontal-row";
 
 export interface IPageItem {
+  eyebrow?: string;
   title?: string;
   images?: {
     src: string;

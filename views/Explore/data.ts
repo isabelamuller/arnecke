@@ -3,12 +3,9 @@ import { IPageItem } from "../Page/types";
 export const EXPLORE_ITEMS: IPageItem[] = [
   {
     slug: "jaqueta-8-circle-numbers",
-    year: "2025",
-    collection: {
-      title: "colecao",
-      link: "/",
-    },
-    title: "Jaquetinha aiaiai uiui",
+    eyebrow: "Peça piloto arnecke",
+    year: "2024",
+    title: "Jaqueta Workplay n#8",
     images: [
       {
         src: "/images/jacket-front.png",
@@ -17,6 +14,6 @@ export const EXPLORE_ITEMS: IPageItem[] = [
         src: "/images/jacket-back.png",
       },
     ],
-    description: `descricao do carai <a className='underline font-bold' target='_blank' href='/football?item=futebol-ao-sol-e-a-sombra'>testeeeee</a>`,
+    description: `Jaqueta leve em poliamida. Modelagem e cortes inspirados em agasalhos de treino, com ajustes elásticos nas mangas e barra traseira. Zíper YKK com cursor em círculo. Adaptável. Numero 8 nas costas carrega a personalidade do jogador em seu dia a dia.`,
   },
 ];

@@ -50,4 +50,34 @@ export const FOOTBALL_ITEMS: IPageItem[] = [
       },
     ],
   },
+  {
+    slug: "resgate-article",
+    title: "Resgate",
+    description: "Resgate descricao",
+    images: [
+      {
+        src: "/images/football/resgatecapadoinsta.png",
+      },
+    ],
+  },
+  {
+    slug: "flags-round",
+    title: "Flags",
+    description: "Flags descricao",
+    images: [
+      {
+        src: "/images/football/flags.png",
+      },
+    ],
+  },
+  {
+    slug: "number-8",
+    title: "Numero 8",
+    description: "Numero 8 descricao",
+    images: [
+      {
+        src: "/images/research/pesquisa-1/8.jpg",
+      },
+    ],
+  },
 ];
