@@ -21,7 +21,7 @@ export default function RootLayout({
 
   return (
     <html
-      lang="pt-BR"
+      lang="pt"
       className={`${helvetica.variable} ${systemia.variable} ${denton.variable}`}
     >
       <body
