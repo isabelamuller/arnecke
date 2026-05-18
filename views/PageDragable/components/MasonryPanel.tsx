@@ -1,7 +1,7 @@
-import { memo } from "react";
+import { memo, useEffect, useState } from "react";
 import { BalancedMasonryGrid, Frame } from "@masonry-grid/react";
 
-import { FRAME_WIDTH, GAP, TILE_WIDTH } from "../constants";
+import { GAP, TILE_WIDTH } from "../constants";
 import { TMeasuredImage } from "../types";
 import { IPageItem } from "@/views/Page/types";
 
@@ -10,10 +10,40 @@ type TMasonryPanelProps = {
   onImagePointerDown?: (item: IPageItem) => void;
 };
 
+const DESKTOP_FRAME_WIDTH = 230;
+const MOBILE_FRAME_WIDTH = 100;
+const DESKTOP_MEDIA_QUERY = "(min-width: 768px)";
+
+function useResponsiveFrameWidth() {
+  const [frameWidth, setFrameWidth] = useState(MOBILE_FRAME_WIDTH);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(DESKTOP_MEDIA_QUERY);
+
+    function updateFrameWidth() {
+      setFrameWidth(
+        mediaQuery.matches ? DESKTOP_FRAME_WIDTH : MOBILE_FRAME_WIDTH,
+      );
+    }
+
+    updateFrameWidth();
+
+    mediaQuery.addEventListener("change", updateFrameWidth);
+
+    return () => {
+      mediaQuery.removeEventListener("change", updateFrameWidth);
+    };
+  }, []);
+
+  return frameWidth;
+}
+
 export const MasonryPanel = memo(function MasonryPanel({
   images,
   onImagePointerDown,
 }: TMasonryPanelProps) {
+  const frameWidth = useResponsiveFrameWidth();
+
   return (
     <div
       className="bg-color-arnecke-white text-color-arnecke-blue"
@@ -22,7 +52,7 @@ export const MasonryPanel = memo(function MasonryPanel({
         boxSizing: "border-box",
       }}
     >
-      <BalancedMasonryGrid frameWidth={FRAME_WIDTH} gap={GAP}>
+      <BalancedMasonryGrid frameWidth={frameWidth} gap={GAP}>
         {images.map((image, index) => (
           <Frame
             key={`${image.src}-${image.slug}-${index}`}
