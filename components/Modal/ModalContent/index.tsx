@@ -146,16 +146,22 @@ export const ModalContent = ({ selectedItem }: IModalContentProps) => {
             </div>
           </div>
           {(!!selectedItem.collection || !!selectedItem.year) && (
-            <div className="grid grid-cols-2 gap-2 text-[10px] uppercase tracking-[0.18em] pt-4 mt-auto border-t border-[#0200F7]/20">
+            <div className="flex justify-between text-[10px] uppercase tracking-[0.18em] pt-4 mt-auto border-t border-[#0200F7]/20">
               {!!selectedItem.collection && (
-                <div className="border-r border-current">
+                <div>
                   <span className="mb-1 block opacity-50">Coleção</span>
-                  <Link
-                    href={selectedItem.collection.link}
-                    className="block normal-case tracking-normal underline-offset-4 hover:underline"
-                  >
-                    {selectedItem.collection.title}
-                  </Link>
+                  {selectedItem.collection.link ? (
+                    <Link
+                      href={selectedItem.collection.link}
+                      className="block normal-case tracking-normal underline-offset-4 hover:underline"
+                    >
+                      {selectedItem.collection.title}
+                    </Link>
+                  ) : (
+                    <div className="block normal-case tracking-normal">
+                      {selectedItem.collection.title}
+                    </div>
+                  )}
                 </div>
               )}
               {!!selectedItem.year && (

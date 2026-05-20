@@ -19,16 +19,25 @@ import { useMeasuredImages } from "./hooks/useMeasuredImages";
 import { GAP, REPEATED_TILES, TILE_GAP, TILE_WIDTH } from "./constants";
 import { getImages, modulo } from "./utils";
 import { IPageDraggableProps } from "./types";
+import { PageTitleSetter } from "@/components/PageTitleProvider";
 
-export const PageDraggable = ({ items }: IPageDraggableProps) => {
+export const PageDraggable = ({
+  title,
+  items,
+  isModal = true,
+}: IPageDraggableProps) => {
   return (
     <Suspense fallback={null}>
-      <PageDraggableContent items={items} />
+      <PageDraggableContent title={title} items={items} isModal={isModal} />
     </Suspense>
   );
 };
 
-const PageDraggableContent = ({ items }: IPageDraggableProps) => {
+const PageDraggableContent = ({
+  title,
+  items,
+  isModal,
+}: IPageDraggableProps) => {
   const sourceImages = useMemo(() => getImages(items), [items]);
   const measuredImages = useMeasuredImages(sourceImages);
 
@@ -141,7 +150,7 @@ const PageDraggableContent = ({ items }: IPageDraggableProps) => {
 
     handlePointerUp(event);
 
-    if (itemToOpen && !hasDraggedRef.current) {
+    if (itemToOpen && !hasDraggedRef.current && isModal) {
       openModal(itemToOpen);
     }
 
@@ -152,6 +161,7 @@ const PageDraggableContent = ({ items }: IPageDraggableProps) => {
 
   return (
     <>
+      <PageTitleSetter title={title} />
       <section
         className={[
           "relative h-screen w-screen overflow-hidden",
@@ -200,7 +210,8 @@ const PageDraggableContent = ({ items }: IPageDraggableProps) => {
         </div>
       </section>
 
-      {mounted &&
+      {isModal &&
+        mounted &&
         selectedItem &&
         createPortal(
           <Modal isClosing={isClosing} onClose={closeModal}>

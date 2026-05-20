@@ -13,7 +13,7 @@ export interface IPageItem {
   year?: string;
   collection?: {
     title: string;
-    link: string;
+    link?: string;
   };
   link?: string;
   slug?: string;
