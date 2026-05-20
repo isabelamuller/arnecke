@@ -4,13 +4,6 @@ export const CONTEXT_ITEMS: IPageItem[] = [
   {
     images: [
       {
-        src: "/images/research/pesquisa-1/highsnobiety.png",
-      },
-    ],
-  },
-  {
-    images: [
-      {
         src: "/images/context/amy capa.png",
       },
     ],
