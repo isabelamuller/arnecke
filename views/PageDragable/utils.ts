@@ -7,14 +7,14 @@ export function modulo(value: number, max: number) {
 }
 
 export function getImages(items: IPageItem[]): TImage[] {
-  const images = items.flatMap(
+  const images: TImage[] = items.flatMap(
     (item) =>
       item.images
         ?.filter((image) => !!image.src)
         .map((image) => ({
           src: image.src,
-          title: item.title,
-          slug: item.slug,
+          title: item.title ?? "",
+          slug: item.slug ?? "",
           item,
         })) ?? [],
   );
