@@ -4,66 +4,10 @@ export const COMMUNITY_IMAGES: IPageItem[] = [
   {
     images: [
       {
-        src: "/images/community/arnecke-1.jpg",
-      },
-    ],
-    link: "https://www.instagram.com/p/DTiYWgqgNug",
-  },
-  {
-    images: [
-      {
-        src: "/images/community/arnecke-2.jpg",
-      },
-    ],
-    link: "https://www.instagram.com/p/DSfqguFCV5D",
-  },
-  {
-    images: [
-      {
         src: "/images/community/arnecke-3.jpg",
       },
     ],
     link: "https://www.instagram.com/p/DWr_uC1FC4p/?img_index=2",
-  },
-  {
-    images: [
-      {
-        src: "/images/community/arnecke-4.jpg",
-      },
-    ],
-    link: "https://www.instagram.com/p/DR4qeixALn6/?img_index=1",
-  },
-  {
-    images: [
-      {
-        src: "/images/community/arnecke-5.jpg",
-      },
-    ],
-    link: "https://www.instagram.com/p/DPuB9-3ibm4/?img_index=8",
-  },
-  {
-    images: [
-      {
-        src: "/images/community/arnecke-6.jpg",
-      },
-    ],
-    link: "https://www.instagram.com/p/DP37IX2AG8P?img_index=4",
-  },
-  {
-    images: [
-      {
-        src: "/images/community/arnecke-7.jpg",
-      },
-    ],
-    link: "https://www.instagram.com/p/DPg0jGyAFlS/?img_index=1",
-  },
-  {
-    images: [
-      {
-        src: "/images/community/arnecke-8.jpg",
-      },
-    ],
-    link: "https://www.instagram.com/p/DO3dgUAkV6C/?img_index=9",
   },
   {
     images: [
@@ -76,10 +20,26 @@ export const COMMUNITY_IMAGES: IPageItem[] = [
   {
     images: [
       {
-        src: "/images/community/arnecke-10.jpg",
+        src: "/images/community/arnecke-12.jpg",
       },
     ],
-    link: "https://www.instagram.com/p/DOThAiggBVR",
+    link: "https://www.instagram.com/p/DYFf3w3EYj-/?img_index=3",
+  },
+  {
+    images: [
+      {
+        src: "/images/football/resgatecapadoinsta.png",
+      },
+    ],
+    link: "https://www.instagram.com/p/DW4uEyajoC1/?img_index=1",
+  },
+  {
+    images: [
+      {
+        src: "/images/community/arnecke-2.jpg",
+      },
+    ],
+    link: "https://www.instagram.com/p/DSfqguFCV5D/?img_index=1",
   },
   {
     images: [
@@ -87,14 +47,6 @@ export const COMMUNITY_IMAGES: IPageItem[] = [
         src: "/images/community/arnecke-11.jpg",
       },
     ],
-    link: "https://www.instagram.com/p/DNS5aJVggwC",
-  },
-  {
-    images: [
-      {
-        src: "/images/community/arnecke-12.jpg",
-      },
-    ],
-    link: "https://www.instagram.com/p/DYFf3w3EYj-/?img_index=3",
+    link: "https://www.instagram.com/p/DNS5aJVggwC/?img_index=1",
   },
 ];

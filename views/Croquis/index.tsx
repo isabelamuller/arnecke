@@ -4,11 +4,12 @@ import { CROQUIS_ITEMS } from "./data";
 export const CroquisView = () => {
   return (
     <PageView
-      title="Croquis"
+      title="local"
       items={CROQUIS_ITEMS}
       imageLayout="masonry-grid"
       widthSize="entire"
       hasHoverImage
+      isModal={false}
     />
   );
 };
