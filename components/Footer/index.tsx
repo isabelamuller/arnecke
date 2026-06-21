@@ -70,7 +70,9 @@ export const Footer = ({ theme }: IThemeProps) => {
           </div>
           <div className={styles.divider} />
           <div className={styles.credits}>
-            <p>© {new Date().getFullYear()} Arnecke. All rights reserved.</p>
+            <p>
+              © {new Date().getFullYear()} ARNECKE LTDA. All rights reserved.
+            </p>
             <p>
               Created by{" "}
               <a

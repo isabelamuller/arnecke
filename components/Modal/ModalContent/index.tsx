@@ -132,7 +132,7 @@ export const ModalContent = ({ selectedItem }: IModalContentProps) => {
       </div>
       <div className={styles.leftWrapper}>
         <div className={styles.leftContent}>
-          <div className="mb-5 border-b border-[#0200F7]/20 pb-3">
+          <div className="mb-5 border-b border-black/20 pb-3">
             <span className="mb-2 block font-helvetica text-[10px] uppercase tracking-[0.28em] opacity-60">
               {selectedItem?.eyebrow}
             </span>
@@ -146,7 +146,7 @@ export const ModalContent = ({ selectedItem }: IModalContentProps) => {
             </div>
           </div>
           {(!!selectedItem.collection || !!selectedItem.year) && (
-            <div className="flex justify-between text-[10px] uppercase tracking-[0.18em] pt-4 mt-auto border-t border-[#0200F7]/20">
+            <div className="flex justify-between text-[10px] uppercase tracking-[0.18em] pt-4 mt-auto border-t border-black/20">
               {!!selectedItem.collection && (
                 <div>
                   <span className="mb-1 block opacity-50">Coleção</span>

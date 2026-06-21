@@ -24,6 +24,7 @@ export const loadResearchSubpageStyles = () => ({
     "[&>span]:text-lg" as any,
     "[&>span]:italic" as any,
     "[&>span]:opacity-50" as any,
+    "[&>span]:text-center" as any,
   ),
   title: classnames(
     textTransform("uppercase"),
@@ -34,7 +35,7 @@ export const loadResearchSubpageStyles = () => ({
   ),
   article: classnames(
     fontSize("text-base", "md:text-lg"),
-    lineHeight("leading-8", "md:leading-9"),
+    lineHeight("leading-8"),
     textAlign("text-justify"),
     "text-color-arnecke-black" as any,
     "[&_p]:mb-6" as any,

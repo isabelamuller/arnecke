@@ -1,5 +1,5 @@
 import { FaShoppingBag } from "react-icons/fa";
-import { IoLogoInstagram, IoLogoWhatsapp } from "react-icons/io";
+import { IoLogoInstagram, IoIosMail } from "react-icons/io";
 
 export const menuItems = [
   {
@@ -23,11 +23,13 @@ export const menuItems = [
 
 export const socialItems = [
   {
-    href: "https://instagram.com",
+    href: "https://www.instagram.com/arnecke.circle/",
     icon: <IoLogoInstagram size={18} />,
+    target: "_blank",
   },
   {
-    href: "https://wa.me/5511999999999",
-    icon: <IoLogoWhatsapp size={18} />,
+    href: "mailto:team@arneckework.com",
+    icon: <IoIosMail size={18} />,
+    target: "_self",
   },
 ];

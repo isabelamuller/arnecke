@@ -95,7 +95,7 @@ export const loadModalContentStyles = () => ({
     width("w-9"),
     justifyContent("justify-center"),
     cursor("cursor-pointer"),
-    "text-color-arnecke-blue" as any,
+    "text-color-arnecke-black" as any,
   ),
   bottomRightContent: classnames(
     display("flex"),
@@ -105,7 +105,7 @@ export const loadModalContentStyles = () => ({
     "[&>span]:text-[10px]" as any,
     "[&>span]:uppercase" as any,
     "[&>span]:tracking-[0.28em]" as any,
-    "[&>span]:text-color-arnecke-blue" as any,
+    "[&>span]:text-color-arnecke-black" as any,
   ),
   tinyImagesBottom: classnames(
     display("flex"),
@@ -122,7 +122,7 @@ export const loadModalContentStyles = () => ({
       borderWidth("border"),
       transitionProperty("transition-all"),
       isSelected
-        ? ("border-color-arnecke-blue" as any)
+        ? ("border-color-arnecke-black" as any)
         : borderColor("border-transparent"),
       isSelected ? opacity("opacity-100") : opacity("opacity-40"),
       !isSelected ? opacity("hover:opacity-80") : undefined,
@@ -149,7 +149,7 @@ export const loadModalContentStyles = () => ({
     gap("gap-4"),
     borderWidth("border-t"),
     padding("pt-2"),
-    "border-color-arnecke-blue" as any,
+    "border-color-arnecke-black" as any,
   ),
   bottomLeftItem: classnames(
     display("flex"),
@@ -159,7 +159,7 @@ export const loadModalContentStyles = () => ({
     "[&>span]:text-[11px] " as any,
     "[&>span]:uppercase" as any,
     "[&>span]:tracking-[0.24em]" as any,
-    "[&>span]:text-color-arnecke-blue" as any,
+    "[&>span]:text-color-arnecke-black" as any,
     "[&>span]:opacity-80" as any,
     "[&>p]:text-[10px]" as any,
     "[&>a]:text-[10px]" as any,
@@ -184,7 +184,7 @@ export const loadModalContentStyles = () => ({
     "h-full" as any,
     "md:h-[78vh]" as any,
     "bg-color-arnecke-white" as any,
-    "border-color-arnecke-blue" as any,
+    "border-color-arnecke-black" as any,
     "z-[1001]" as any,
   ),
   zoomModalClose: classnames(
@@ -196,7 +196,7 @@ export const loadModalContentStyles = () => ({
     "text-[10px]" as any,
     "bg-color-arnecke-white" as any,
     borderWidth("border"),
-    "border-color-arnecke-blue" as any,
+    "border-color-arnecke-black" as any,
     padding("px-2", "py-1"),
   ),
   zoomModalImageWrapper: (isZooming: boolean) =>

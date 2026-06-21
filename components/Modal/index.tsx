@@ -31,7 +31,7 @@ export const Modal = ({ children, isClosing, onClose }: IModalProps) => {
         }`}
         onClick={onClose}
       />
-      <div className="pointer-events-none relative z-10 flex h-full items-stretch justify-center font-helvetica text-color-arnecke-blue md:items-center md:px-5 md:py-20">
+      <div className="pointer-events-none relative z-10 flex h-full items-stretch justify-center font-helvetica text-color-arnecke-black md:items-center md:px-5 md:py-20">
         <div
           className={`pointer-events-auto relative grid h-screen w-screen grid-cols-12 content-start gap-5 overflow-hidden bg-color-arnecke-white p-5 pt-12 md:h-auto md:max-h-[86vh] md:w-full md:max-w-[900px] md:rounded md:p-6 lg:gap-2 ${
             isClosing
@@ -41,7 +41,7 @@ export const Modal = ({ children, isClosing, onClose }: IModalProps) => {
         >
           <button
             onClick={onClose}
-            className="absolute right-4 top-4 z-20 cursor-pointer text-sm font-bold uppercase text-color-arnecke-blue opacity-60 transition-colors hover:opacity-100"
+            className="absolute right-4 top-4 z-20 cursor-pointer text-sm font-bold uppercase text-color-arnecke-black opacity-60 transition-colors hover:opacity-100"
           >
             ✕
           </button>

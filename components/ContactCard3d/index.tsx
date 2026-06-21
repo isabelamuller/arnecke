@@ -1,6 +1,7 @@
 "use client";
 
 import { animate, motion, useMotionValue, useSpring } from "framer-motion";
+import Image from "next/image";
 import { useRef, useState } from "react";
 import { PiCursorClickLight } from "react-icons/pi";
 
@@ -25,6 +26,12 @@ export const ContactCard3D = () => {
   const startRotationY = useRef(0);
 
   const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    const target = event.target as HTMLElement;
+
+    if (target.closest("a")) {
+      return;
+    }
+
     setIsDragging(true);
 
     startX.current = event.clientX;
@@ -70,9 +77,9 @@ export const ContactCard3D = () => {
   };
 
   return (
-    <div className="flex min-h-[70vh] w-full flex-col items-center justify-center overflow-hidden px-4">
+    <div className="flex min-h-[70vh] w-full flex-col items-center justify-center overflow-hidden">
       <div
-        className="relative aspect-[13/8] w-[520px] max-w-[88vw]"
+        className="relative h-[380px] w-[580px]"
         style={{
           perspective: "1200px",
         }}
@@ -105,20 +112,33 @@ export const ContactCard3D = () => {
             items-center
             justify-center
             overflow-hidden
-            border
-            border-color-arnecke-blue
             bg-color-arnecke-white
-            p-5
-            text-color-arnecke-blue
+            text-color-arnecke-black
           "
             style={{
               backfaceVisibility: "hidden",
               WebkitBackfaceVisibility: "hidden",
             }}
           >
-            <h1 className="font-denton text-[56px] uppercase leading-none tracking-[-0.06em] md:text-[110px]">
-              Front
-            </h1>
+            <div className="flex flex-col items-center h-full justify-between py-2">
+              <h1 className="font-helvetica italic font-semibold text-[43px] text-center uppercase leading-none">
+                CONGRATULATIONS!!!
+              </h1>
+              <div className="flex flex-col items-center mt-4">
+                <span className="font-helvetica uppercase text-color-arnecke-black leading-none text-[30px]">
+                  you have just met another
+                </span>
+                <span className="font-denton uppercase text-color-arnecke-black leading-none text-[140px]">
+                  circle
+                </span>
+              </div>
+              <Image
+                src="/images/logo-preto.png"
+                alt="Arnecke logo"
+                width={75}
+                height={40}
+              />
+            </div>
           </div>
 
           <div
@@ -132,8 +152,7 @@ export const ContactCard3D = () => {
             border
             border-color-arnecke-blue
             bg-color-arnecke-white
-            p-5
-            text-color-arnecke-blue
+            text-color-arnecke-black
           "
             style={{
               backfaceVisibility: "hidden",
@@ -141,9 +160,54 @@ export const ContactCard3D = () => {
               transform: "rotateY(180deg)",
             }}
           >
-            <h1 className="font-denton text-[56px] uppercase leading-none tracking-[-0.06em] md:text-[110px]">
-              Back
-            </h1>
+            <div className="relative h-[380px] w-full overflow-hidden p-5">
+              <Image
+                src="/images/assinatura-contato.PNG"
+                alt="Arnecke assinatura"
+                fill
+                sizes="100vw"
+                className="absolute top-0 z-0 object-none"
+              />
+
+              <div className="relative z-10 flex h-full flex-col justify-between font-light font-helvetica">
+                <div className="flex justify-between text-sm italic">
+                  <a
+                    href="https://www.instagram.com/arnecke.circle"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative z-20 pointer-events-auto hover:underline"
+                  >
+                    @arnecke.circle
+                  </a>
+                  <a
+                    href="/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative z-20 pointer-events-auto hover:underline"
+                  >
+                    www.arneckecircle.com.br
+                  </a>
+                  <a
+                    href="mailto:team@arneckework.com"
+                    className="relative z-20 pointer-events-auto hover:underline"
+                  >
+                    team@arneckework.com
+                  </a>
+                </div>
+
+                <div className="flex w-full items-end">
+                  <hr className="flex-1 border-t-2 border-black" />
+
+                  <Image
+                    src="/images/logo-preto.png"
+                    alt="Arnecke logo"
+                    width={75}
+                    height={40}
+                    className="shrink-0"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>

@@ -31,7 +31,7 @@ export const loadScreenMenuStyles = () => ({
     "hover:opacity-50" as any,
   ),
   menuList: classnames(
-    margin("mt-1"),
+    margin("mt-14"),
     padding("p-0"),
     listStyleType("list-none"),
   ),
@@ -44,8 +44,7 @@ export const loadScreenMenuStyles = () => ({
     transitionTimingFunction("ease-in-out"),
     "md:text-[7.8vw]" as any,
     "text-[50px]" as any,
-    "md:leading-[0.75]" as any,
-    "leading-[0.8]" as any,
+    "leading-25" as any,
     "text-color-arnecke-black" as any,
     "hover:!text-[#0200F7]" as any,
   ),

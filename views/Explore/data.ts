@@ -39,4 +39,21 @@ export const EXPLORE_ITEMS: IPageItem[] = [
     ],
     description: `Off White em sarja 100% algodão (260g/m²). Botão e zíper em metal + etiqueta térmica.`,
   },
+  {
+    slug: "still-blusa",
+    year: "2026",
+    title: "Camisa Social | Circle Numbers",
+    collection: {
+      title: "Circle Numbers",
+    },
+    images: [
+      {
+        src: "/images/explore/still-blusa-frente.png",
+      },
+      {
+        src: "/images/explore/still-blusa-costas.png",
+      },
+    ],
+    description: `Camisa Social, pensada para uso fino e casual. Alusões as camisas de futebol em versões mangas longas, conectadas a uma peça essencial para o guarda roupa. Tecido na cor branca em algodão egípcio 400 fios.`,
+  },
 ];

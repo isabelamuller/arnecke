@@ -11,7 +11,7 @@ export const ResearchView = () => {
 
   return (
     <>
-      <PageTitleSetter title="Research" />
+      <PageTitleSetter title="Pesquisa" />
       <Layout widthSize="entire">
         <div className={styles.wrapper}>
           {RESEARCH_ARTICLES.map((article, index) => (

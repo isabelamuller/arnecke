@@ -10,6 +10,10 @@ export const helvetica = localFont({
       path: "../public/fonts/Helvetica/helvetica-light.woff",
       weight: "300",
     },
+    {
+      path: "../public/fonts/Helvetica/helvetica-BoldOblique.woff",
+      weight: "600",
+    },
   ],
   variable: "--font-helvetica",
 });

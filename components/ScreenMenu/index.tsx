@@ -3,6 +3,7 @@ import { IoCloseOutline } from "react-icons/io5";
 import { IScreenMenuProps } from "./types";
 import { loadScreenMenuStyles } from "./styles";
 import { SCREEN_MENU_ITEMS } from "./data";
+import Image from "next/image";
 
 export const ScreenMenu = ({ onClose }: IScreenMenuProps) => {
   const styles = loadScreenMenuStyles();
@@ -10,6 +11,14 @@ export const ScreenMenu = ({ onClose }: IScreenMenuProps) => {
 
   return (
     <div className={styles.wrapper}>
+      <div className="absolute left-1/2 -translate-x-1/2 top-4">
+        <Image
+          src="/images/logo-preto.png"
+          alt="Arnecke logo"
+          width={86}
+          height={40}
+        />
+      </div>
       <button className={styles.closeButton} onClick={onClose}>
         <IoCloseOutline size={30} color="black" />
       </button>

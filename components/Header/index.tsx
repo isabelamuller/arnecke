@@ -28,12 +28,14 @@ export const Header = ({ theme }: IThemeProps) => {
               height={40}
             />
           ) : (
-            <Image
-              src="/images/logo-azul.png"
-              alt="Arnecke logo"
-              width={86}
-              height={40}
-            />
+            <div className={styles.blackLogo}>
+              <Image
+                src="/images/logo-azul.png"
+                alt="Arnecke logo"
+                width={86}
+                height={40}
+              />
+            </div>
           )}
         </Link>
         <div className="flex items-center gap-3">

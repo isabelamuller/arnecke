@@ -15,11 +15,11 @@ export const CommunityView = () => {
 
   return (
     <PageView
-      title="Community"
+      title="Comunidade"
       items={images}
       imageLayout="masonry-grid"
       isModal={false}
-      hoverLabel="View on Instagram"
+      hoverLabel="Ver no Instagram"
     />
   );
 };

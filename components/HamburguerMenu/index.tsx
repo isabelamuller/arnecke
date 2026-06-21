@@ -77,7 +77,7 @@ export const HamburguerMenu = ({ theme }: IThemeProps) => {
               <a
                 key={index}
                 href={socialItem.href}
-                target="_blank"
+                target={socialItem.target}
                 rel="noopener noreferrer"
                 className={styles.socialItem}
               >

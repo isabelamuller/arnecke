@@ -2,13 +2,14 @@ import classnames, {
   alignItems,
   display,
   fontSize,
+  grayscale,
+  group,
   inset,
   justifyContent,
   opacity,
   padding,
   position,
   textTransform,
-  transitionDuration,
   transitionProperty,
   width,
   zIndex,
@@ -40,9 +41,7 @@ export const loadHeaderStyles = () => ({
   logoWrapper: classnames(
     position("absolute"),
     inset("left-1/2"),
-    transitionDuration("duration-300"),
-    opacity("hover:opacity-75"),
-    transitionProperty("transition"),
+    group("group"),
     "-translate-x-1/2" as any,
   ),
   shopLink: classnames(
@@ -54,5 +53,9 @@ export const loadHeaderStyles = () => ({
     transitionProperty("transition"),
     opacity("hover:opacity-60"),
     "tracking-[0.22em]" as any,
+  ),
+  blackLogo: classnames(
+    position("relative"),
+    grayscale("grayscale", "hover:grayscale-0"),
   ),
 });
