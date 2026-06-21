@@ -213,7 +213,7 @@ export const ContactCard3D = () => {
       </div>
 
       <div className="mt-6 flex items-center justify-center gap-2 font-systemia text-[8px] uppercase tracking-[0.22em] opacity-60">
-        <span>Drag to rotate</span>
+        <span>Arraste para girar</span>
       </div>
     </div>
   );
