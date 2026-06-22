@@ -36,7 +36,6 @@ export const Footer = ({ theme }: IThemeProps) => {
             >
               Núcleo
             </button>
-
             <a
               href="https://www.instagram.com/_arnecke/"
               target="_blank"
@@ -46,7 +45,6 @@ export const Footer = ({ theme }: IThemeProps) => {
               <IoLogoInstagram size={14} />
               Instagram
             </a>
-
             <Link
               href="https://arnecke.lojavirtualnuvem.com.br/"
               target="_blank"

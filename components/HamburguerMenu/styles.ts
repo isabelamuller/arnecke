@@ -19,10 +19,12 @@ import classnames, {
   padding,
   position,
   rotate,
+  textColor,
   textTransform,
   transformOrigin,
   transitionDuration,
   transitionProperty,
+  transitionTimingFunction,
   translate,
   width,
   zIndex,
@@ -42,7 +44,7 @@ export const loadHamburguerMenuStyles = (theme: "blue" | "white") => ({
     alignItems("items-center"),
     justifyContent("justify-center"),
     zIndex("z-50"),
-    "text-current" as any,
+    textColor("text-current"),
   ),
   pageTitle: classnames(
     position("fixed"),
@@ -58,15 +60,15 @@ export const loadHamburguerMenuStyles = (theme: "blue" | "white") => ({
   ),
   wrapper: (isMenuOpen: boolean) =>
     classnames(
-      "ease-in-out" as any,
+      transitionTimingFunction("ease-in-out"),
       position("fixed"),
       inset("inset-0"),
       zIndex("z-40"),
       transitionDuration("duration-500"),
       height("h-screen"),
       width("w-full"),
-      "lg:max-w-1/4" as any,
       transitionProperty("transition-transform"),
+      "lg:max-w-1/4" as any,
       isMenuOpen ? translate("translate-x-0") : ("-translate-x-full" as any),
       theme === "blue"
         ? ("bg-color-arnecke-blue" as any)
@@ -86,11 +88,11 @@ export const loadHamburguerMenuStyles = (theme: "blue" | "white") => ({
   exploreText: classnames(
     position("absolute"),
     inset("top-4", "right-5"),
+    opacity("opacity-50"),
     textTransform("uppercase"),
     "text-[10px]" as any,
     "tracking-[0.35em]" as any,
     "text-color-arnecke-blue" as any,
-    "opacity-50" as any,
   ),
   verticalText: classnames(
     position("absolute"),
@@ -98,34 +100,34 @@ export const loadHamburguerMenuStyles = (theme: "blue" | "white") => ({
     textTransform("uppercase"),
     rotate("rotate-90"),
     transformOrigin("origin-bottom-right"),
+    opacity("opacity-40"),
     "text-[10px]" as any,
     "tracking-[0.35em]" as any,
     theme === "blue"
       ? ("text-color-arnecke-white" as any)
       : "text-color-arnecke-blue",
-    "opacity-40" as any,
   ),
   horizontalText: classnames(
     position("absolute"),
     inset("bottom-5", "left-10"),
     textTransform("uppercase"),
+    opacity("opacity-40"),
     "font-helvetica" as any,
     "text-[10px]" as any,
     "tracking-[0.25em]" as any,
     theme === "blue"
       ? ("text-color-arnecke-white" as any)
       : "text-color-arnecke-blue",
-    "opacity-40" as any,
   ),
   verticalLineRight: classnames(
     position("absolute"),
     inset("left-5"),
     width("w-px"),
     display("lg:block", "hidden"),
+    opacity("opacity-20"),
     theme === "blue"
       ? ("bg-color-arnecke-white" as any)
       : "bg-color-arnecke-blue",
-    "opacity-20" as any,
     "top-[70px]" as any,
     "h-[calc(100%-110px)]" as any,
   ),
@@ -133,11 +135,11 @@ export const loadHamburguerMenuStyles = (theme: "blue" | "white") => ({
     position("absolute"),
     inset("right-5"),
     width("w-px"),
+    opacity("opacity-20"),
     display("lg:block", "hidden"),
     theme === "blue"
       ? ("bg-color-arnecke-white" as any)
       : "bg-color-arnecke-blue",
-    "opacity-20" as any,
     "top-[70px]" as any,
     "h-[calc(100%-110px)]" as any,
   ),
@@ -160,8 +162,8 @@ export const loadHamburguerMenuStyles = (theme: "blue" | "white") => ({
     fontSize("text-lg"),
     lineHeight("leading-none"),
     fontWeight("font-bold"),
-    "tracking-[-0.05em]" as any,
     opacity("!opacity-100"),
+    "tracking-[-0.05em]" as any,
   ),
   numberWrapper: classnames(
     opacity("group-hover:opacity-100"),
@@ -191,7 +193,7 @@ export const loadHamburguerMenuStyles = (theme: "blue" | "white") => ({
       inset("inset-0"),
       transitionDuration("duration-300"),
       transitionProperty("transition-transform"),
-      "ease-in-out" as any,
+      transitionTimingFunction("ease-in-out"),
       "z-[100]" as any,
       isArchiveOpen
         ? translate("translate-y-0")
