@@ -12,7 +12,6 @@ type TInfiniteTileProps = {
   tileStepX: number;
   tileStepY: number;
   images: TMeasuredImage[];
-  onImagePointerDown: (item: IPageItem) => void;
 };
 
 export const InfiniteTile = memo(function InfiniteTile({
@@ -23,7 +22,6 @@ export const InfiniteTile = memo(function InfiniteTile({
   tileStepX,
   tileStepY,
   images,
-  onImagePointerDown,
 }: TInfiniteTileProps) {
   return (
     <div
@@ -36,7 +34,7 @@ export const InfiniteTile = memo(function InfiniteTile({
         }px, 0)`,
       }}
     >
-      <MasonryPanel images={images} onImagePointerDown={onImagePointerDown} />
+      <MasonryPanel images={images} />
     </div>
   );
 });

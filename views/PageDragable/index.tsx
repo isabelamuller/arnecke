@@ -1,13 +1,8 @@
 "use client";
 
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
-import { createPortal } from "react-dom";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import { IPageItem } from "../Page/types";
-import { Modal } from "@/components/Modal";
-import { ModalContent } from "@/components/Modal/ModalContent";
-import { useTickSound } from "@/utils/useSound";
 
 import { InfiniteTile } from "./components/InfiniteTile";
 import { MasonryPanel } from "./components/MasonryPanel";
@@ -41,22 +36,13 @@ const PageDraggableContent = ({
   const sourceImages = useMemo(() => getImages(items), [items]);
   const measuredImages = useMeasuredImages(sourceImages);
 
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-
   const clickedItemRef = useRef<IPageItem | null>(null);
 
-  const [selectedItem, setSelectedItem] = useState<IPageItem>();
-  const [isClosing, setIsClosing] = useState(false);
   const [mounted, setMounted] = useState(false);
-
-  const playTick = useTickSound();
 
   const {
     offset,
     isDragging,
-    hasDraggedRef,
     handlePointerDown,
     handlePointerMove,
     handlePointerUp,
@@ -77,63 +63,7 @@ const PageDraggableContent = ({
     setMounted(true);
   }, []);
 
-  useEffect(() => {
-    if (!mounted) return;
-
-    const itemSlug = searchParams.get("item");
-
-    if (!itemSlug) {
-      setSelectedItem(undefined);
-      return;
-    }
-
-    const item = items.find((item) => item.slug === itemSlug);
-
-    if (!item) return;
-
-    setSelectedItem(item);
-  }, [mounted, searchParams]);
-
-  function updateUrlWithItem(item: IPageItem) {
-    if (!item.slug) return;
-
-    const params = new URLSearchParams(searchParams.toString());
-
-    params.set("item", item.slug);
-
-    router.push(`${pathname}?${params.toString()}`, {
-      scroll: false,
-    });
-  }
-
-  function removeItemFromUrl() {
-    const params = new URLSearchParams(searchParams.toString());
-
-    params.delete("item");
-
-    const queryString = params.toString();
-
-    router.push(queryString ? `${pathname}?${queryString}` : pathname, {
-      scroll: false,
-    });
-  }
-
-  function openModal(item: IPageItem) {
-    setSelectedItem(item);
-    updateUrlWithItem(item);
-    playTick();
-  }
-
-  function closeModal() {
-    setIsClosing(true);
-    removeItemFromUrl();
-    playTick();
-
-    setTimeout(() => {
-      setSelectedItem(undefined);
-      setIsClosing(false);
-    }, 300);
-  }
+  const isLoading = !mounted || measuredImages.length === 0;
 
   function handlePanelPointerDown(event: React.PointerEvent<HTMLDivElement>) {
     const target = event.target as HTMLElement;
@@ -146,26 +76,27 @@ const PageDraggableContent = ({
   }
 
   function handlePanelPointerUp(event: React.PointerEvent<HTMLDivElement>) {
-    const itemToOpen = clickedItemRef.current;
-
     handlePointerUp(event);
-
-    if (itemToOpen && !hasDraggedRef.current && isModal) {
-      openModal(itemToOpen);
-    }
 
     clickedItemRef.current = null;
   }
 
-  if (!measuredImages.length) return null;
-
   return (
     <>
+      {isLoading && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-color-arnecke-white text-color-arnecke-black">
+          <span className="font-systemia text-[10px] uppercase tracking-[0.3em]">
+            Loading
+          </span>
+        </div>
+      )}
       <PageTitleSetter title={title} />
       <section
         className={[
           "relative h-screen w-screen overflow-hidden",
           "select-none touch-none",
+          "transition-opacity duration-500",
+          isLoading ? "opacity-0" : "opacity-100",
           isDragging ? "cursor-grabbing" : "cursor-grab",
         ].join(" ")}
         onPointerDown={handlePanelPointerDown}
@@ -201,24 +132,11 @@ const PageDraggableContent = ({
                 tileStepX={tileStepX}
                 tileStepY={tileStepY}
                 images={measuredImages}
-                onImagePointerDown={(item) => {
-                  clickedItemRef.current = item;
-                }}
               />
             )),
           )}
         </div>
       </section>
-
-      {isModal &&
-        mounted &&
-        selectedItem &&
-        createPortal(
-          <Modal isClosing={isClosing} onClose={closeModal}>
-            <ModalContent selectedItem={selectedItem} />
-          </Modal>,
-          document.body,
-        )}
     </>
   );
 };

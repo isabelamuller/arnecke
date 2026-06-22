@@ -18,13 +18,6 @@ export const FOOTBALL_ITEMS: IPageItem[] = [
   {
     images: [
       {
-        src: "/images/research/pesquisa-1/tipografia.jpeg",
-      },
-    ],
-  },
-  {
-    images: [
-      {
         src: "/images/football/flags.png",
       },
     ],

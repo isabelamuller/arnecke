@@ -1,4 +1,5 @@
 import { memo, useEffect, useState } from "react";
+import Image from "next/image";
 import { BalancedMasonryGrid, Frame } from "@masonry-grid/react";
 
 import { GAP, TILE_WIDTH } from "../constants";
@@ -64,10 +65,15 @@ export const MasonryPanel = memo(function MasonryPanel({
               onPointerDownCapture={() => onImagePointerDown?.(image.item)}
               className="group relative z-0 block h-full w-full cursor-pointer overflow-visible border-0 bg-transparent p-0 text-left hover:z-[999]"
             >
-              <img
+              <Image
                 src={image.src}
                 alt={image.title}
+                width={image.width}
+                height={image.height}
+                quality={55}
+                sizes="(min-width: 768px) 230px, 100px"
                 draggable={false}
+                loading="lazy"
                 className="block h-full w-full object-contain transition-transform duration-300 ease-out group-hover:scale-[1.06]"
               />
             </button>
