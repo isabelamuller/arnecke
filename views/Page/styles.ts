@@ -33,7 +33,7 @@ export const loadPageStyles = (
       ? classnames(display("flex"), "flex-wrap" as any)
       : classnames(
           display("grid"),
-          gridTemplateColumns("grid-cols-3", "lg:grid-cols-5"),
+          gridTemplateColumns("grid-cols-2", "lg:grid-cols-5"),
         ),
   ),
   item: classnames(
