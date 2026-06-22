@@ -1,8 +1,14 @@
 "use client";
 
+import Image from "next/image";
 import { useRef, useState } from "react";
 
-export const CircleNumbersView = () => {
+type VideoBlockProps = {
+  src: string;
+  type: string;
+};
+
+const VideoBlock = ({ src, type }: VideoBlockProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const [isPlaying, setIsPlaying] = useState(true);
@@ -31,7 +37,7 @@ export const CircleNumbersView = () => {
   };
 
   return (
-    <div className="pt-10 relative h-screen w-full overflow-hidden">
+    <section className="relative h-screen w-full overflow-hidden">
       <video
         ref={videoRef}
         autoPlay
@@ -41,12 +47,9 @@ export const CircleNumbersView = () => {
         preload="auto"
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
-        className="h-full w-full md:object-cover object-contain"
+        className="h-full w-full object-contain md:object-cover"
       >
-        <source
-          src="/images/circle-numbers-video-compressed.mp4"
-          type="video/mp4"
-        />
+        <source src={src} type={type} />
       </video>
       <div className="absolute bottom-6 right-6 z-10 flex gap-3">
         <button
@@ -54,7 +57,7 @@ export const CircleNumbersView = () => {
           onClick={handleToggleSound}
           className="rounded-full bg-black/50 px-5 py-3 text-sm uppercase tracking-[0.2em] text-white backdrop-blur"
         >
-          {isMuted ? "ativar som" : "Mudo"}
+          {isMuted ? "ativar som" : "mudo"}
         </button>
         <button
           type="button"
@@ -64,6 +67,21 @@ export const CircleNumbersView = () => {
           {isPlaying ? "pausar" : "iniciar"}
         </button>
       </div>
-    </div>
+    </section>
+  );
+};
+
+export const CircleNumbersView = () => {
+  return (
+    <main className="pt-10">
+      <VideoBlock
+        src="/images/circle-numbers-video-compressed.mp4"
+        type="video/mp4"
+      />
+
+      <img src="/images/circle-numbers-picture.png" alt="" className="w-full" />
+
+      <VideoBlock src="/images/circlenumbers-video-2.mp4" type="video/mp4" />
+    </main>
   );
 };
