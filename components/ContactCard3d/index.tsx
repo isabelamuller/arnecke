@@ -4,8 +4,10 @@ import { useTranslation } from "@/i18n/useTranslation";
 import { animate, motion, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
 import { useRef, useState } from "react";
+import { loadContactCardStyles } from "./styles";
 
 export const ContactCard3D = () => {
+  const styles = loadContactCardStyles();
   const [isDragging, setIsDragging] = useState(false);
   const { t } = useTranslation();
 
@@ -79,9 +81,9 @@ export const ContactCard3D = () => {
   };
 
   return (
-    <div className="flex min-h-[70svh] w-full flex-col items-center justify-center overflow-hidden px-4">
+    <div className={styles.wrapper}>
       <div
-        className="relative aspect-[580/380] w-full max-w-[580px]"
+        className={styles.content}
         style={{
           perspective: "1200px",
         }}
@@ -91,15 +93,7 @@ export const ContactCard3D = () => {
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}
           onPointerCancel={handlePointerUp}
-          className="
-            relative
-            h-full
-            w-full
-            cursor-grab
-            select-none
-            touch-none
-            active:cursor-grabbing
-          "
+          className={styles.motion}
           style={{
             rotateX: smoothRotationX,
             rotateY: smoothRotationY,
@@ -107,76 +101,52 @@ export const ContactCard3D = () => {
           }}
         >
           <div
-            className="
-              absolute
-              inset-0
-              flex
-              items-center
-              justify-center
-              overflow-hidden
-              bg-color-arnecke-white
-              text-color-arnecke-black
-            "
+            className={styles.cardContent}
             style={{
               backfaceVisibility: "hidden",
               WebkitBackfaceVisibility: "hidden",
             }}
           >
-            <div className="flex h-full flex-col items-center justify-between py-2 sm:py-3">
-              <h1 className="font-helvetica text-center text-[clamp(24px,7vw,43px)] font-semibold uppercase italic leading-none">
-                CONGRATULATIONS!!!
-              </h1>
-              <div className="mt-2 flex flex-col items-center sm:mt-4">
-                <span className="font-helvetica text-[clamp(15px,4.8vw,30px)] uppercase leading-none text-color-arnecke-black">
+            <div className={styles.frontWrapper}>
+              <h1 className={styles.title}>CONGRATULATIONS!!!</h1>
+              <div className={styles.descriptionWrapper}>
+                <span className={styles.firstTextCopy}>
                   you have just met another
                 </span>
-                <span className="font-denton text-[clamp(68px,23vw,140px)] uppercase leading-none text-color-arnecke-black">
-                  circle
-                </span>
+                <span className={styles.secondTextCopy}>circle</span>
               </div>
               <Image
                 src="/images/logo-preto.png"
                 alt="Arnecke logo"
                 width={75}
                 height={40}
-                className="h-auto w-[clamp(54px,14vw,75px)]"
+                className={styles.logoFront}
               />
             </div>
           </div>
           <div
-            className="
-              absolute
-              inset-0
-              flex
-              items-center
-              justify-center
-              overflow-hidden
-              border
-              border-color-arnecke-blue
-              bg-color-arnecke-white
-              text-color-arnecke-black
-            "
+            className={styles.cardContent}
             style={{
               backfaceVisibility: "hidden",
               WebkitBackfaceVisibility: "hidden",
               transform: "rotateY(180deg)",
             }}
           >
-            <div className="relative h-full w-full overflow-hidden p-3 sm:p-5">
+            <div className={styles.backWrapper}>
               <Image
                 src="/images/assinatura-contato.PNG"
                 alt="Arnecke assinatura"
                 fill
                 sizes="(max-width: 640px) 100vw, 580px"
-                className="pointer-events-none absolute inset-0 z-0 object-cover sm:object-none"
+                className={styles.bgImage}
               />
-              <div className="relative z-10 flex h-full flex-col justify-between font-helvetica font-light">
-                <div className="flex flex-col gap-1 text-[10px] italic leading-none sm:flex-row sm:justify-between sm:text-sm">
+              <div className={styles.linksWrapper}>
+                <div className={styles.links}>
                   <a
                     href="https://www.instagram.com/arnecke.circle"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="relative z-20 pointer-events-auto hover:underline"
+                    className={styles.link}
                   >
                     @arnecke.circle
                   </a>
@@ -184,25 +154,22 @@ export const ContactCard3D = () => {
                     href="/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="relative z-20 pointer-events-auto hover:underline"
+                    className={styles.link}
                   >
                     www.arneckecircle.com.br
                   </a>
-                  <a
-                    href="mailto:team@arneckework.com"
-                    className="relative z-20 pointer-events-auto hover:underline"
-                  >
+                  <a href="mailto:team@arneckework.com" className={styles.link}>
                     team@arneckework.com
                   </a>
                 </div>
-                <div className="flex w-full items-end">
-                  <hr className="flex-1 border-t border-black sm:border-t-2" />
+                <div className={styles.backLogoWrapper}>
+                  <hr className={styles.border} />
                   <Image
                     src="/images/logo-preto.png"
                     alt="Arnecke logo"
                     width={75}
                     height={40}
-                    className="h-auto w-[clamp(54px,14vw,75px)] shrink-0"
+                    className={styles.backLogo}
                   />
                 </div>
               </div>
@@ -210,7 +177,7 @@ export const ContactCard3D = () => {
           </div>
         </motion.div>
       </div>
-      <div className="mt-6 flex items-center justify-center gap-2 font-systemia text-[8px] uppercase tracking-[0.22em] opacity-60">
+      <div className={styles.dragToRotate}>
         <span>{t("Contact.dragToRotate")}</span>
       </div>
     </div>
