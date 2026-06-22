@@ -1,5 +1,11 @@
 "use client";
 import { useRef, useState } from "react";
+import {
+  IoPauseOutline,
+  IoPlayOutline,
+  IoVolumeHighOutline,
+  IoVolumeMuteOutline,
+} from "react-icons/io5";
 
 type VideoBlockProps = {
   src: string;
@@ -35,7 +41,7 @@ const VideoBlock = ({ src, type }: VideoBlockProps) => {
   };
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative h-full w-full overflow-hidden">
       <video
         ref={videoRef}
         autoPlay
@@ -49,20 +55,68 @@ const VideoBlock = ({ src, type }: VideoBlockProps) => {
       >
         <source src={src} type={type} />
       </video>
-      <div className="absolute bottom-6 right-6 z-10 flex gap-3">
+      <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 gap-2 md:bottom-20">
         <button
           type="button"
           onClick={handleToggleSound}
-          className="rounded-full bg-black/50 px-5 py-3 text-sm uppercase tracking-[0.2em] text-white backdrop-blur"
+          className="
+       flex
+      h-5
+      w-5
+      items-center
+      justify-center
+      rounded-full
+            cursor-pointer
+      bg-black/50
+      text-white
+      backdrop-blur
+      transition-opacity
+      md:h-auto
+      md:w-auto
+      md:p-3
+      opacity-50
+      hover:opacity-100
+      transition-opacity
+      duration-300
+    "
         >
-          {isMuted ? "ativar som" : "mudo"}
+          {isMuted ? (
+            <IoVolumeMuteOutline size={13} />
+          ) : (
+            <IoVolumeHighOutline size={13} />
+          )}
         </button>
+
         <button
           type="button"
           onClick={handleTogglePlay}
-          className="rounded-full bg-black/50 px-5 py-3 text-sm uppercase tracking-[0.2em] text-white backdrop-blur"
+          className="
+      flex
+      h-5
+      w-5
+      items-center
+      justify-center
+      rounded-full
+            cursor-pointer
+      bg-black/50
+      text-white
+      backdrop-blur
+      transition-opacity
+      hover:opacity-80
+      md:h-auto
+      md:w-auto
+      md:p-3
+  opacity-50
+      hover:opacity-100
+      transition-opacity
+      duration-300
+    "
         >
-          {isPlaying ? "pausar" : "iniciar"}
+          {isPlaying ? (
+            <IoPauseOutline size={13} />
+          ) : (
+            <IoPlayOutline size={13} />
+          )}
         </button>
       </div>
     </section>
