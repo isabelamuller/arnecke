@@ -13,13 +13,32 @@ import { GAP, REPEATED_TILES, TILE_GAP, TILE_WIDTH } from "./constants";
 import { getImages, modulo } from "./utils";
 import { IPageDraggableProps } from "./types";
 import { PageTitleSetter } from "@/components/PageTitleProvider";
+import {
+  PageLoading,
+  PageMobileMasonry,
+  useIsMobile,
+} from "./components/Mobile";
 
 export const PageDraggable = ({ title, items }: IPageDraggableProps) => {
   return (
-    <Suspense fallback={null}>
-      <PageDraggableContent title={title} items={items} />
+    <Suspense fallback={<PageLoading />}>
+      <PageDraggableResponsive title={title} items={items} />
     </Suspense>
   );
+};
+
+const PageDraggableResponsive = ({ title, items }: IPageDraggableProps) => {
+  const isMobile = useIsMobile();
+
+  if (isMobile === null) {
+    return <PageLoading />;
+  }
+
+  if (isMobile) {
+    return <PageMobileMasonry title={title} items={items} />;
+  }
+
+  return <PageDraggableContent title={title} items={items} />;
 };
 
 const PageDraggableContent = ({ title, items }: IPageDraggableProps) => {

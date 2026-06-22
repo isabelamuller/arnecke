@@ -3,7 +3,7 @@ import { IPageItem } from "../Page/types";
 export type TImage = {
   src: string;
   title: string;
-  slug: string;
+  slug?: string;
   item: IPageItem;
 };
 
