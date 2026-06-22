@@ -41,14 +41,13 @@ export const CircleNumbersView = () => {
         preload="auto"
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
-        className="h-full w-full object-cover"
+        className="h-full w-full md:object-cover object-contain"
       >
         <source
           src="/images/circle-numbers-video-compressed.mp4"
           type="video/mp4"
         />
       </video>
-
       <div className="absolute bottom-6 right-6 z-10 flex gap-3">
         <button
           type="button"
@@ -57,7 +56,6 @@ export const CircleNumbersView = () => {
         >
           {isMuted ? "ativar som" : "Mudo"}
         </button>
-
         <button
           type="button"
           onClick={handleTogglePlay}
