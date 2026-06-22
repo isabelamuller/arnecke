@@ -6,6 +6,7 @@ import {
   IoVolumeHighOutline,
   IoVolumeMuteOutline,
 } from "react-icons/io5";
+import { loadCircleNumbersStyles } from "./styles";
 
 type VideoBlockProps = {
   src: string;
@@ -13,6 +14,7 @@ type VideoBlockProps = {
 };
 
 const VideoBlock = ({ src, type }: VideoBlockProps) => {
+  const styles = loadCircleNumbersStyles();
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const [isPlaying, setIsPlaying] = useState(true);
@@ -41,7 +43,7 @@ const VideoBlock = ({ src, type }: VideoBlockProps) => {
   };
 
   return (
-    <section className="relative h-full w-full overflow-hidden">
+    <section className={styles.wrapperVideo}>
       <video
         ref={videoRef}
         autoPlay
@@ -51,34 +53,15 @@ const VideoBlock = ({ src, type }: VideoBlockProps) => {
         preload="auto"
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
-        className="h-full w-full object-contain md:object-cover"
+        className={styles.video}
       >
         <source src={src} type={type} />
       </video>
-      <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 gap-2 md:bottom-20">
+      <div className={styles.buttonWrapper}>
         <button
           type="button"
           onClick={handleToggleSound}
-          className="
-       flex
-      h-5
-      w-5
-      items-center
-      justify-center
-      rounded-full
-            cursor-pointer
-      bg-black/50
-      text-white
-      backdrop-blur
-      transition-opacity
-      md:h-auto
-      md:w-auto
-      md:p-3
-      opacity-50
-      hover:opacity-100
-      transition-opacity
-      duration-300
-    "
+          className={styles.button}
         >
           {isMuted ? (
             <IoVolumeMuteOutline size={13} />
@@ -86,31 +69,10 @@ const VideoBlock = ({ src, type }: VideoBlockProps) => {
             <IoVolumeHighOutline size={13} />
           )}
         </button>
-
         <button
           type="button"
           onClick={handleTogglePlay}
-          className="
-      flex
-      h-5
-      w-5
-      items-center
-      justify-center
-      rounded-full
-            cursor-pointer
-      bg-black/50
-      text-white
-      backdrop-blur
-      transition-opacity
-      hover:opacity-80
-      md:h-auto
-      md:w-auto
-      md:p-3
-  opacity-50
-      hover:opacity-100
-      transition-opacity
-      duration-300
-    "
+          className={styles.button}
         >
           {isPlaying ? (
             <IoPauseOutline size={13} />
@@ -124,16 +86,15 @@ const VideoBlock = ({ src, type }: VideoBlockProps) => {
 };
 
 export const CircleNumbersView = () => {
+  const styles = loadCircleNumbersStyles();
   return (
-    <main className="pt-10">
+    <div className={styles.pageWrapper}>
       <VideoBlock
         src="/images/circle-numbers-video-compressed.mp4"
         type="video/mp4"
       />
-
-      <img src="/images/circle-numbers-picture.png" alt="" className="w-full" />
-
+      <img src="/images/circle-numbers-picture.png" alt="" />
       <VideoBlock src="/images/circlenumbers-video-2.mp4" type="video/mp4" />
-    </main>
+    </div>
   );
 };
