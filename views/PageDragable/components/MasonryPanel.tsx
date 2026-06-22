@@ -59,24 +59,16 @@ export const MasonryPanel = memo(function MasonryPanel({
             width={image.width}
             height={image.height}
           >
-            <button
-              type="button"
-              data-draggable-image="true"
-              onPointerDownCapture={() => onImagePointerDown?.(image.item)}
-              className="group relative z-0 block h-full w-full cursor-pointer overflow-visible border-0 bg-transparent p-0 text-left hover:z-[999]"
-            >
-              <Image
+            <div className="group relative z-0 block h-full w-full overflow-visible">
+              <img
                 src={image.src}
                 alt={image.title}
-                width={image.width}
-                height={image.height}
-                quality={55}
-                sizes="(min-width: 768px) 230px, 100px"
                 draggable={false}
                 loading="lazy"
-                className="block h-full w-full object-contain transition-transform duration-300 ease-out group-hover:scale-[1.06]"
+                decoding="async"
+                className="block h-full w-full select-none object-contain md:transition-transform md:duration-300 md:ease-out md:group-hover:scale-[1.06]"
               />
-            </button>
+            </div>
           </Frame>
         ))}
       </BalancedMasonryGrid>

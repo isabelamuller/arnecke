@@ -1,8 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useMemo, useRef, useState } from "react";
-
-import { IPageItem } from "../Page/types";
+import { Suspense, useEffect, useMemo, useState } from "react";
 
 import { InfiniteTile } from "./components/InfiniteTile";
 import { MasonryPanel } from "./components/MasonryPanel";
@@ -16,27 +14,17 @@ import { getImages, modulo } from "./utils";
 import { IPageDraggableProps } from "./types";
 import { PageTitleSetter } from "@/components/PageTitleProvider";
 
-export const PageDraggable = ({
-  title,
-  items,
-  isModal = true,
-}: IPageDraggableProps) => {
+export const PageDraggable = ({ title, items }: IPageDraggableProps) => {
   return (
     <Suspense fallback={null}>
-      <PageDraggableContent title={title} items={items} isModal={isModal} />
+      <PageDraggableContent title={title} items={items} />
     </Suspense>
   );
 };
 
-const PageDraggableContent = ({
-  title,
-  items,
-  isModal,
-}: IPageDraggableProps) => {
+const PageDraggableContent = ({ title, items }: IPageDraggableProps) => {
   const sourceImages = useMemo(() => getImages(items), [items]);
   const measuredImages = useMeasuredImages(sourceImages);
-
-  const clickedItemRef = useRef<IPageItem | null>(null);
 
   const [mounted, setMounted] = useState(false);
 
@@ -58,28 +46,11 @@ const PageDraggableContent = ({
 
   const normalizedX = modulo(offset.x, tileStepX);
   const normalizedY = modulo(offset.y, tileStepY);
+  const isLoading = !mounted || measuredImages.length === 0;
 
   useEffect(() => {
     setMounted(true);
   }, []);
-
-  const isLoading = !mounted || measuredImages.length === 0;
-
-  function handlePanelPointerDown(event: React.PointerEvent<HTMLDivElement>) {
-    const target = event.target as HTMLElement;
-
-    if (!target.closest("[data-draggable-image='true']")) {
-      clickedItemRef.current = null;
-    }
-
-    handlePointerDown(event);
-  }
-
-  function handlePanelPointerUp(event: React.PointerEvent<HTMLDivElement>) {
-    handlePointerUp(event);
-
-    clickedItemRef.current = null;
-  }
 
   return (
     <>
@@ -99,10 +70,10 @@ const PageDraggableContent = ({
           isLoading ? "opacity-0" : "opacity-100",
           isDragging ? "cursor-grabbing" : "cursor-grab",
         ].join(" ")}
-        onPointerDown={handlePanelPointerDown}
+        onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
-        onPointerUp={handlePanelPointerUp}
-        onPointerCancel={handlePanelPointerUp}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerUp}
       >
         <div
           ref={elementRef}
@@ -110,7 +81,6 @@ const PageDraggableContent = ({
         >
           <MasonryPanel images={measuredImages} />
         </div>
-
         <div
           className="absolute left-0 top-0"
           style={{

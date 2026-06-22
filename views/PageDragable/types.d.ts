@@ -25,5 +25,4 @@ export type TOffset = {
 export interface IPageDraggableProps {
   items: IPageItem[];
   title: string;
-  isModal?: boolean;
 }
