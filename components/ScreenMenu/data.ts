@@ -1,9 +1,30 @@
 export const SCREEN_MENU_ITEMS = [
-  { label: "Comunidade", href: "/community" },
-  { label: "Explorar", href: "/explore" },
-  { label: "Pesquisa", href: "/research" },
-  { label: "Futebol", href: "/football" },
-  { label: "Campo", href: "/campo" },
-  { label: "Experimental", href: "/experimental" },
-  { label: "Local", href: "/local" },
+  {
+    translationKey: "community",
+    href: "/community",
+  },
+  {
+    translationKey: "explore",
+    href: "/explore",
+  },
+  {
+    translationKey: "research",
+    href: "/research",
+  },
+  {
+    translationKey: "football",
+    href: "/football",
+  },
+  {
+    translationKey: "campo",
+    href: "/campo",
+  },
+  {
+    translationKey: "experimental",
+    href: "/experimental",
+  },
+  {
+    translationKey: "local",
+    href: "/local",
+  },
 ];

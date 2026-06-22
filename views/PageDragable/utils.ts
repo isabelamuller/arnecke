@@ -14,7 +14,6 @@ export function getImages(items: IPageItem[]): TImage[] {
         .map((image) => ({
           src: image.src,
           title: item.title ?? "",
-          slug: item.slug ?? "",
           item,
         })) ?? [],
   );

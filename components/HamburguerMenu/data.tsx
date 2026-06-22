@@ -1,23 +1,25 @@
-import { FaShoppingBag } from "react-icons/fa";
 import { IoLogoInstagram, IoIosMail } from "react-icons/io";
 
 export const menuItems = [
   {
-    label: "Shop",
-    href: "https://arnecke.lojavirtualnuvem.com.br/",
-    icon: <FaShoppingBag size={18} className="opacity-60" />,
+    id: "shop",
+    translationKey: "shop",
+    href: "/explore",
   },
   {
-    label: "Circle Numbers",
+    id: "circleNumbers",
+    translationKey: "circleNumbers",
     href: "/circle-numbers",
   },
   {
-    label: "Contato",
+    id: "contact",
+    translationKey: "contact",
     href: "/contact",
   },
   {
-    label: "Núcleo",
-    italic: true,
+    id: "nucleo",
+    translationKey: "nucleo",
+    href: "#",
   },
 ];
 

@@ -1,11 +1,13 @@
 "use client";
 
+import { useTranslation } from "@/i18n/useTranslation";
 import { animate, motion, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
 import { useRef, useState } from "react";
 
 export const ContactCard3D = () => {
   const [isDragging, setIsDragging] = useState(false);
+  const { t } = useTranslation();
 
   const rotationY = useMotionValue(0);
   const rotationX = useMotionValue(0);
@@ -209,7 +211,7 @@ export const ContactCard3D = () => {
         </motion.div>
       </div>
       <div className="mt-6 flex items-center justify-center gap-2 font-systemia text-[8px] uppercase tracking-[0.22em] opacity-60">
-        <span>Arraste para girar</span>
+        <span>{t("Contact.dragToRotate")}</span>
       </div>
     </div>
   );

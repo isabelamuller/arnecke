@@ -1,3 +1,5 @@
+"use client";
+
 import { useTickSound } from "@/utils/useSound";
 import Link from "next/link";
 import { useState } from "react";
@@ -5,10 +7,12 @@ import { GoTriangleLeft, GoTriangleRight } from "react-icons/go";
 import { IModalContentProps } from "./types";
 import { loadModalContentStyles } from "./styles";
 import { Parser } from "html-to-react";
+import { useTranslation } from "@/i18n/useTranslation";
 
 export const ModalContent = ({ selectedItem }: IModalContentProps) => {
   const styles = loadModalContentStyles();
   const playTick = useTickSound();
+  const { t } = useTranslation();
 
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
@@ -71,7 +75,7 @@ export const ModalContent = ({ selectedItem }: IModalContentProps) => {
               className={styles.imageButton}
             >
               <span className="absolute inset-0 opacity-50 text-[10px]">
-                clique para dar zoom
+                {t("ModalContent.clickToZoom")}
               </span>
               <div className={styles.imageFrame}>
                 <img
@@ -107,7 +111,6 @@ export const ModalContent = ({ selectedItem }: IModalContentProps) => {
                 {String(selectedImageIndex + 1).padStart(2, "0")} /{" "}
                 {String(images.length).padStart(2, "0")}
               </span>
-
               <div className={styles.tinyImagesBottom}>
                 {images.map((image, index) => (
                   <button
@@ -149,7 +152,9 @@ export const ModalContent = ({ selectedItem }: IModalContentProps) => {
             <div className="flex justify-between text-[10px] uppercase tracking-[0.18em] pt-4 mt-auto border-t border-black/20">
               {!!selectedItem.collection && (
                 <div>
-                  <span className="mb-1 block opacity-50">Coleção</span>
+                  <span className="mb-1 block opacity-50">
+                    {t("ModalContent.collection")}
+                  </span>
                   {selectedItem.collection.link ? (
                     <Link
                       href={selectedItem.collection.link}
@@ -166,7 +171,9 @@ export const ModalContent = ({ selectedItem }: IModalContentProps) => {
               )}
               {!!selectedItem.year && (
                 <div>
-                  <span className="mb-1 block opacity-50">Ano</span>
+                  <span className="mb-1 block opacity-50">
+                    {t("ModalContent.year")}
+                  </span>
                   <p className="normal-case tracking-normal">
                     {selectedItem.year}
                   </p>
@@ -187,7 +194,7 @@ export const ModalContent = ({ selectedItem }: IModalContentProps) => {
               onClick={closeImageModal}
               className={styles.zoomModalClose}
             >
-              fechar
+              x
             </button>
             <div
               className={styles.zoomModalImageWrapper(isZooming)}

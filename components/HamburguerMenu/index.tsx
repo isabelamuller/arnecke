@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { IoCloseOutline } from "react-icons/io5";
 import { GoTriangleRight } from "react-icons/go";
 
@@ -10,13 +10,17 @@ import { loadHamburguerMenuStyles } from "./styles";
 import { menuItems, socialItems } from "./data";
 import { IThemeProps } from "../Header";
 import { usePageTitle } from "../PageTitleProvider";
+import { useTranslation } from "@/i18n/useTranslation";
 
 export const HamburguerMenu = ({ theme }: IThemeProps) => {
   const styles = loadHamburguerMenuStyles(theme);
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isArchiveOpen, setIsArchiveOpen] = useState(false);
+
   const playTick = useTickSound();
   const { pageTitle } = usePageTitle();
+  const { t } = useTranslation();
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
@@ -37,11 +41,7 @@ export const HamburguerMenu = ({ theme }: IThemeProps) => {
   return (
     <>
       <div className={styles.headerTriggerWrapper}>
-        <button
-          className={styles.buttonWrapper}
-          aria-label="Toggle menu"
-          onClick={toggleMenu}
-        >
+        <button className={styles.buttonWrapper} onClick={toggleMenu}>
           {isMenuOpen ? (
             <IoCloseOutline size={20} />
           ) : (
@@ -52,19 +52,21 @@ export const HamburguerMenu = ({ theme }: IThemeProps) => {
       </div>
       <div className={styles.wrapper(isMenuOpen)}>
         <div className={styles.content}>
-          <span className={styles.verticalText}>Scoring goals</span>
+          <span className={styles.verticalText}>
+            {t("HamburguerMenu.verticalText")}
+          </span>
           <div className={styles.verticalLineRight} />
           <ul>
             {menuItems.map((menuItem, index) => (
-              <li className={styles.listItem} key={index}>
+              <li className={styles.listItem} key={menuItem.id}>
                 <a
                   className={styles.listLink}
                   href={menuItem.href}
                   onClick={
-                    menuItem.label === "Núcleo" ? toggleArchiveClick : closeMenu
+                    menuItem.id === "nucleo" ? toggleArchiveClick : closeMenu
                   }
                 >
-                  {menuItem.label}
+                  {t(`HamburguerMenu.${menuItem.translationKey}`)}
                   <span className={styles.numberWrapper}>
                     {String(index + 1).padStart(2, "0")}
                   </span>
@@ -88,7 +90,7 @@ export const HamburguerMenu = ({ theme }: IThemeProps) => {
         </div>
         <div className={styles.verticalLineLeft} />
         <div className={styles.horizontalText}>
-          Since 2024 © Expanding experiences
+          {t("HamburguerMenu.footerText")}
         </div>
       </div>
       <div className={styles.archiveWrapper(isArchiveOpen)}>

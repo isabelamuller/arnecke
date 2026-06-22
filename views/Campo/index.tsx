@@ -1,6 +1,11 @@
+"use client";
+
+import { useTranslation } from "@/i18n/useTranslation";
 import { PageDraggable } from "../PageDragable";
 import { CONTEXT_ITEMS } from "./data";
 
 export const CampoView = () => {
-  return <PageDraggable items={CONTEXT_ITEMS} title="campo" />;
+  const { t } = useTranslation();
+
+  return <PageDraggable items={CONTEXT_ITEMS} title={t("Campo.titlePage")} />;
 };

@@ -1,11 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
+
 import { COMMUNITY_IMAGES } from "./data";
 import { IPageItem } from "../Page/types";
 import { PageView } from "../Page";
+import { useTranslation } from "@/i18n/useTranslation";
 
 export const CommunityView = () => {
+  const { t } = useTranslation();
   const [images, setImages] = useState<IPageItem[]>([]);
 
   useEffect(() => {
@@ -15,11 +18,11 @@ export const CommunityView = () => {
 
   return (
     <PageView
-      title="Comunidade"
+      title={t("Community.title")}
       items={images}
       imageLayout="masonry-grid"
       isModal={false}
-      hoverLabel="Ver no Instagram"
+      hoverLabel={t("Community.hoverLabel")}
     />
   );
 };

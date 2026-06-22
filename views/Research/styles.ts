@@ -57,21 +57,26 @@ export const loadResearchStyles = () => ({
   content: classnames(
     position("relative"),
     overflow("overflow-hidden"),
-    "aspect-[4/2.65]" as any,
+    "aspect-[4/3.2]" as any,
+    "md:aspect-[4/2.65]" as any,
   ),
   image: classnames(
-    transitionProperty("transition-all"),
-    transitionDuration("duration-500"),
-    grayscale("group-hover:grayscale-0"),
-    "group-hover:scale-[1.025]" as any,
+    transitionProperty("md:transition-all"),
+    transitionDuration("md:duration-500"),
+    grayscale(
+      "md:grayscale",
+      "md:group-hover:grayscale-0" as any,
+      "md:group-hover:scale-[1.025]" as any,
+    ),
   ),
   overlay: classnames(
     position("absolute"),
     inset("inset-0"),
-    opacity("opacity-0", "group-hover:opacity-100"),
+    opacity("opacity-100", "md:opacity-0", "md:group-hover:opacity-100" as any),
     transitionDuration("duration-300"),
     transitionProperty("transition-opacity"),
-    "bg-black/50" as any,
+    "bg-black/45" as any,
+    "md:bg-black/50" as any,
   ),
   textContent: classnames(
     position("absolute"),
@@ -82,7 +87,7 @@ export const loadResearchStyles = () => ({
     padding("p-3", "md:p-4"),
     transitionDuration("duration-300"),
     transitionProperty("transition-opacity"),
-    opacity("opacity-0", "group-hover:opacity-100"),
+    opacity("opacity-100", "md:opacity-0", "md:group-hover:opacity-100" as any),
     "text-color-arnecke-white" as any,
   ),
   year: classnames(
@@ -126,8 +131,12 @@ export const loadResearchStyles = () => ({
     gap("gap-1"),
   ),
   arrow: classnames(
-    translate("translate-x-4", "group-hover:translate-x-0"),
-    opacity("opacity-0", "group-hover:opacity-100"),
+    translate(
+      "translate-x-0",
+      "md:translate-x-4",
+      "md:group-hover:translate-x-0" as any,
+    ),
+    opacity("opacity-100", "md:opacity-0", "md:group-hover:opacity-100" as any),
     transitionDuration("duration-300"),
     transitionProperty("transition-all"),
   ),

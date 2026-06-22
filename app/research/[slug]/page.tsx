@@ -37,7 +37,7 @@ export default async function ResearchSlugPage({
 
   return (
     <>
-      <PageTitleSetter title={`Pesquisa - ${page.title}`} />
+      <PageTitleSetter title={`Research - ${page.title}`} />
       <Layout widthSize="article">
         <div className={styles.titleContent}>
           <h1 className={styles.title}>{page.title}</h1>
