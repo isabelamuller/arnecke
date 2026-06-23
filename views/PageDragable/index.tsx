@@ -13,11 +13,8 @@ import { GAP, REPEATED_TILES, TILE_GAP, TILE_WIDTH } from "./constants";
 import { getImages, modulo } from "./utils";
 import { IPageDraggableProps } from "./types";
 import { PageTitleSetter } from "@/components/PageTitleProvider";
-import {
-  PageLoading,
-  PageMobileMasonry,
-  useIsMobile,
-} from "./components/Mobile";
+import { PageMasonry } from "./components/PageMasonry";
+import { PageLoading } from "./components/PageLoading";
 
 export const PageDraggable = ({ title, items }: IPageDraggableProps) => {
   return (
@@ -28,17 +25,7 @@ export const PageDraggable = ({ title, items }: IPageDraggableProps) => {
 };
 
 const PageDraggableResponsive = ({ title, items }: IPageDraggableProps) => {
-  const isMobile = useIsMobile();
-
-  if (isMobile === null) {
-    return <PageLoading />;
-  }
-
-  if (isMobile) {
-    return <PageMobileMasonry title={title} items={items} />;
-  }
-
-  return <PageDraggableContent title={title} items={items} />;
+  return <PageMasonry title={title} items={items} />;
 };
 
 const PageDraggableContent = ({ title, items }: IPageDraggableProps) => {
@@ -73,13 +60,7 @@ const PageDraggableContent = ({ title, items }: IPageDraggableProps) => {
 
   return (
     <>
-      {isLoading && (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-color-arnecke-white text-color-arnecke-black">
-          <span className="font-systemia text-[10px] uppercase tracking-[0.3em]">
-            Loading
-          </span>
-        </div>
-      )}
+      {isLoading && <PageLoading />}
       <PageTitleSetter title={title} />
       <section
         className={[
