@@ -129,13 +129,13 @@ export const loadContactCardStyles = () => ({
   ),
   links: classnames(
     display("flex"),
-    flexDirection("flex-col", "sm:flex-row"),
+    flexDirection("flex-row"),
     gap("gap-1"),
     fontStyle("italic"),
     lineHeight("leading-none"),
-    justifyContent("sm:justify-between"),
+    justifyContent("justify-between"),
     fontSize("sm:text-sm"),
-    "text-[10px]" as any,
+    "text-[8px]" as any,
   ),
   link: classnames(
     position("relative"),

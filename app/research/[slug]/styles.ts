@@ -24,6 +24,7 @@ export const loadResearchSubpageStyles = () => ({
     "[&>span]:text-lg" as any,
     "[&>span]:italic" as any,
     "[&>span]:opacity-50" as any,
+    "text-color-arnecke-black" as any,
     "[&>span]:text-center" as any,
   ),
   title: classnames(

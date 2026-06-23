@@ -4,42 +4,7 @@ export const CONTEXT_ITEMS: IPageItem[] = [
   {
     images: [
       {
-        src: "/images/context/amy capa.png",
-      },
-    ],
-  },
-  {
-    images: [
-      {
         src: "/images/context/amy 2.png",
-      },
-    ],
-  },
-  {
-    images: [
-      {
-        src: "/images/context/htma.png",
-      },
-    ],
-  },
-  {
-    images: [
-      {
-        src: "/images/context/leal back.jpg",
-      },
-    ],
-  },
-  {
-    images: [
-      {
-        src: "/images/context/sandal 2.png",
-      },
-    ],
-  },
-  {
-    images: [
-      {
-        src: "/images/context/sandal 5.png",
       },
     ],
   },
@@ -53,28 +18,7 @@ export const CONTEXT_ITEMS: IPageItem[] = [
   {
     images: [
       {
-        src: "/images/context/skola 1.png",
-      },
-    ],
-  },
-  {
-    images: [
-      {
-        src: "/images/context/skola capa.png",
-      },
-    ],
-  },
-  {
-    images: [
-      {
         src: "/images/context/try.PNG",
-      },
-    ],
-  },
-  {
-    images: [
-      {
-        src: "/images/context/vicent cassel.jpg",
       },
     ],
   },

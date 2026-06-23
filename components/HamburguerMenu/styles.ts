@@ -101,7 +101,7 @@ export const loadHamburguerMenuStyles = (theme: "blue" | "white") => ({
     rotate("rotate-90"),
     transformOrigin("origin-bottom-right"),
     opacity("opacity-40"),
-    "text-[10px]" as any,
+    "text-[8px]" as any,
     "tracking-[0.35em]" as any,
     theme === "blue"
       ? ("text-color-arnecke-white" as any)
@@ -113,7 +113,7 @@ export const loadHamburguerMenuStyles = (theme: "blue" | "white") => ({
     textTransform("uppercase"),
     opacity("opacity-40"),
     "font-helvetica" as any,
-    "text-[10px]" as any,
+    "text-[8px]" as any,
     "tracking-[0.25em]" as any,
     theme === "blue"
       ? ("text-color-arnecke-white" as any)

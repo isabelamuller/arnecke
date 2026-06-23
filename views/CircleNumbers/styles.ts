@@ -34,7 +34,7 @@ export const loadCircleNumbersStyles = () => ({
   ),
   buttonWrapper: classnames(
     position("absolute"),
-    inset("bottom-4", "left-1/2", "md:bottom-20"),
+    inset("bottom-4", "right-4", "md:bottom-40"),
     zIndex("z-10"),
     display("flex"),
     gap("gap-2"),
@@ -52,7 +52,7 @@ export const loadCircleNumbersStyles = () => ({
     transitionProperty("transition-opacity"),
     transitionDuration("duration-300"),
     padding("md:p-3"),
-    opacity("opacity-50", "hover:opacity-100"),
+    opacity("opacity-70", "hover:opacity-100"),
     backdropBlur("backdrop-blur"),
     "bg-black/50" as any,
   ),

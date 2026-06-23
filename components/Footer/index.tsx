@@ -37,7 +37,7 @@ export const Footer = ({ theme }: IThemeProps) => {
               Núcleo
             </button>
             <a
-              href="https://www.instagram.com/_arnecke/"
+              href="https://www.instagram.com/arnecke.circle"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.socialLink}
@@ -58,7 +58,7 @@ export const Footer = ({ theme }: IThemeProps) => {
             <Image
               src={
                 theme === "blue"
-                  ? "/images/logo-contact.png"
+                  ? "/images/logo-branco-contact.png"
                   : "/images/footer-logo.png"
               }
               alt="Arnecke logo"

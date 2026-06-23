@@ -4,7 +4,7 @@ export const menuItems = [
   {
     id: "shop",
     translationKey: "shop",
-    href: "/explore",
+    href: "https://arnecke.lojavirtualnuvem.com.br/",
   },
   {
     id: "circleNumbers",
