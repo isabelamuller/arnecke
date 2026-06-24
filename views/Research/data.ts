@@ -8,6 +8,10 @@ export const RESEARCH_ARTICLES: IResearchArticle[] = [
       "Uma investigação sobre números, função, tipografia e comportamento no futebol.",
     year: "2026",
     image: "/images/research/pesquisa-1/foto-museu.png",
-    component: () => import("../../content/circle-numbers.mdx"),
+    componentByLanguage: {
+      pt: () => import("../../content/circle-numbers.pt.mdx"),
+      en: () => import("../../content/circle-numbers.en.mdx"),
+      es: () => import("../../content/circle-numbers.es.mdx"),
+    },
   },
 ];

@@ -1,12 +1,16 @@
-import type React from "react";
+import { ComponentType } from "react";
 
-export interface IResearchArticle {
+import { Language } from "@/i18n/messages";
+
+export type ResearchArticleModule = {
+  default: ComponentType;
+};
+
+export type IResearchArticle = {
   slug: string;
   title: string;
   description: string;
   year: string;
   image: string;
-  component: () => Promise<{
-    default: React.ComponentType;
-  }>;
-}
+  componentByLanguage: Record<Language, () => Promise<ResearchArticleModule>>;
+};

@@ -1,11 +1,10 @@
-import { Layout } from "@/components/Layout";
-import { RESEARCH_ARTICLES } from "@/views/Research/data";
-import { notFound } from "next/navigation";
-import { loadResearchSubpageStyles } from "./styles";
-import { ResearchSlugPageProps } from "./types";
-import { getMetadata } from "@/utils/getMetada";
 import { Metadata } from "next";
-import { PageTitleSetter } from "@/components/PageTitleProvider";
+import { notFound } from "next/navigation";
+
+import { RESEARCH_ARTICLES } from "@/views/Research/data";
+import { getMetadata } from "@/utils/getMetada";
+import { ResearchSlugPageProps } from "./types";
+import { ResearchSlugContent } from "./ResearchSlugContent";
 
 export async function generateMetadata({
   params,
@@ -25,7 +24,6 @@ export default async function ResearchSlugPage({
   params,
 }: ResearchSlugPageProps) {
   const { slug } = await params;
-  const styles = loadResearchSubpageStyles();
 
   const page = RESEARCH_ARTICLES.find((item) => item.slug === slug);
 
@@ -33,20 +31,5 @@ export default async function ResearchSlugPage({
     notFound();
   }
 
-  const Article = await page.component();
-
-  return (
-    <>
-      <PageTitleSetter title={`Research - ${page.title}`} />
-      <Layout widthSize="article">
-        <div className={styles.titleContent}>
-          <h1 className={styles.title}>{page.title}</h1>
-          <span>{page.description}</span>
-        </div>
-        <article className={styles.article}>
-          <Article.default />
-        </article>
-      </Layout>
-    </>
-  );
+  return <ResearchSlugContent slug={page.slug} />;
 }
