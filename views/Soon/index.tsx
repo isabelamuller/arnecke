@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { FormEvent, useState } from "react";
 
 export const ComingSoon = () => {
@@ -35,14 +36,14 @@ export const ComingSoon = () => {
   }
 
   return (
-    <main className="flex min-h-screen w-full items-center justify-center bg-color-arnecke-white px-6 text-color-arnecke-blue">
-      <section className="flex w-full max-w-sm flex-col items-center gap-8 text-center">
-        <div>
-          <h1 className="font-denton text-5xl uppercase leading-[0.85] tracking-[-0.04em] md:text-7xl">
-            SOON
-          </h1>
-        </div>
-
+    <main className="flex min-h-screen w-full flex-col items-center justify-center bg-color-arnecke-blue px-6 text-color-arnecke-black">
+      <Image
+        src="/images/logo-coming-soon.png"
+        alt="Arnecke logo"
+        width={200}
+        height={200}
+      />
+      <section className="flex w-full max-w-sm flex-col items-center gap-8 text-center bg-color-arnecke-black p-2">
         <form onSubmit={handleSubmit} className="flex w-full flex-col gap-3">
           <input
             type="password"
@@ -51,18 +52,17 @@ export const ComingSoon = () => {
             placeholder="Senha"
             className="
                   w-full
-                  border
-                  border-current
-                  bg-transparent
+                  bg-color-arnecke-blue
                   px-4
                   py-3
-                  font-systemia
+                  font-helvetica
+                  font-bold
                   text-[10px]
+                  font
                   uppercase
-                  tracking-[0.2em]
                   outline-none
-                  placeholder:text-current
-                  placeholder:opacity-40
+                  placeholder:text-color-arnecke-black
+                  text-color-arnecke-black
                 "
           />
 
@@ -71,16 +71,15 @@ export const ComingSoon = () => {
             disabled={isLoading}
             className="
                   w-full
-                  border
-                  border-current
-                  bg-color-arnecke-blue
+                  bg-color-arnecke-black
+                  cursor-pointer
                   px-4
                   py-3
-                  font-systemia
-                  text-[10px]
+                  font-helvetica
+                  font-bold
+                  text-[13px]
                   uppercase
-                  tracking-[0.2em]
-                  text-color-arnecke-white
+                  text-color-arnecke-blue
                   transition-opacity
                   hover:opacity-80
                   disabled:cursor-not-allowed
@@ -89,7 +88,6 @@ export const ComingSoon = () => {
           >
             {isLoading ? "Entrando..." : "Entrar"}
           </button>
-
           {!!errorMessage && (
             <p className="font-helvetica text-xs uppercase tracking-[0.12em] text-red-600">
               {errorMessage}
@@ -97,6 +95,23 @@ export const ComingSoon = () => {
           )}
         </form>
       </section>
+      <div className="flex justify-between w-full max-w-sm mt-3">
+        <span className="font-helvetica font-bold uppercase text-[14px]">
+          expanding
+        </span>
+        <span className="font-helvetica font-bold uppercase text-[14px]">
+          experiences
+        </span>
+        <span className="font-helvetica font-bold uppercase text-[14px]">
+          scoring
+        </span>
+        <span className="font-helvetica font-bold uppercase text-[14px]">
+          goals
+        </span>
+      </div>
+      <span className="font-helvetica font-bold uppercase text-[25px] mx-auto">
+        03/07
+      </span>
     </main>
   );
 };
