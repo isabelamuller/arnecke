@@ -4,27 +4,10 @@ export const CROQUIS_ITEMS: IPageItem[] = [
   {
     images: [
       {
-        src: "/images/croquis/croqui-1-sem.png",
+        src: "/images/croquis/croqui-1-sem.PNG",
       },
       {
-        src: "/images/croquis/croqui-1-com.png",
-      },
-    ],
-  },
-  {
-    images: [
-      {
-        src: "/images/croquis/croqui-1-sem.png",
-      },
-      {
-        src: "/images/croquis/croqui-1-com.png",
-      },
-    ],
-  },
-  {
-    images: [
-      {
-        src: "/images/croquis/teste.jpg",
+        src: "/images/croquis/croqui-1-com.PNG",
       },
     ],
   },
