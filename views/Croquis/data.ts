@@ -21,4 +21,11 @@ export const CROQUIS_ITEMS: IPageItem[] = [
       },
     ],
   },
+  {
+    images: [
+      {
+        src: "/images/croquis/teste.jpg",
+      },
+    ],
+  },
 ];
