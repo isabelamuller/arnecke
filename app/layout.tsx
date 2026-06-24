@@ -16,8 +16,12 @@ export default function RootLayout({
 
   const isBlueTheme = pathname === "/" || pathname === "/contact";
   const isContact = pathname === "/contact-us";
+  const isComingSoon = pathname === "/coming-soon";
 
   const theme = isBlueTheme ? "blue" : "white";
+
+  const shouldShowHeader = !isComingSoon;
+  const shouldShowFooter = !isContact && !isComingSoon;
 
   return (
     <html
@@ -29,19 +33,17 @@ export default function RootLayout({
           isBlueTheme
             ? "bg-color-arnecke-blue text-color-arnecke-white"
             : "bg-color-arnecke-white text-color-arnecke-blue"
-        } 
-        ${isBlueTheme ? "text-color-arnecke-white" : "text-color-arnecke-blue"} 
-        min-h-[calc(100vh-49px)] antialiased overflow-x-hidden`}
+        } min-h-[calc(100vh-49px)] overflow-x-hidden antialiased`}
       >
         <PageTitleProvider>
-          <Header theme={theme} />
+          {shouldShowHeader && <Header theme={theme} />}
           <main
             id="page-content"
             className="transition-transform duration-500 ease-[cubic-bezier(0.77,0,0.18,1)] will-change-transform"
           >
             {children}
           </main>
-          {!isContact && <Footer theme={theme} />}
+          {shouldShowFooter && <Footer theme={theme} />}
         </PageTitleProvider>
       </body>
     </html>
