@@ -14,7 +14,7 @@ export default function RootLayout({
 }) {
   const pathname = usePathname();
 
-  const isBlueTheme = pathname === "/" || pathname === "/contact";
+  const isBlueTheme = pathname === "/" || pathname === "/contact" || "/teste";
   const isRedTheme = pathname === "/heat-map";
   const isContact = pathname === "/contact-us";
   const isPreprod = pathname === "/password";
