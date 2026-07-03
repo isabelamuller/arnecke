@@ -14,7 +14,7 @@ type Hotspot = {
   position: [number, number, number];
 };
 
-const HOTSPOTS: Hotspot[] = [
+const HOTSPOT: Hotspot[] = [
   {
     id: "Comunidade",
     label: "Comunidade",
@@ -132,7 +132,7 @@ function Scene() {
 
       <PitchModel />
 
-      {HOTSPOTS.map((hotspot) => (
+      {HOTSPOT.map((hotspot) => (
         <HotspotMarker key={hotspot.id} {...hotspot} />
       ))}
 
