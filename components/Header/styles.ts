@@ -16,20 +16,29 @@ import classnames, {
 } from "tailwindcss-classnames";
 
 export const loadHeaderStyles = () => ({
-  wrapper: (theme: "blue" | "white") =>
-    classnames(
+  wrapper: (theme: "blue" | "white" | "red") => {
+    const backgroundColor =
+      theme === "red"
+        ? ("bg-transparent" as any)
+        : theme === "blue"
+          ? ("bg-color-arnecke-blue" as any)
+          : ("bg-color-arnecke-white" as any);
+
+    const textColor =
+      theme === "blue" || theme === "red"
+        ? ("text-color-arnecke-white" as any)
+        : ("text-color-arnecke-blue" as any);
+
+    return classnames(
       position("fixed"),
       inset("top-0", "left-0"),
       zIndex("z-50"),
       width("w-full"),
-      theme === "blue"
-        ? ("bg-color-arnecke-blue" as any)
-        : ("bg-color-arnecke-white" as any),
+      backgroundColor,
       "font-systemia" as any,
-      theme === "blue"
-        ? ("text-color-arnecke-white" as any)
-        : ("text-color-arnecke-blue" as any),
-    ),
+      textColor,
+    );
+  },
   content: classnames(
     position("relative"),
     display("flex"),

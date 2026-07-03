@@ -30,173 +30,182 @@ import classnames, {
   zIndex,
 } from "tailwindcss-classnames";
 
-export const loadHamburguerMenuStyles = (theme: "blue" | "white") => ({
-  headerTriggerWrapper: classnames(
-    position("relative"),
-    display("flex"),
-    alignItems("items-center"),
-    gap("gap-2"),
-    zIndex("z-50"),
-  ),
-  buttonWrapper: classnames(
-    cursor("cursor-pointer"),
-    display("flex"),
-    alignItems("items-center"),
-    justifyContent("justify-center"),
-    zIndex("z-50"),
-    textColor("text-current"),
-  ),
-  pageTitle: classnames(
-    position("fixed"),
-    display("md:block", "hidden"),
-    zIndex("z-50"),
-    fontSize("text-xs"),
-    fontWeight("font-bold"),
-    textTransform("uppercase"),
-    transitionDuration("duration-500"),
-    letterSpacing("tracking-[0.20em]" as any),
-    transitionProperty("transition-all"),
-    inset("left-11"),
-  ),
-  wrapper: (isMenuOpen: boolean) =>
-    classnames(
-      transitionTimingFunction("ease-in-out"),
-      position("fixed"),
-      inset("inset-0"),
-      zIndex("z-40"),
-      transitionDuration("duration-500"),
-      height("h-screen"),
-      width("w-full"),
-      transitionProperty("transition-transform"),
-      "lg:max-w-1/4" as any,
-      isMenuOpen ? translate("translate-x-0") : ("-translate-x-full" as any),
-      theme === "blue"
+export const loadHamburguerMenuStyles = (theme: "blue" | "white" | "red") => {
+  const isDarkTheme = theme === "blue" || theme === "red";
+
+  const backgroundColor =
+    theme === "red"
+      ? ("bg-transparent" as any)
+      : theme === "blue"
         ? ("bg-color-arnecke-blue" as any)
-        : "bg-color-arnecke-white",
-      theme === "blue"
-        ? ("text-color-arnecke-white" as any)
-        : "text-color-arnecke-blue",
+        : ("bg-color-arnecke-white" as any);
+
+  const foregroundColor = isDarkTheme
+    ? ("text-color-arnecke-white" as any)
+    : ("text-color-arnecke-blue" as any);
+
+  const borderColor = isDarkTheme
+    ? ("border-white/20" as any)
+    : ("border-[#0200F7]/20" as any);
+
+  const lineColor = isDarkTheme
+    ? ("bg-color-arnecke-white" as any)
+    : ("bg-color-arnecke-blue" as any);
+
+  return {
+    headerTriggerWrapper: classnames(
+      position("relative"),
+      display("flex"),
+      alignItems("items-center"),
+      gap("gap-2"),
+      zIndex("z-50"),
     ),
-  content: classnames(
-    position("relative"),
-    height("h-full"),
-    width("w-full"),
-    padding("px-5", "pb-6", "pt-16"),
-    overflow("overflow-hidden"),
-    "font-helvetica" as any,
-  ),
-  exploreText: classnames(
-    position("absolute"),
-    inset("top-4", "right-5"),
-    opacity("opacity-50"),
-    textTransform("uppercase"),
-    "text-[10px]" as any,
-    "tracking-[0.35em]" as any,
-    "text-color-arnecke-blue" as any,
-  ),
-  verticalText: classnames(
-    position("absolute"),
-    inset("bottom-10", "right-10"),
-    textTransform("uppercase"),
-    rotate("rotate-90"),
-    transformOrigin("origin-bottom-right"),
-    opacity("opacity-40"),
-    "text-[8px]" as any,
-    "tracking-[0.35em]" as any,
-    theme === "blue"
-      ? ("text-color-arnecke-white" as any)
-      : "text-color-arnecke-blue",
-  ),
-  horizontalText: classnames(
-    position("absolute"),
-    inset("bottom-5", "left-10"),
-    textTransform("uppercase"),
-    opacity("opacity-40"),
-    "font-helvetica" as any,
-    "text-[8px]" as any,
-    "tracking-[0.25em]" as any,
-    theme === "blue"
-      ? ("text-color-arnecke-white" as any)
-      : "text-color-arnecke-blue",
-  ),
-  verticalLineRight: classnames(
-    position("absolute"),
-    inset("left-5"),
-    width("w-px"),
-    display("lg:block", "hidden"),
-    opacity("opacity-20"),
-    theme === "blue"
-      ? ("bg-color-arnecke-white" as any)
-      : "bg-color-arnecke-blue",
-    "top-[70px]" as any,
-    "h-[calc(100%-110px)]" as any,
-  ),
-  verticalLineLeft: classnames(
-    position("absolute"),
-    inset("right-5"),
-    width("w-px"),
-    opacity("opacity-20"),
-    display("lg:block", "hidden"),
-    theme === "blue"
-      ? ("bg-color-arnecke-white" as any)
-      : "bg-color-arnecke-blue",
-    "top-[70px]" as any,
-    "h-[calc(100%-110px)]" as any,
-  ),
-  listItem: classnames(
-    borderWidth("border-t", "last:border-b"),
-    margin("lg:mx-5"),
-    theme === "blue"
-      ? ("border-white/20" as any)
-      : ("border-[#0200F7]/20" as any),
-  ),
-  listLink: classnames(
-    group("group"),
-    display("flex"),
-    alignItems("items-center"),
-    justifyContent("justify-between"),
-    padding("py-5"),
-    textTransform("uppercase"),
-    cursor("cursor-pointer"),
-    gap("gap-3"),
-    fontSize("text-lg"),
-    lineHeight("leading-none"),
-    fontWeight("font-bold"),
-    opacity("!opacity-100"),
-    "tracking-[-0.05em]" as any,
-  ),
-  numberWrapper: classnames(
-    opacity("group-hover:opacity-100"),
-    opacity("opacity-40"),
-    transitionProperty("transition-opacity"),
-    fontWeight("font-normal"),
-    "tracking-[0.3em]" as any,
-    "text-[10px]" as any,
-  ),
-  socialWrapper: classnames(
-    position("absolute"),
-    inset("bottom-16", "left-10", "right-10"),
-    display("flex"),
-    flexDirection("flex-row"),
-    alignItems("items-center"),
-    gap("gap-2"),
-  ),
-  socialItem: classnames(
-    opacity("opacity-70"),
-    opacity("hover:opacity-100"),
-    transitionProperty("transition-all"),
-    transitionDuration("duration-300"),
-  ),
-  archiveWrapper: (isArchiveOpen: boolean) =>
-    classnames(
+    buttonWrapper: classnames(
+      cursor("cursor-pointer"),
+      display("flex"),
+      alignItems("items-center"),
+      justifyContent("justify-center"),
+      zIndex("z-50"),
+      textColor("text-current"),
+    ),
+    pageTitle: classnames(
       position("fixed"),
-      inset("inset-0"),
-      transitionDuration("duration-300"),
-      transitionProperty("transition-transform"),
-      transitionTimingFunction("ease-in-out"),
-      "z-[100]" as any,
-      isArchiveOpen
-        ? translate("translate-y-0")
-        : translate("translate-y-full"),
+      display("md:block", "hidden"),
+      zIndex("z-50"),
+      fontSize("text-xs"),
+      fontWeight("font-bold"),
+      textTransform("uppercase"),
+      transitionDuration("duration-500"),
+      letterSpacing("tracking-[0.20em]" as any),
+      transitionProperty("transition-all"),
+      inset("left-11"),
     ),
-});
+    wrapper: (isMenuOpen: boolean) =>
+      classnames(
+        transitionTimingFunction("ease-in-out"),
+        position("fixed"),
+        inset("inset-0"),
+        zIndex("z-40"),
+        transitionDuration("duration-500"),
+        height("h-screen"),
+        width("w-full"),
+        transitionProperty("transition-transform"),
+        "lg:max-w-1/4" as any,
+        isMenuOpen ? translate("translate-x-0") : ("-translate-x-full" as any),
+        backgroundColor,
+        foregroundColor,
+      ),
+    content: classnames(
+      position("relative"),
+      height("h-full"),
+      width("w-full"),
+      padding("px-5", "pb-6", "pt-16"),
+      overflow("overflow-hidden"),
+      "font-helvetica" as any,
+    ),
+    exploreText: classnames(
+      position("absolute"),
+      inset("top-4", "right-5"),
+      opacity("opacity-50"),
+      textTransform("uppercase"),
+      "text-[10px]" as any,
+      "tracking-[0.35em]" as any,
+      foregroundColor,
+    ),
+    verticalText: classnames(
+      position("absolute"),
+      inset("bottom-10", "right-10"),
+      textTransform("uppercase"),
+      rotate("rotate-90"),
+      transformOrigin("origin-bottom-right"),
+      opacity("opacity-40"),
+      "text-[8px]" as any,
+      "tracking-[0.35em]" as any,
+      foregroundColor,
+    ),
+    horizontalText: classnames(
+      position("absolute"),
+      inset("bottom-5", "left-10"),
+      textTransform("uppercase"),
+      opacity("opacity-40"),
+      "font-helvetica" as any,
+      "text-[8px]" as any,
+      "tracking-[0.25em]" as any,
+      foregroundColor,
+    ),
+    verticalLineRight: classnames(
+      position("absolute"),
+      inset("left-5"),
+      width("w-px"),
+      display("lg:block", "hidden"),
+      opacity("opacity-20"),
+      lineColor,
+      "top-[70px]" as any,
+      "h-[calc(100%-110px)]" as any,
+    ),
+    verticalLineLeft: classnames(
+      position("absolute"),
+      inset("right-5"),
+      width("w-px"),
+      opacity("opacity-20"),
+      display("lg:block", "hidden"),
+      lineColor,
+      "top-[70px]" as any,
+      "h-[calc(100%-110px)]" as any,
+    ),
+    listItem: classnames(
+      borderWidth("border-t", "last:border-b"),
+      margin("lg:mx-5"),
+      borderColor,
+    ),
+    listLink: classnames(
+      group("group"),
+      display("flex"),
+      alignItems("items-center"),
+      justifyContent("justify-between"),
+      padding("py-5"),
+      textTransform("uppercase"),
+      cursor("cursor-pointer"),
+      gap("gap-3"),
+      fontSize("text-lg"),
+      lineHeight("leading-none"),
+      fontWeight("font-bold"),
+      opacity("!opacity-100"),
+      "tracking-[-0.05em]" as any,
+    ),
+    numberWrapper: classnames(
+      opacity("group-hover:opacity-100"),
+      opacity("opacity-40"),
+      transitionProperty("transition-opacity"),
+      fontWeight("font-normal"),
+      "tracking-[0.3em]" as any,
+      "text-[10px]" as any,
+    ),
+    socialWrapper: classnames(
+      position("absolute"),
+      inset("bottom-16", "left-10", "right-10"),
+      display("flex"),
+      flexDirection("flex-row"),
+      alignItems("items-center"),
+      gap("gap-2"),
+    ),
+    socialItem: classnames(
+      opacity("opacity-70"),
+      opacity("hover:opacity-100"),
+      transitionProperty("transition-all"),
+      transitionDuration("duration-300"),
+    ),
+    archiveWrapper: (isArchiveOpen: boolean) =>
+      classnames(
+        position("fixed"),
+        inset("inset-0"),
+        transitionDuration("duration-300"),
+        transitionProperty("transition-transform"),
+        transitionTimingFunction("ease-in-out"),
+        "z-[100]" as any,
+        isArchiveOpen
+          ? translate("translate-y-0")
+          : translate("translate-y-full"),
+      ),
+  };
+};

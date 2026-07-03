@@ -15,9 +15,11 @@ export default function RootLayout({
   const pathname = usePathname();
 
   const isBlueTheme = pathname === "/" || pathname === "/contact";
+  const isRedTheme = pathname === "/heat-map";
   const isContact = pathname === "/contact-us";
   const isPreprod = pathname === "/password";
-  const theme = isBlueTheme ? "blue" : "white";
+
+  const theme = isRedTheme ? "red" : isBlueTheme ? "blue" : "white";
 
   const shouldShowHeader = !isPreprod;
 

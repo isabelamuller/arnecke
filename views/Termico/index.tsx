@@ -43,7 +43,6 @@ export function ThermalFabricPage() {
   const holdStartTimeRef = useRef(0);
   const lastEmitTimeRef = useRef(0);
   const lastFrameTimeRef = useRef(0);
-  const lastStatsUpdateRef = useRef(0);
 
   const audioRef = useRef<AudioEngine | null>(null);
 
@@ -178,7 +177,7 @@ export function ThermalFabricPage() {
           x: from.x + dx * t + Math.random() * 8 - 4,
           y: from.y + dy * t + Math.random() * 8 - 4,
           heat: strength,
-          size: 34 + strength * 58 + Math.random() * 18,
+          size: 18 + strength * 34 + Math.random() * 8,
         });
       }
 
@@ -187,8 +186,35 @@ export function ThermalFabricPage() {
       }
     };
 
+    const hexToRgb = (hex: string) => {
+      const normalized = hex.replace("#", "");
+
+      return {
+        r: parseInt(normalized.slice(0, 2), 16),
+        g: parseInt(normalized.slice(2, 4), 16),
+        b: parseInt(normalized.slice(4, 6), 16),
+      };
+    };
+
+    const mix = (start: number, end: number, amount: number) => {
+      return Math.round(start + (end - start) * amount);
+    };
+
+    const getHeatColor = (heat: number, alpha = 1) => {
+      const start = hexToRgb("#e91702");
+      const end = hexToRgb("#f4c000");
+      const t = clamp(heat, 0, 1);
+
+      const r = mix(start.r, end.r, t);
+      const g = mix(start.g, end.g, t);
+      const b = mix(start.b, end.b, t);
+
+      return `rgba(${r},${g},${b},${alpha})`;
+    };
+
     const drawSpot = (spot: Spot) => {
-      const radius = spot.size * (0.8 + spot.heat * 0.65);
+      const visualHeat = clamp(spot.heat * 1.45, 0, 1);
+      const radius = spot.size * (0.75 + visualHeat * 0.45);
 
       const gradient = heatCtx.createRadialGradient(
         spot.x,
@@ -199,15 +225,12 @@ export function ThermalFabricPage() {
         radius,
       );
 
-      const centerAlpha = clamp(spot.heat * 1.1, 0, 1);
-      const warmAlpha = clamp(spot.heat * 0.65, 0, 0.75);
-      const outerAlpha = clamp(spot.heat * 0.26, 0, 0.38);
-
-      gradient.addColorStop(0, `rgba(255,255,255,${centerAlpha})`);
-      gradient.addColorStop(0.18, `rgba(255,246,242,${centerAlpha * 0.95})`);
-      gradient.addColorStop(0.42, `rgba(255,190,176,${warmAlpha})`);
-      gradient.addColorStop(0.7, `rgba(255,86,62,${outerAlpha})`);
-      gradient.addColorStop(1, "rgba(255,86,62,0)");
+      gradient.addColorStop(0, getHeatColor(visualHeat, 0.98));
+      gradient.addColorStop(0.18, getHeatColor(visualHeat * 0.96, 0.95));
+      gradient.addColorStop(0.4, getHeatColor(visualHeat * 0.88, 0.88));
+      gradient.addColorStop(0.65, getHeatColor(visualHeat * 0.76, 0.75));
+      gradient.addColorStop(0.84, getHeatColor(visualHeat * 0.66, 0.58));
+      gradient.addColorStop(1, getHeatColor(visualHeat * 0.52, 0.32));
 
       heatCtx.fillStyle = gradient;
       heatCtx.beginPath();
@@ -222,18 +245,18 @@ export function ThermalFabricPage() {
       heatCtx.clearRect(0, 0, heatCanvas.width, heatCanvas.height);
       heatCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      heatCtx.globalCompositeOperation = "screen";
       spotsRef.current.forEach(drawSpot);
-      heatCtx.globalCompositeOperation = "source-over";
     };
 
     const drawHeatLayer = () => {
       const { width, height } = getCanvasSize();
 
       ctx.save();
-      ctx.globalCompositeOperation = "screen";
-      ctx.filter = "blur(10px) saturate(1.18)";
+
+      ctx.globalCompositeOperation = "source-over";
+      ctx.filter = "blur(12px) saturate(1.08)";
       ctx.drawImage(heatCanvas, 0, 0, width, height);
+
       ctx.restore();
     };
 
@@ -313,10 +336,6 @@ export function ThermalFabricPage() {
       drawHiddenMessage();
 
       setAudioIntensity(currentHeat);
-
-      if (time - lastStatsUpdateRef.current > 100) {
-        lastStatsUpdateRef.current = time;
-      }
 
       animationRef.current = window.requestAnimationFrame(animate);
     };

@@ -57,7 +57,7 @@ export const Footer = ({ theme }: IThemeProps) => {
           <div className={styles.logoWrapper}>
             <Image
               src={
-                theme === "blue"
+                theme === "blue" || "red"
                   ? "/images/logo-branco-contact.png"
                   : "/images/footer-logo.png"
               }

@@ -5,7 +5,7 @@ import { loadHeaderStyles } from "./styles";
 import { LanguageDropdown } from "../LanguageDropdown";
 
 export interface IThemeProps {
-  theme: "blue" | "white";
+  theme: "blue" | "white" | "red";
 }
 
 export const Header = ({ theme }: IThemeProps) => {
@@ -20,7 +20,7 @@ export const Header = ({ theme }: IThemeProps) => {
           aria-label="Go to homepage"
           className={styles.logoWrapper}
         >
-          {theme === "blue" ? (
+          {theme === "blue" || "red" ? (
             <Image
               src="/images/logo-branco.png"
               alt="Arnecke logo"
