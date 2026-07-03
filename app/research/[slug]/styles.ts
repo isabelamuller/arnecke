@@ -6,8 +6,6 @@ import classnames, {
   justifySelf,
   lineHeight,
   margin,
-  maxWidth,
-  padding,
   textAlign,
   textTransform,
   width,
