@@ -155,10 +155,62 @@ export function ThermalFabricPage() {
       };
     };
 
+    const toRgba = (hex: string, alpha: number) => {
+      const normalized = hex.replace("#", "");
+
+      const r = parseInt(normalized.slice(0, 2), 16);
+      const g = parseInt(normalized.slice(2, 4), 16);
+      const b = parseInt(normalized.slice(4, 6), 16);
+
+      return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    };
+
     const drawBackground = () => {
       const { width, height } = getCanvasSize();
 
-      ctx.fillStyle = BG;
+      ctx.fillStyle = "#d61f10";
+      ctx.fillRect(0, 0, width, height);
+
+      const drawBlob = (
+        x: number,
+        y: number,
+        radius: number,
+        color: string,
+        alpha: number,
+      ) => {
+        const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
+
+        gradient.addColorStop(0, toRgba(color, alpha));
+        gradient.addColorStop(0.5, toRgba(color, alpha * 0.45));
+        gradient.addColorStop(1, toRgba(color, 0));
+
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, width, height);
+      };
+
+      drawBlob(width * 0.1, height * 0.08, width * 0.28, "#ef8a40", 0.32);
+      drawBlob(width * 0.92, height * 0.04, width * 0.22, "#f1a34a", 0.28);
+      drawBlob(width * 0.84, height * 0.78, width * 0.2, "#ee8f45", 0.26);
+      drawBlob(width * 0.03, height * 0.98, width * 0.18, "#f0b35a", 0.34);
+
+      drawBlob(width * 0.28, height * 0.2, width * 0.34, "#c81c0f", 0.62);
+      drawBlob(width * 0.68, height * 0.3, width * 0.26, "#cf2411", 0.42);
+      drawBlob(width * 0.34, height * 0.78, width * 0.38, "#c81c0f", 0.6);
+      drawBlob(width * 0.88, height * 0.92, width * 0.16, "#cb2010", 0.34);
+
+      const centerGlow = ctx.createRadialGradient(
+        width * 0.5,
+        height * 0.52,
+        0,
+        width * 0.5,
+        height * 0.52,
+        width * 0.26,
+      );
+
+      centerGlow.addColorStop(0, "rgba(242, 133, 72, 0.16)");
+      centerGlow.addColorStop(1, "rgba(242, 133, 72, 0)");
+
+      ctx.fillStyle = centerGlow;
       ctx.fillRect(0, 0, width, height);
     };
 
