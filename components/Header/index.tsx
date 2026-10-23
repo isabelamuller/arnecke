@@ -20,7 +20,7 @@ export const Header = ({ theme }: IThemeProps) => {
           aria-label="Go to homepage"
           className={styles.logoWrapper}
         >
-          {theme === "blue" || "red" ? (
+          {theme !== "white" ? (
             <Image
               src="/images/logo-branco.png"
               alt="Arnecke logo"
@@ -28,14 +28,12 @@ export const Header = ({ theme }: IThemeProps) => {
               height={40}
             />
           ) : (
-            <div className={styles.blackLogo}>
-              <Image
-                src="/images/logo-azul.png"
-                alt="Arnecke logo"
-                width={86}
-                height={40}
-              />
-            </div>
+            <Image
+              src="/images/logo-azul.png"
+              alt="Arnecke logo"
+              width={86}
+              height={40}
+            />
           )}
         </Link>
         <div className="flex items-center gap-3">

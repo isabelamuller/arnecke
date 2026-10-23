@@ -159,7 +159,6 @@ export const loadHamburguerMenuStyles = (theme: "blue" | "white" | "red") => {
       borderColor,
     ),
     listLink: classnames(
-      group("group"),
       display("flex"),
       alignItems("items-center"),
       justifyContent("justify-between"),
@@ -170,16 +169,10 @@ export const loadHamburguerMenuStyles = (theme: "blue" | "white" | "red") => {
       fontSize("text-lg"),
       lineHeight("leading-none"),
       fontWeight("font-bold"),
-      opacity("!opacity-100"),
-      "tracking-[-0.05em]" as any,
-    ),
-    numberWrapper: classnames(
-      opacity("group-hover:opacity-100"),
-      opacity("opacity-40"),
+      opacity("opacity-80"),
+      opacity("hover:opacity-100"),
       transitionProperty("transition-opacity"),
-      fontWeight("font-normal"),
-      "tracking-[0.3em]" as any,
-      "text-[10px]" as any,
+      "tracking-[-0.05em]" as any,
     ),
     socialWrapper: classnames(
       position("absolute"),

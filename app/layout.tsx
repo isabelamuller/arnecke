@@ -14,14 +14,13 @@ export default function RootLayout({
 }) {
   const pathname = usePathname();
 
-  const isBlueTheme = pathname === "/" || pathname === "/contact" || "/teste";
+  const isBlueTheme =
+    pathname === "/" || pathname === "/contact" || pathname === "/teste";
   const isRedTheme = pathname === "/heat-map";
   const isContact = pathname === "/contact-us";
   const isPreprod = pathname === "/password";
 
   const theme = isRedTheme ? "red" : isBlueTheme ? "blue" : "white";
-
-  const shouldShowHeader = !isPreprod;
 
   const shouldShowFooter = !isContact && !isPreprod;
 
@@ -38,7 +37,7 @@ export default function RootLayout({
         } min-h-[calc(100vh-49px)] overflow-x-hidden antialiased`}
       >
         <PageTitleProvider>
-          {shouldShowHeader && <Header theme={theme} />}
+          <Header theme={theme} />
           <main
             id="page-content"
             className="transition-transform duration-500 ease-[cubic-bezier(0.77,0,0.18,1)] will-change-transform"

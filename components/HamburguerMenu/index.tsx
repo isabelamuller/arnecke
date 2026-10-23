@@ -67,9 +67,6 @@ export const HamburguerMenu = ({ theme }: IThemeProps) => {
                   }
                 >
                   {t(`HamburguerMenu.${menuItem.translationKey}`)}
-                  <span className={styles.numberWrapper}>
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
                 </a>
               </li>
             ))}
